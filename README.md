@@ -16,7 +16,7 @@ CombineCocoa attempts to provide publishers for common UIKit controls so you can
 
 ## Basic Examples
 
-Check out the [Example in the **Example** folder](https://github.com/freak4pc/CombineCocoa/blob/master/Example/Example/ControlsViewController.swift#L27). Run `pod install` and open the workspace to try it out.
+Check out the [Example in the **Example** folder](https://github.com/freak4pc/CombineCocoa/blob/master/Example/Example/ControlsViewController.swift#L27). Open the project in Xcode 11 and Swift Package Manager should automatically resolve the required dependencies.
 
 <p align="center"><img src="https://github.com/freak4pc/CombineCocoa/raw/master/Resources/example.gif"></p>
 
