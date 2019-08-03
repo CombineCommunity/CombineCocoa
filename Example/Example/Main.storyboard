@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ib-BL-pNq">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="feR-rs-YVE">
+            <objects>
+                <navigationController id="4Ib-BL-pNq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="XgF-FT-X9f">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nmO-wz-MVN" kind="relationship" relationship="rootViewController" id="6Pg-KL-wvw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YwT-QV-epy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-627" y="-4"/>
+        </scene>
+        <!--CombineCocoa-->
+        <scene sceneID="cTr-M1-AFQ">
+            <objects>
+                <viewController id="nmO-wz-MVN" customClass="ControlsViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hOA-Bp-MTc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7by-4H-6wI">
+                                <rect key="frame" x="16" y="140" width="382" height="374"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fjj-bk-JKz">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="32"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                            <segment title="Third"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cbi-R7-6Un">
+                                        <rect key="frame" x="-2" y="39" width="386" height="31"/>
+                                    </slider>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type some text here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4E-5S-bfr">
+                                        <rect key="frame" x="0.0" y="77" width="382" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="P4e-Ie-0W8">
+                                        <rect key="frame" x="0.0" y="119" width="382" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utR-GO-fQs" userLabel="Tap this button">
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
+                                                <state key="normal" title="Tap this button"/>
+                                            </button>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3j-RG-2yZ">
+                                                <rect key="frame" x="333" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tm0-m6-nJj">
+                                        <rect key="frame" x="0.0" y="158" width="382" height="216"/>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Events:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CVe-Hd-do1" userLabel="Debug Text View">
+                                <rect key="frame" x="16" y="514" width="382" height="348"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PSG-wD-zhs" firstAttribute="trailing" secondItem="7by-4H-6wI" secondAttribute="trailing" constant="16" id="63g-lD-KyA"/>
+                            <constraint firstItem="7by-4H-6wI" firstAttribute="top" secondItem="PSG-wD-zhs" secondAttribute="top" id="FQB-eU-nn2"/>
+                            <constraint firstItem="CVe-Hd-do1" firstAttribute="bottom" secondItem="PSG-wD-zhs" secondAttribute="bottom" id="Gib-yb-1r0"/>
+                            <constraint firstItem="7by-4H-6wI" firstAttribute="leading" secondItem="PSG-wD-zhs" secondAttribute="leading" constant="16" id="ITW-9U-GzR"/>
+                            <constraint firstItem="CVe-Hd-do1" firstAttribute="trailing" secondItem="tm0-m6-nJj" secondAttribute="trailing" id="QfS-va-pHA"/>
+                            <constraint firstItem="CVe-Hd-do1" firstAttribute="leading" secondItem="tm0-m6-nJj" secondAttribute="leading" id="iOA-eM-f8x"/>
+                            <constraint firstItem="CVe-Hd-do1" firstAttribute="top" secondItem="7by-4H-6wI" secondAttribute="bottom" id="tTk-F5-1v3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PSG-wD-zhs"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="CombineCocoa" largeTitleDisplayMode="always" id="Gpl-hh-ZcW"/>
+                    <connections>
+                        <outlet property="button" destination="utR-GO-fQs" id="5JT-Gf-ewr"/>
+                        <outlet property="console" destination="CVe-Hd-do1" id="JRe-2Q-2Ge"/>
+                        <outlet property="datePicker" destination="tm0-m6-nJj" id="vBt-j8-zgP"/>
+                        <outlet property="segmented" destination="Fjj-bk-JKz" id="Tv8-hI-TDa"/>
+                        <outlet property="slider" destination="Cbi-R7-6Un" id="0ch-Ae-cSx"/>
+                        <outlet property="switch" destination="C3j-RG-2yZ" id="d7g-oY-SUh"/>
+                        <outlet property="textField" destination="A4E-5S-bfr" id="KlI-N5-d6X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTQ-10-sth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="192.75362318840581" y="-4.0178571428571423"/>
+        </scene>
+    </scenes>
+</document>

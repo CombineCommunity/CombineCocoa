@@ -1,0 +1,6 @@
+module CombineCocoa {
+  umbrella header "CombineCocoa-umbrella.h"
+
+  export *
+  module * { export * }
+}
