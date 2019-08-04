@@ -25,7 +25,6 @@ public struct CombineControlEvent<Control: UIControl>: Publisher {
   ///
   /// - parameter control: UI Control.
   /// - parameter events: Control Events.
-  /// - parameter keyPath: A Key Path from the UI Control to the requested value.
   public init(control: Control,
               events: UIControl.Event) {
     self.control = control
