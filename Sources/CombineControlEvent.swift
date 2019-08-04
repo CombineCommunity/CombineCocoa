@@ -25,7 +25,6 @@ public struct CombineControlEvent<Control: UIControl>: Publisher {
   ///
   /// - parameter control: UI Control.
   /// - parameter events: Control Events.
-  /// - parameter keyPath: A Key Path from the UI Control to the requested value.
   public init(control: Control,
               events: UIControl.Event) {
     self.control = control
@@ -46,7 +45,6 @@ extension CombineControlEvent {
   private final class Subscription<S: Subscriber, Control: UIControl>: Combine.Subscription where S.Input == Void {
     private var subscriber: S?
     weak private var control: Control?
-    private var didEmitInitial = false
 
     init(subscriber: S, control: Control, event: UIControl.Event) {
       self.subscriber = subscriber
