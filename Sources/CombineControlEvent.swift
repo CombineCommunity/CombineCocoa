@@ -45,7 +45,6 @@ extension CombineControlEvent {
   private final class Subscription<S: Subscriber, Control: UIControl>: Combine.Subscription where S.Input == Void {
     private var subscriber: S?
     weak private var control: Control?
-    private var didEmitInitial = false
 
     init(subscriber: S, control: Control, event: UIControl.Event) {
       self.subscriber = subscriber
