@@ -12,7 +12,7 @@ import UIKit
 public extension UIRefreshControl {
   /// A publisher emitting refresh status changes from this refresh control.
   var isRefreshingPublisher: AnyPublisher<Bool, Never> {
-    CombineControlProperty(control: self, events: .defaultValueEvents, keyPath: \.isRefreshing)
+    Publishers.ControlProperty(control: self, events: .defaultValueEvents, keyPath: \.isRefreshing)
       .eraseToAnyPublisher()
   }
 }

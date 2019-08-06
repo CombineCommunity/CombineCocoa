@@ -12,13 +12,13 @@ import UIKit
 public extension UIDatePicker {
   /// A publisher emitting date changes from this date picker.
   var datePublisher: AnyPublisher<Date, Never> {
-    CombineControlProperty(control: self, events: .defaultValueEvents, keyPath: \.date)
+    Publishers.ControlProperty(control: self, events: .defaultValueEvents, keyPath: \.date)
       .eraseToAnyPublisher()
   }
 
   /// A publisher emitting countdown duration changes from this date picker.
   var countDownDurationPublisher: AnyPublisher<TimeInterval, Never> {
-    CombineControlProperty(control: self, events: .defaultValueEvents, keyPath: \.countDownDuration)
+    Publishers.ControlProperty(control: self, events: .defaultValueEvents, keyPath: \.countDownDuration)
       .eraseToAnyPublisher()
   }
 }

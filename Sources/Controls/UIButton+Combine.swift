@@ -12,7 +12,7 @@ import UIKit
 public extension UIButton {
   /// A publisher emitting tap events from this button.
   var tapPublisher: AnyPublisher<Void, Never> {
-    CombineControlEvent(control: self, events: .touchUpInside)
+    Publishers.ControlEvent(control: self, events: .touchUpInside)
       .eraseToAnyPublisher()
   }
 }

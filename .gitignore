@@ -1,7 +1,8 @@
 ## Build generated
 build/
 DerivedData/
-
+CombineCocoa.framework.zip
+CombineCocoa.xcodeproj
 ## Various settings
 *.pbxuser
 !default.pbxuser

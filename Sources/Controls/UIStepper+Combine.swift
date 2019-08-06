@@ -12,7 +12,7 @@ import UIKit
 public extension UIStepper {
   /// A publisher emitting value changes for this stepper.
   var valuePublisher: AnyPublisher<Double, Never> {
-    CombineControlProperty(control: self, events: .defaultValueEvents, keyPath: \.value)
+    Publishers.ControlProperty(control: self, events: .defaultValueEvents, keyPath: \.value)
       .eraseToAnyPublisher()
   }
 }
