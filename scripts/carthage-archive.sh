@@ -24,7 +24,7 @@ if [ ! "$(printf '%s\n' "$REQUIRED_SWIFT_TOOLING" "$TOOLS_VERSION" | sort -V | h
 fi
 
 swift package generate-xcodeproj
-carthage build --no-skip-current
+carthage build --no-skip-current --platform iOS
 carthage archive
 
 echo "Upload CombineCocoa.framework.zip to the latest release"

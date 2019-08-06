@@ -10,44 +10,45 @@ import Combine
 import UIKit.UIControl
 
 // MARK: - Publisher
+public extension Combine.Publishers {
+  /// A Control Property is a publisher that emits the value at the provided keypath
+  /// whenever the specific control events are triggered. It also emits the keypath's
+  /// initial value upon subscription.
+  struct ControlProperty<Control: UIControl, Value>: Publisher {
+    public typealias Output = Value
+    public typealias Failure = Never
 
-/// A Control Property is a publisher that emits the value at the provided keypath
-/// whenever the specific control events are triggered. It also emits the keypath's initial value
-/// upon subscription.
-public struct CombineControlProperty<Control: UIControl, Value>: Publisher {
-  public typealias Output = Value
-  public typealias Failure = Never
+    private let control: Control
+    private let controlEvents: UIControl.Event
+    private let keyPath: KeyPath<Control, Value>
 
-  private let control: Control
-  private let controlEvents: UIControl.Event
-  private let keyPath: KeyPath<Control, Value>
+    /// Initialize a publisher that emits the value at the specified keypath
+    /// whenever any of the provided Control Events trigger.
+    ///
+    /// - parameter control: UI Control.
+    /// - parameter events: Control Events.
+    /// - parameter keyPath: A Key Path from the UI Control to the requested value.
+    public init(control: Control,
+                events: UIControl.Event,
+                keyPath: KeyPath<Control, Value>) {
+      self.control = control
+      self.controlEvents = events
+      self.keyPath = keyPath
+    }
 
-  /// Initialize a publisher that emits the value at the specified keypath
-  /// whenever any of the provided Control Events trigger.
-  ///
-  /// - parameter control: UI Control.
-  /// - parameter events: Control Events.
-  /// - parameter keyPath: A Key Path from the UI Control to the requested value.
-  public init(control: Control,
-              events: UIControl.Event,
-              keyPath: KeyPath<Control, Value>) {
-    self.control = control
-    self.controlEvents = events
-    self.keyPath = keyPath
-  }
+    public func receive<S: Subscriber>(subscriber: S) where S.Failure == Failure, S.Input == Output {
+      let subscription = Subscription(subscriber: subscriber,
+                                      control: control,
+                                      event: controlEvents,
+                                      keyPath: keyPath)
 
-  public func receive<S: Subscriber>(subscriber: S) where S.Failure == Failure, S.Input == Output {
-    let subscription = Subscription(subscriber: subscriber,
-                                    control: control,
-                                    event: controlEvents,
-                                    keyPath: keyPath)
-
-    subscriber.receive(subscription: subscription)
+      subscriber.receive(subscription: subscription)
+    }
   }
 }
 
 // MARK: - Subscription
-extension CombineControlProperty {
+extension Combine.Publishers.ControlProperty {
   private final class Subscription<S: Subscriber, Control: UIControl, Value>: Combine.Subscription where S.Input == Value {
     private var subscriber: S?
     weak private var control: Control?
