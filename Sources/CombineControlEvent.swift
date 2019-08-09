@@ -18,7 +18,7 @@ public extension Combine.Publishers {
     public typealias Failure = Never
 
     private let control: Control
-    private let controlEvents: UIControl.Event
+    private let controlEvents: Control.Event
 
     /// Initialize a publisher that emits a Void
     /// whenever any of the provided Control Events trigger.
@@ -26,7 +26,7 @@ public extension Combine.Publishers {
     /// - parameter control: UI Control.
     /// - parameter events: Control Events.
     public init(control: Control,
-                events: UIControl.Event) {
+                events: Control.Event) {
       self.control = control
       self.controlEvents = events
     }
@@ -48,7 +48,7 @@ extension Combine.Publishers.ControlEvent {
     private var subscriber: S?
     weak private var control: Control?
 
-    init(subscriber: S, control: Control, event: UIControl.Event) {
+    init(subscriber: S, control: Control, event: Control.Event) {
       self.subscriber = subscriber
       self.control = control
       control.addTarget(self, action: #selector(handleEvent), for: event)
