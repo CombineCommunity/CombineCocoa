@@ -19,7 +19,7 @@ public extension Combine.Publishers {
     public typealias Failure = Never
 
     private let control: Control
-    private let controlEvents: UIControl.Event
+    private let controlEvents: Control.Event
     private let keyPath: KeyPath<Control, Value>
 
     /// Initialize a publisher that emits the value at the specified keypath
@@ -29,7 +29,7 @@ public extension Combine.Publishers {
     /// - parameter events: Control Events.
     /// - parameter keyPath: A Key Path from the UI Control to the requested value.
     public init(control: Control,
-                events: UIControl.Event,
+                events: Control.Event,
                 keyPath: KeyPath<Control, Value>) {
       self.control = control
       self.controlEvents = events
@@ -55,7 +55,7 @@ extension Combine.Publishers.ControlProperty {
     let keyPath: KeyPath<Control, Value>
     private var didEmitInitial = false
 
-    init(subscriber: S, control: Control, event: UIControl.Event, keyPath: KeyPath<Control, Value>) {
+    init(subscriber: S, control: Control, event: Control.Event, keyPath: KeyPath<Control, Value>) {
       self.subscriber = subscriber
       self.control = control
       self.keyPath = keyPath
