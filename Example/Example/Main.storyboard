@@ -87,11 +87,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PSG-wD-zhs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="CombineCocoa" largeTitleDisplayMode="always" id="Gpl-hh-ZcW"/>
+                    <navigationItem key="navigationItem" title="CombineCocoa" largeTitleDisplayMode="always" id="Gpl-hh-ZcW">
+                        <barButtonItem key="rightBarButtonItem" title="Tap Me!" id="bua-r4-BCr"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="button" destination="utR-GO-fQs" id="5JT-Gf-ewr"/>
                         <outlet property="console" destination="CVe-Hd-do1" id="JRe-2Q-2Ge"/>
                         <outlet property="datePicker" destination="tm0-m6-nJj" id="vBt-j8-zgP"/>
+                        <outlet property="rightBarButtonItem" destination="bua-r4-BCr" id="Mp8-l3-WHU"/>
                         <outlet property="segmented" destination="Fjj-bk-JKz" id="Tv8-hI-TDa"/>
                         <outlet property="slider" destination="Cbi-R7-6Un" id="0ch-Ae-cSx"/>
                         <outlet property="switch" destination="C3j-RG-2yZ" id="d7g-oY-SUh"/>
