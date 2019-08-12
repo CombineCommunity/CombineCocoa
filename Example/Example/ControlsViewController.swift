@@ -18,6 +18,7 @@ class ControlsViewController: UIViewController {
   @IBOutlet private var `switch`: UISwitch!
   @IBOutlet private var datePicker: UIDatePicker!
   @IBOutlet private var console: UITextView!
+  @IBOutlet private var rightBarButtonItem: UIBarButtonItem!
 
   private var subscriptions = Set<AnyCancellable>()
 
@@ -30,7 +31,8 @@ class ControlsViewController: UIViewController {
                    textField.textPublisher.map { "Text Field text is \($0 ?? "")" },
                    button.tapPublisher.map { "Tapped Button" },
                    `switch`.isOnPublisher.map { "Switch is now \($0 ? "On" : "Off")" },
-                   datePicker.datePublisher.map { "Date picker date is \($0)" })
+                   datePicker.datePublisher.map { "Date picker date is \($0)" },
+                   rightBarButtonItem.tapPublisher.map { "Tapped Right Bar Button Item" })
       .scan("") { $0 + "\n" + $1 }
       .handleEvents(receiveOutput: { [console] text in
         guard let console = console else { return }

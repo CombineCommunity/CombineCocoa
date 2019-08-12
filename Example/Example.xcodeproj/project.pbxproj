@@ -3,20 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932B88729D340BAA330419D7 /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB52D841DFE768A9D888448 /* libPods-Example.a */; };
 		A233795622F59DBD0083F92F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A233795522F59DBD0083F92F /* Main.storyboard */; };
 		A24C43FD22F592E700BC2E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C43FC22F592E700BC2E2B /* AppDelegate.swift */; };
 		A24C43FF22F592E700BC2E2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C43FE22F592E700BC2E2B /* SceneDelegate.swift */; };
 		A24C440122F592E700BC2E2B /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C440022F592E700BC2E2B /* ControlsViewController.swift */; };
 		A24C440622F592E800BC2E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24C440522F592E800BC2E2B /* Assets.xcassets */; };
 		A24C440922F592E800BC2E2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24C440722F592E800BC2E2B /* LaunchScreen.storyboard */; };
-		A26D663922F5E0D20017A625 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A26D663822F5E0D20017A625 /* CombineCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AB52D841DFE768A9D888448 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A233795522F59DBD0083F92F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A24C43F922F592E700BC2E2B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24C43FC22F592E700BC2E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -25,6 +26,9 @@
 		A24C440522F592E800BC2E2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A24C440822F592E800BC2E2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A24C440A22F592E800BC2E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A29BBF7A230183A800E2D144 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A3A5BF6E4631484B5F0C14C7 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		AD949152515161F740DAF80C /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,19 +36,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A26D663922F5E0D20017A625 /* CombineCocoa in Frameworks */,
+				932B88729D340BAA330419D7 /* libPods-Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		188A69E03FD2502C8B88E87A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AB52D841DFE768A9D888448 /* libPods-Example.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A24C43F022F592E700BC2E2B = {
 			isa = PBXGroup;
 			children = (
 				A24C43FB22F592E700BC2E2B /* Example */,
 				A24C43FA22F592E700BC2E2B /* Products */,
 				D8BE4EB532AFD7B4CF9F910A /* Pods */,
+				188A69E03FD2502C8B88E87A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +86,8 @@
 		D8BE4EB532AFD7B4CF9F910A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				A3A5BF6E4631484B5F0C14C7 /* Pods-Example.debug.xcconfig */,
+				AD949152515161F740DAF80C /* Pods-Example.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -84,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A24C440D22F592E800BC2E2B /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
+				1A00880812CC0A46E5A1E4A6 /* [CP] Check Pods Manifest.lock */,
 				A24C43F522F592E700BC2E2B /* Sources */,
 				A24C43F622F592E700BC2E2B /* Frameworks */,
 				A24C43F722F592E700BC2E2B /* Resources */,
@@ -93,9 +109,6 @@
 			dependencies = (
 			);
 			name = Example;
-			packageProductDependencies = (
-				A26D663822F5E0D20017A625 /* CombineCocoa */,
-			);
 			productName = Example;
 			productReference = A24C43F922F592E700BC2E2B /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -122,11 +135,9 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = A24C43F022F592E700BC2E2B;
-			packageReferences = (
-				A26D663722F5E0D20017A625 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
-			);
 			productRefGroup = A24C43FA22F592E700BC2E2B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -149,6 +160,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A00880812CC0A46E5A1E4A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A24C43F522F592E700BC2E2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -167,6 +203,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A24C440822F592E800BC2E2B /* Base */,
+				A29BBF7A230183A800E2D144 /* he */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -178,6 +215,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -238,6 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -290,6 +329,7 @@
 		};
 		A24C440E22F592E800BC2E2B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3A5BF6E4631484B5F0C14C7 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -307,6 +347,7 @@
 		};
 		A24C440F22F592E800BC2E2B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD949152515161F740DAF80C /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -344,25 +385,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A26D663722F5E0D20017A625 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/freak4pc/CombineCocoa.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A26D663822F5E0D20017A625 /* CombineCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A26D663722F5E0D20017A625 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
-			productName = CombineCocoa;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A24C43F122F592E700BC2E2B /* Project object */;
 }

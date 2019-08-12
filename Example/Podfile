@@ -1,0 +1,5 @@
+platform :ios, '13.0'
+
+target 'Example' do
+  pod 'CombineCocoa', :path => '../'
+end
