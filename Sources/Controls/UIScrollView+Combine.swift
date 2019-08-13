@@ -2,7 +2,8 @@
 //  UIScrollView+Combine.swift
 //  CombineCocoa
 //
-//  Created by Joan Disho on 09.08.19.
+//  Created by Joan Disho on 09/08/2019.
+//  Copyright © 2019 Shai Mishali. All rights reserved.
 //
 
 import Foundation
@@ -16,9 +17,11 @@ public extension UIScrollView {
     }
 
     /// A publisher emitting if the bottom of the UIScrollView is reached.
-    ///- parameter offset: A threshhold indicating the bottom of the UIScrollView. Default 0.0.
-    ///- returns: AnyPublisher that emits when the bottom of the UIScrollView is reached.
-    func reachedBottomPublisher(offset: CGFloat = 0.0) -> AnyPublisher<Void, Never> {
+    ///
+    /// - parameter offset: A threshold indicating how close to the bottom of the UIScrollView this publisher should emit.
+    ///                     Defaults to 0
+    /// - returns: A publisher that emits when the bottom of the UIScrollView is reached within the provided threshold.
+    func reachedBottomPublisher(offset: CGFloat = 0) -> AnyPublisher<Void, Never> {
         contentOffsetPublisher
             .map { [weak self] contentOffset -> Bool in
                 guard let self = self else { return false }
