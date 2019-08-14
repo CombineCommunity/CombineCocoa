@@ -6,7 +6,7 @@
 //  Copyright © 2019 Shai Mishali. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Combine
 
 public extension UIScrollView {

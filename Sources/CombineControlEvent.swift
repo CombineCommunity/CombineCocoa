@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Foundation
 import UIKit.UIControl
 
 // MARK: - Publisher
