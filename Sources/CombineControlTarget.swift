@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Foundation
 
 // MARK: - Publisher
 public extension Combine.Publishers {
