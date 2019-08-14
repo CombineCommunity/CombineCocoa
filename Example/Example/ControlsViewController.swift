@@ -49,7 +49,8 @@ class ControlsViewController: UIViewController {
                    rightBarButtonItem.tapPublisher.map { "Tapped Right Bar Button Item" })
       .merge(with: leftSwipe.swipePublisher.map { "Swiped Left with Gesture \($0.memoryAddress)" },
                    longPress.longPressPublisher.map { "Long Pressed with Gesture \($0.memoryAddress)" },
-                   doubleTap.tapPublisher.map { "Double-tapped view with two fingers with Gesture \($0.memoryAddress)" })
+                   doubleTap.tapPublisher.map { "Double-tapped view with two fingers with Gesture \($0.memoryAddress)" },
+                   console.reachedBottomPublisher().map { _ in "Reached the bottom of the UITextView" })
       .scan("") { $0 + "\n" + $1 }
       .handleEvents(receiveOutput: { [console] text in
         guard let console = console else { return }

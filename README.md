@@ -45,6 +45,8 @@ swipeGesture.swipePublisher // AnyPublisher<UISwipeGestureRecognizer, Never>
 panGesture.panPublisher // AnyPublisher<UIPanGestureRecognizer, Never>
 screenEdgePanGesture.screenEdgePanPublisher // AnyPublisher<UIScreenEdgePanGestureRecognizer, Never>
 longPressGesture.longPressPublisher // AnyPublisher<UILongPressGestureRecognizer, Never>
+scrollView.contentOffsetPublisher // AnyPublisher<CGPoint, Never>
+scrollView.reachedBottomPublisher(offset:) // AnyPublisher<Void, Never>
 ```
 
 ## Installation
