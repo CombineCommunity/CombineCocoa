@@ -17,6 +17,11 @@ static NSSet *selectors;
     return selectors;
 }
 
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    NSArray * _Nonnull arguments = unpackInvocation(anInvocation);
+    [self interceptedSelector:anInvocation.selector arguments:arguments];
+}
+
 - (void)interceptedSelector:(SEL _Nonnull)selector arguments:(NSArray * _Nonnull)arguments {}
 
 NSArray * _Nonnull unpackInvocation(NSInvocation * _Nonnull invocation) {
