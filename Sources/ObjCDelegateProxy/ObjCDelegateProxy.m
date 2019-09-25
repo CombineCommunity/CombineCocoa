@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ObjCDelegateProxy.h"
+#import "CombineCocoa-Bridging-Header.h"
 
 static NSSet *selectors;
 

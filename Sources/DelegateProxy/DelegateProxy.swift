@@ -7,11 +7,14 @@
 
 import Foundation
 
-public final class DelegateProxy {
+public final class DelegateProxy: ObjCDelegateProxy {
 
     private var dict: [Selector: ([Any]) -> Void] = [:]
 
     public func intercept(_ selector: Selector, handler: @escaping ([Any]) -> Void) {
         dict[selector] = handler
     }
+
+    
+
 }
