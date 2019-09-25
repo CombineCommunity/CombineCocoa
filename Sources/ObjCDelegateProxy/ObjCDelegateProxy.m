@@ -17,6 +17,17 @@ static NSSet *selectors;
     return selectors;
 }
 
++ (void)initialize
+{
+    @synchronized (ObjcDelegateProxy.class) {
+        selectors = [self selectorsOfClass:self];
+    }
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    return [super respondsToSelector:aSelector] || [ObjcDelegateProxy canRespondToSelector:aSelector];
+}
+
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
     NSArray * _Nonnull arguments = unpackInvocation(anInvocation);
     [self interceptedSelector:anInvocation.selector arguments:arguments];
