@@ -18,6 +18,9 @@ public protocol DelegateProxyType {
 public extension DelegateProxyType where Self: DelegateProxy {
 
     static func createDelegateProxy(for object: Object) -> Self {
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+
         let delegateProxy: Self
 
         if let associatedObject = objc_getAssociatedObject(object, &associatedKey) as? Self {
