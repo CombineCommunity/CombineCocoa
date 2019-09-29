@@ -34,15 +34,18 @@ static NSSet *selectors;
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    NSArray * _Nonnull arguments = unpackInvocation(anInvocation);
-    [self interceptedSelector:anInvocation.selector arguments:arguments];
+    BOOL isReturnTypeVoid = strcmp(anInvocation.methodSignature.methodReturnType, @encode(void)) == 0;
+    if (isReturnTypeVoid) {
+        NSArray * _Nonnull arguments = unpackInvocation(anInvocation);
+        [self interceptedSelector:anInvocation.selector arguments:arguments];
+    }
 }
 
 NSArray * _Nonnull unpackInvocation(NSInvocation * _Nonnull invocation) {
     NSUInteger numberOfArguments = invocation.methodSignature.numberOfArguments;
     NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:numberOfArguments - 2];
 
-     // Ignore `self` and `_cmd` at index 0 and 1.
+    // Ignore `self` and `_cmd` at index 0 and 1.
     for (NSUInteger index = 2; index < numberOfArguments; ++index) {
         const char *argumentType = [invocation.methodSignature getArgumentTypeAtIndex:index];
 
