@@ -8,7 +8,8 @@
 
 @interface ObjcDelegateProxy : NSObject
 
-+ (NSSet *_Nonnull) selectors;
+@property (nonnull, strong, atomic, readonly) NSSet *selectors;
+
 - (void)interceptedSelector:(SEL _Nonnull)selector arguments:(NSArray * _Nonnull)arguments;
 
 @end
