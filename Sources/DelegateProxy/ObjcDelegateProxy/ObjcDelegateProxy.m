@@ -15,7 +15,7 @@ static NSSet *selectors;
 
 @implementation ObjcDelegateProxy
 
-+ (NSSet *) selectors {
+- (NSSet *)selectors {
     return selectors;
 }
 
@@ -27,7 +27,7 @@ static NSSet *selectors;
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
-    return [super respondsToSelector:aSelector] || [ObjcDelegateProxy canRespondToSelector:aSelector];
+    return [super respondsToSelector:aSelector] || [self canRespondToSelector:aSelector];
 }
 
 - (void)interceptedSelector:(SEL _Nonnull)selector arguments:(NSArray * _Nonnull)arguments {}
