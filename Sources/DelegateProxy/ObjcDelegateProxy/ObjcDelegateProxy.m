@@ -22,7 +22,7 @@ static NSSet *selectors;
 + (void)initialize
 {
     @synchronized (ObjcDelegateProxy.class) {
-        selectors = [self selectorsOfClass:self];
+        selectors = [self selectors:self encodedReturnType:[NSString stringWithFormat:@"%s", @encode(void)]];
     }
 }
 
@@ -34,11 +34,8 @@ static NSSet *selectors;
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    BOOL isReturnTypeVoid = strcmp(anInvocation.methodSignature.methodReturnType, @encode(void)) == 0;
-    if (isReturnTypeVoid) {
-        NSArray * _Nonnull arguments = unpackInvocation(anInvocation);
-        [self interceptedSelector:anInvocation.selector arguments:arguments];
-    }
+    NSArray * _Nonnull arguments = unpackInvocation(anInvocation);
+    [self interceptedSelector:anInvocation.selector arguments:arguments];
 }
 
 NSArray * _Nonnull unpackInvocation(NSInvocation * _Nonnull invocation) {
