@@ -64,7 +64,7 @@ pod 'CombineCocoa'
 Add the following dependency to your **Package.swift** file:
 
 ```swift
-.package(url: "https://github.com/freak4pc/CombineCocoa.git", from: "0.0.1")
+.package(url: "https://github.com/CombineCommunity/CombineCocoa.git", from: "0.1.0")
 ```
 
 ### Carthage
@@ -74,7 +74,7 @@ Carthage support is offered as a prebuilt binary.
 Add the following to your **Cartfile**:
 
 ```
-github "freak4pc/CombineCocoa"
+github "CombineCommunity/CombineCocoa"
 ```
 
 ## Future ideas 
