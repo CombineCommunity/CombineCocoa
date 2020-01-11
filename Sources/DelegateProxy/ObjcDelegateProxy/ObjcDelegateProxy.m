@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
-#import "ObjcDelegateProxy.h"
-#import "CombineCocoa/CombineCocoa-Swift.h"
+#import <CombineCocoa/CombineCocoa.h>
+#import "CombineCocoa-Swift.h"
 
 static NSSet *selectors;
 

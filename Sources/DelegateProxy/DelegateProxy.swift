@@ -9,7 +9,6 @@
 import Foundation
 
 public final class DelegateProxy: ObjcDelegateProxy {
-
     private var dict: [Selector: ([Any]) -> Void] = [:]
 
     public required override init() {
