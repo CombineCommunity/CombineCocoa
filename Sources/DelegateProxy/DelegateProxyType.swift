@@ -8,7 +8,7 @@
 
 import Foundation
 
-private var associatedKey: UInt8 = 123
+private var associatedKey = "delegateProxy"
 
 public protocol DelegateProxyType {
     associatedtype Object
@@ -17,7 +17,6 @@ public protocol DelegateProxyType {
 }
 
 public extension DelegateProxyType where Self: DelegateProxy {
-
     static func createDelegateProxy(for object: Object) -> Self {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }

@@ -9,14 +9,13 @@
 import Foundation
 
 extension ObjcDelegateProxy {
-
     @objc(canRespondToSelector:)
-    func canRespond(to selector: Selector) -> Bool {
+    public func canRespond(to selector: Selector) -> Bool {
         return selectors.map { $0 as? Selector }.contains(selector)
     }
 
     @objc(selectors:encodedReturnType:)
-    static func selectorsOfClass(_ c: AnyClass, encodedReturnType: String) -> NSSet {
+    public static func selectorsOfClass(_ c: AnyClass, encodedReturnType: String) -> NSSet {
         return NSSet(set: selectors(ofClass: c, encodedReturnType: encodedReturnType))
     }
 
