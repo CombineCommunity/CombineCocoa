@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 public extension DelegateProxy {
-    func interceptPublisher(_ selector: Selector) -> AnyPublisher<[Any], Never> {
+    func interceptSelectorPublisher(_ selector: Selector) -> AnyPublisher<[Any], Never> {
         let publisher = DelegateProxyPublisher<[Any]> { subscriber in
             return self.intercept(selector) { args in
                 _ = subscriber.receive(args)
