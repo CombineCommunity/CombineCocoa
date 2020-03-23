@@ -72,6 +72,7 @@ private func gesturePublisher<Gesture: UIGestureRecognizer>(for gesture: Gesture
                              removeTargetAction: { gesture, target, action in
                                 gesture?.removeTarget(target, action: action)
                              })
+              .subscribe(on: DispatchQueue.main)
               .map { gesture }
               .eraseToAnyPublisher()
 }
