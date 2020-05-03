@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 
+@available(iOS 13.0, *)
 public extension DelegateProxy {
     func interceptSelectorPublisher(_ selector: Selector) -> AnyPublisher<[Any], Never> {
         DelegateProxyPublisher<[Any]> { subscriber in

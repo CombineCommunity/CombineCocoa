@@ -6,9 +6,11 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import Combine
 import UIKit
 
+@available(iOS 13.0, *)
 public extension UIButton {
     /// A publisher emitting tap events from this button.
     var tapPublisher: AnyPublisher<Void, Never> {
@@ -16,3 +18,4 @@ public extension UIButton {
                   .eraseToAnyPublisher()
     }
 }
+#endif

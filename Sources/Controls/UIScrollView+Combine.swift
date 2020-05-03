@@ -6,9 +6,11 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import UIKit
 import Combine
 
+@available(iOS 13.0, *)
 public extension UIScrollView {
     /// A publisher emitting content offset changes from this UIScrollView.
     var contentOffsetPublisher: AnyPublisher<CGPoint, Never> {
@@ -36,3 +38,4 @@ public extension UIScrollView {
             .eraseToAnyPublisher()
     }
 }
+#endif
