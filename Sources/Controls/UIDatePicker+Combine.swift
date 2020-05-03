@@ -6,9 +6,11 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import Combine
 import UIKit
 
+@available(iOS 13.0, *)
 public extension UIDatePicker {
     /// A publisher emitting date changes from this date picker.
     var datePublisher: AnyPublisher<Date, Never> {
@@ -22,3 +24,4 @@ public extension UIDatePicker {
                   .eraseToAnyPublisher()
     }
 }
+#endif

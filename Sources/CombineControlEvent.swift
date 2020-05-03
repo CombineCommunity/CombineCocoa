@@ -6,11 +6,13 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import Combine
 import Foundation
 import UIKit.UIControl
 
 // MARK: - Publisher
+@available(iOS 13.0, *)
 public extension Combine.Publishers {
     /// A Control Event is a publisher that emits whenever the provided
     /// Control Events fire.
@@ -44,6 +46,7 @@ public extension Combine.Publishers {
 
 
 // MARK: - Subscription
+@available(iOS 13.0, *)
 extension Combine.Publishers.ControlEvent {
     private final class Subscription<S: Subscriber, Control: UIControl>: Combine.Subscription where S.Input == Void {
         private var subscriber: S?
@@ -69,3 +72,4 @@ extension Combine.Publishers.ControlEvent {
         }
     }
 }
+#endif

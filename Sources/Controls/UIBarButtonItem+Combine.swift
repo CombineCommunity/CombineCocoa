@@ -6,9 +6,11 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import Combine
 import UIKit
 
+@available(iOS 13.0, *)
 public extension UIBarButtonItem {
     /// A publisher which emits whenever this UIBarButtonItem is tapped.
     var tapPublisher: AnyPublisher<Void, Never> {
@@ -24,3 +26,4 @@ public extension UIBarButtonItem {
                   .eraseToAnyPublisher()
   }
 }
+#endif

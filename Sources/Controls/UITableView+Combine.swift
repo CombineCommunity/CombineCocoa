@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Combine
 
+@available(iOS 13.0, *)
 public extension UITableView {
     /// Combine wrapper for `tableView(_:willDisplay:forRowAt:)`
     var willDisplayCellPublisher: AnyPublisher<(cell: UITableViewCell, indexPath: IndexPath), Never> {
@@ -119,6 +120,7 @@ public extension UITableView {
     }
 }
 
+@available(iOS 13.0, *)
 private class TableViewDelegateProxy: DelegateProxy, UITableViewDelegate, DelegateProxyType {
     func setDelegate(to object: UITableView) {
         object.delegate = self

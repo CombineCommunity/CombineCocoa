@@ -6,9 +6,11 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import Combine
 import UIKit
 
+@available(iOS 13.0, *)
 public extension UIRefreshControl {
     /// A publisher emitting refresh status changes from this refresh control.
     var isRefreshingPublisher: AnyPublisher<Bool, Never> {
@@ -16,3 +18,4 @@ public extension UIRefreshControl {
                   .eraseToAnyPublisher()
     }
 }
+#endif
