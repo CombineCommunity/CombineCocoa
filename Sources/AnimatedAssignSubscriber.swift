@@ -48,7 +48,7 @@ extension Publisher where Self.Failure == Never {
 	///     myLabel.center.x += 10.0
 	///   }, completion: nil))
 	/// ```
-    public func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Self.Output>, on object: Root, animation: AssignTransition) -> AnyCancellable {
+    public func assign<Root: UIView>(to keyPath: ReferenceWritableKeyPath<Root, Self.Output>, on object: Root, animation: AssignTransition) -> AnyCancellable {
         guard let view = object as? UIView else {
             return assign(to: keyPath, on: object)
         }
