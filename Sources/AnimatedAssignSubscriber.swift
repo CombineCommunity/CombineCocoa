@@ -60,7 +60,7 @@ extension Publisher where Self.Failure == Never {
         case .fade(let interval):
             duration = interval
             transition = .transitionCrossDissolve
-        case .flip(let dir, let interval):
+        case let .flip(dir, interval):
             duration = interval
             switch dir {
             case .bottom: transition = .transitionFlipFromBottom
