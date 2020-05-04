@@ -68,13 +68,16 @@ extension Publisher where Self.Failure == Never {
             case .left: transition   = .transitionFlipFromLeft
             case .right: transition  = .transitionFlipFromRight
             }
-        case .animation(let interval, let options, let animations, let completion):
-            return self
-                .handleEvents(receiveOutput: { value in
-                    UIView.animate(withDuration: interval, delay: 0, options: options, animations: {
-                        object[keyPath: keyPath] = value
-                        animations()
-                    }, completion: completion)
+        case let .animation(interval, options, animations, completion):
+            return handleEvents(receiveOutput: { value in
+                    UIView.animate(withDuration: interval,
+                    				 delay: 0,
+                    				 options: options,
+                    				 animations: {
+				                       object[keyPath: keyPath] = value
+                				       animations()
+				                     },
+				                     completion: completion)
                 })
                 .assign(to: keyPath, on: object)
         }
