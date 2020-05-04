@@ -27,29 +27,27 @@ public enum AssignTransition {
 }
 
 extension Publisher where Self.Failure == Never {
-    
-    /// Behaves identically to `Publisher.assign(to:on:)` except that it allows the user to
-    /// "wrap" emitting output in an animation transition.
-    ///
-    /// For example if you assign values to a
-    /// `UILabel` on screen you can make it flip over when each new value is set:
-    /// ```
-    /// myPublisher
-    ///   .assign(to: \.text, on: myLabel, animation: .flip(direction: .bottom, duration: 0.33))
-    /// ```
-    /// Or you can make an image view crossfade any new images it displays:
-    /// ```
-    /// myImagePublisher
-    ///   .assign(to: \.image, on: myImageView, animation: .fade(duration: 0.5))
-    /// ```
-    /// Finally you can set any custom animation including choice side effects as so. For example
-    /// this is how you can move the label each time you set a new value via `assign(to:on:animation:)`:
-    /// ```
-    /// myPublisher
-    ///   .assign(to: \.text, on: myLabel, animation: .animation(duration: 0.33, options: .curveEaseIn, animations: { _ in
-    ///     myLabel.center.x += 10.0
-    ///   }, completion: nil))
-    /// ```
+	/// Behaves identically to `Publisher.assign(to:on:)` except that it allows the user to
+	/// "wrap" emitting output in an animation transition.
+	///
+	/// For example if you assign values to a `UILabel` on screen you
+	/// can make it flip over when each new value is set:
+	///
+	/// ```
+	/// myPublisher
+	///   .assign(to: \.text,
+	///             on: myLabel,
+	///             animation: .flip(direction: .bottom, duration: 0.33))
+	/// ```
+	///
+	/// You may also provide a custom animation block, as follows:
+	///
+	/// ```
+	/// myPublisher
+	///   .assign(to: \.text, on: myLabel, animation: .animation(duration: 0.33, options: .curveEaseIn, animations: { _ in
+	///     myLabel.center.x += 10.0
+	///   }, completion: nil))
+	/// ```
     public func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Self.Output>, on object: Root, animation: AssignTransition) -> AnyCancellable {
         guard let view = object as? UIView else {
             return assign(to: keyPath, on: object)
