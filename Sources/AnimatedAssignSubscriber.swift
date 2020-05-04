@@ -84,9 +84,13 @@ extension Publisher where Self.Failure == Never {
 
         return self
             .handleEvents(receiveOutput: { value in
-                UIView.transition(with: view, duration: duration, options: transition, animations: {
-                    object[keyPath: keyPath] = value
-                }, completion: nil)
+                UIView.transition(with: view,
+				                    duration: duration,
+				                    options: transition,
+				                    animations: {
+				 	                   object[keyPath: keyPath] = value
+					                },
+					                completion: nil)
             })
             .assign(to: keyPath, on: object)
     }
