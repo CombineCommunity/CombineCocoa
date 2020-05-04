@@ -49,10 +49,6 @@ extension Publisher where Self.Failure == Never {
 	///   }, completion: nil))
 	/// ```
     public func assign<Root: UIView>(to keyPath: ReferenceWritableKeyPath<Root, Self.Output>, on object: Root, animation: AssignTransition) -> AnyCancellable {
-        guard let view = object as? UIView else {
-            return assign(to: keyPath, on: object)
-        }
-
         var transition: UIView.AnimationOptions
         var duration: TimeInterval
         
@@ -69,6 +65,7 @@ extension Publisher where Self.Failure == Never {
             case .right: transition  = .transitionFlipFromRight
             }
         case let .animation(interval, options, animations, completion):
+            // Use a custom animation.
             return handleEvents(receiveOutput: { value in
                     UIView.animate(withDuration: interval,
                     				 delay: 0,
@@ -82,9 +79,10 @@ extension Publisher where Self.Failure == Never {
                 .assign(to: keyPath, on: object)
         }
 
+        // Use one of the built-in transitions like flip or crossfade.
         return self
             .handleEvents(receiveOutput: { value in
-                UIView.transition(with: view,
+                UIView.transition(with: object,
 				                    duration: duration,
 				                    options: transition,
 				                    animations: {
