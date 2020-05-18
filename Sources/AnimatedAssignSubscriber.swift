@@ -27,27 +27,27 @@ public enum AssignTransition {
 }
 
 extension Publisher where Self.Failure == Never {
-	/// Behaves identically to `Publisher.assign(to:on:)` except that it allows the user to
-	/// "wrap" emitting output in an animation transition.
-	///
-	/// For example if you assign values to a `UILabel` on screen you
-	/// can make it flip over when each new value is set:
-	///
-	/// ```
-	/// myPublisher
-	///   .assign(to: \.text,
-	///             on: myLabel,
-	///             animation: .flip(direction: .bottom, duration: 0.33))
-	/// ```
-	///
-	/// You may also provide a custom animation block, as follows:
-	///
-	/// ```
-	/// myPublisher
-	///   .assign(to: \.text, on: myLabel, animation: .animation(duration: 0.33, options: .curveEaseIn, animations: { _ in
-	///     myLabel.center.x += 10.0
-	///   }, completion: nil))
-	/// ```
+    /// Behaves identically to `Publisher.assign(to:on:)` except that it allows the user to
+    /// "wrap" emitting output in an animation transition.
+    ///
+    /// For example if you assign values to a `UILabel` on screen you
+    /// can make it flip over when each new value is set:
+    ///
+    /// ```
+    /// myPublisher
+    ///   .assign(to: \.text,
+    ///             on: myLabel,
+    ///             animation: .flip(direction: .bottom, duration: 0.33))
+    /// ```
+    ///
+    /// You may also provide a custom animation block, as follows:
+    ///
+    /// ```
+    /// myPublisher
+    ///   .assign(to: \.text, on: myLabel, animation: .animation(duration: 0.33, options: .curveEaseIn, animations: { _ in
+    ///     myLabel.center.x += 10.0
+    ///   }, completion: nil))
+    /// ```
     public func assign<Root: UIView>(to keyPath: ReferenceWritableKeyPath<Root, Self.Output>, on object: Root, animation: AssignTransition) -> AnyCancellable {
         var transition: UIView.AnimationOptions
         var duration: TimeInterval
@@ -68,29 +68,29 @@ extension Publisher where Self.Failure == Never {
             // Use a custom animation.
             return handleEvents(receiveOutput: { value in
                     UIView.animate(withDuration: interval,
-                    				 delay: 0,
-                    				 options: options,
-                    				 animations: {
-				                       object[keyPath: keyPath] = value
-                				       animations()
-				                     },
-				                     completion: completion)
+                                     delay: 0,
+                                     options: options,
+                                     animations: {
+                                       object[keyPath: keyPath] = value
+                                       animations()
+                                     },
+                                     completion: completion)
                 })
-                .assign(to: keyPath, on: object)
+                .sink { _ in }
         }
 
         // Use one of the built-in transitions like flip or crossfade.
         return self
             .handleEvents(receiveOutput: { value in
                 UIView.transition(with: object,
-				                    duration: duration,
-				                    options: transition,
-				                    animations: {
-				 	                   object[keyPath: keyPath] = value
-					                },
-					                completion: nil)
+                                    duration: duration,
+                                    options: transition,
+                                    animations: {
+                                        object[keyPath: keyPath] = value
+                                    },
+                                    completion: nil)
             })
-            .assign(to: keyPath, on: object)
+            .sink { _ in }
     }
 }
 #endif
