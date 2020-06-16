@@ -35,4 +35,14 @@ public extension UIScrollView {
             .map { _ in () }
             .eraseToAnyPublisher()
     }
+
+    /// A publisher emitting isDragging status changes from this UIScrollView.
+    var isDraggingPublisher: AnyPublisher<Bool, Never> {
+        publisher(for: \.contentOffset)
+            .map { [weak self] _ in
+                return self?.isDragging ?? false
+            }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
 }
