@@ -16,6 +16,7 @@
 		A24C440622F592E800BC2E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24C440522F592E800BC2E2B /* Assets.xcassets */; };
 		A24C440922F592E800BC2E2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24C440722F592E800BC2E2B /* LaunchScreen.storyboard */; };
 		DC8A555624B5ED4B007BCEEC /* UITableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */; };
+		DC8A555E24B60A9A007BCEEC /* UICollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A555D24B60A9A007BCEEC /* UICollectionViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		DC8A555324B5ED4B007BCEEC /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewTests.swift; sourceTree = "<group>"; };
 		DC8A555724B5ED4B007BCEEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC8A555D24B60A9A007BCEEC /* UICollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewTests.swift; sourceTree = "<group>"; };
 		EC65D38C60603DE4FCD986FD /* libPods-ExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */,
+				DC8A555D24B60A9A007BCEEC /* UICollectionViewTests.swift */,
 				DC8A555724B5ED4B007BCEEC /* Info.plist */,
 			);
 			path = ExampleTests;
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8A555E24B60A9A007BCEEC /* UICollectionViewTests.swift in Sources */,
 				DC8A555624B5ED4B007BCEEC /* UITableViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
