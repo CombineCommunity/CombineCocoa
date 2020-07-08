@@ -11,12 +11,12 @@ import Foundation
 extension ObjcDelegateProxy {
     @objc(canRespondToSelector:)
     public func canRespond(to selector: Selector) -> Bool {
-        return selectors.contains(where: { $0 as? Selector == selector })
+        selectors.contains(where: { $0 as? Selector == selector })
     }
 
     @objc(selectors:encodedReturnType:)
     public static func selectorsOfClass(_ c: AnyClass, encodedReturnType: String) -> NSSet {
-        return NSSet(set: selectors(ofClass: c, encodedReturnType: encodedReturnType))
+        NSSet(set: selectors(ofClass: c, encodedReturnType: encodedReturnType))
     }
 
     private static func selectors(ofClass c: AnyClass, encodedReturnType: String) -> Set<Selector> {
@@ -48,7 +48,7 @@ extension ObjcDelegateProxy {
     }
 
     private static func selectors(ofProtocolPointer p: AutoreleasingUnsafeMutablePointer<Protocol>, count: Int, encodedReturnType: String) -> Set<Selector> {
-        return (0..<count)
+        (0..<count)
             .compactMap { p[$0] }
             .map { selectors(ofProtocol: $0, encodedReturnType: encodedReturnType) }
             .reduce(.init()) { $0.union($1) }

@@ -115,7 +115,7 @@ public extension UITableView {
     }
 
     private var delegateProxy: TableViewDelegateProxy {
-        return .createDelegateProxy(for: self)
+        .createDelegateProxy(for: self)
     }
 }
 

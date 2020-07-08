@@ -75,7 +75,7 @@ public extension UICollectionView {
     }
 
     private var delegateProxy: CollectionViewDelegateProxy {
-        return .createDelegateProxy(for: self)
+        .createDelegateProxy(for: self)
     }
 }
 
