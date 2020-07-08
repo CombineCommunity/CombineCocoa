@@ -3,6 +3,7 @@
 <p align="center">
 <img src="https://github.com/freak4pc/CombineCocoa/raw/master/Resources/logo.png" width="45%">
 <br /><br />
+<a href="https://actions-badge.atrox.dev/CombineCommunity/CombineCocoa/goto" target="_blank" alt="Build Status" title="Build Status"><img src="https://github.com/CombineCommunity/CombineCocoa/workflows/CombineCocoa/badge.svg?branch=master" alt="Build Status" title="Build Status"></a><br />
 <a href="https://cocoapods.org/pods/CombineCocoa" target="_blank"><img src="https://img.shields.io/cocoapods/v/CombineCocoa.svg?1" alt="CombineCocoa supports CocoaPods"></a>
 <a href="https://github.com/apple/swift-package-manager" target="_blank"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="CombineCocoa supports Swift Package Manager (SPM)"></a>
 <a href="https://github.com/Carthage/Carthage" target="_blank"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="CombineCocoa supports Carthage"></a>
