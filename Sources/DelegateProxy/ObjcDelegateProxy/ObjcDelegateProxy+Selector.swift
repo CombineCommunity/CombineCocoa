@@ -51,9 +51,10 @@ extension ObjcDelegateProxy {
 
     private static func selectors(ofProtocolPointer p: AutoreleasingUnsafeMutablePointer<Protocol>, count: Int, encodedReturnType: String) -> Set<Selector> {
         (0..<count)
-            .compactMap { p[$0] }
-            .map { selectors(ofProtocol: $0, encodedReturnType: encodedReturnType) }
-            .reduce(.init()) { $0.union($1) }
+            .reduce(into: Set<Selector>()) { allSelectors, index in
+                let selectors = self.selectors(ofProtocol: p[index], encodedReturnType: encodedReturnType)
+                allSelectors.formUnion(selectors)
+            }
     }
 
     private static func encodedMethodReturnType(_ method: objc_method_description) -> String? {
