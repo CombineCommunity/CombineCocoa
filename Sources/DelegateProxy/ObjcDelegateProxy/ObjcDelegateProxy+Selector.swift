@@ -37,10 +37,12 @@ extension ObjcDelegateProxy {
         var protocolsCount: UInt32 = 0
         let protocols = protocol_copyProtocolList(p, &protocolsCount)
 
-        let methodSelectors = (0..<protocolMethodCount)
-            .compactMap { methodDescriptions?[Int($0)] }
-            .filter { encodedMethodReturnType($0) == encodedReturnType }
-            .compactMap { $0.name }
+        let methodSelectors = (0..<Int(protocolMethodCount))
+            .compactMap { index -> Selector? in
+                guard let description = methodDescriptions?[index],
+                      encodedMethodReturnType(description) == encodedReturnType else { return nil }
+                return description.name
+            }
 
         let protocolSelectors = protocols.map { selectors(ofProtocolPointer: $0, count: Int(protocolsCount), encodedReturnType: encodedReturnType) } ?? []
 
