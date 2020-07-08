@@ -11,7 +11,7 @@ import Foundation
 extension ObjcDelegateProxy {
     @objc(canRespondToSelector:)
     public func canRespond(to selector: Selector) -> Bool {
-        return selectors.map { $0 as? Selector }.contains(selector)
+        return selectors.contains(where: { $0 as? Selector == selector })
     }
 
     @objc(selectors:encodedReturnType:)
