@@ -3,7 +3,7 @@
 //  CombineCocoa
 //
 //  Created by Joan Disho on 05.04.20.
-//  Copyright © 2020 Joan Disho. All rights reserved.
+//  Copyright © 2020 Combine Community. All rights reserved.
 
 import Foundation
 import UIKit
