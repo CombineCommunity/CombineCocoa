@@ -3,7 +3,7 @@
 //  CombineCocoa
 //
 //  Created by Joan Disho on 09/08/2019.
-//  Copyright © 2019 Shai Mishali. All rights reserved.
+//  Copyright © 2020 Combine Community. All rights reserved.
 //
 
 import UIKit
