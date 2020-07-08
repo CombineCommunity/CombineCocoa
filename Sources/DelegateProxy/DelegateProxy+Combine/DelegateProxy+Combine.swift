@@ -11,12 +11,11 @@ import Combine
 
 public extension DelegateProxy {
     func interceptSelectorPublisher(_ selector: Selector) -> AnyPublisher<[Any], Never> {
-        let publisher = DelegateProxyPublisher<[Any]> { subscriber in
+        DelegateProxyPublisher<[Any]> { subscriber in
             return self.intercept(selector) { args in
                 _ = subscriber.receive(args)
                 subscriber.receive(completion: .finished)
             }
-        }
-        return publisher.eraseToAnyPublisher()
+        }.eraseToAnyPublisher()
     }
 }
