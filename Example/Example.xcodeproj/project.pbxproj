@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F1439E5F67883CF3AB04930 /* libPods-Example-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6208288FB6E671D1F62409 /* libPods-Example-ExampleTests.a */; };
+		7822AD1E24E1504600187502 /* UITextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822AD1D24E1504600187502 /* UITextViewTests.swift */; };
 		932B88729D340BAA330419D7 /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB52D841DFE768A9D888448 /* libPods-Example.a */; };
 		A233795622F59DBD0083F92F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A233795522F59DBD0083F92F /* Main.storyboard */; };
 		A24C43FD22F592E700BC2E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C43FC22F592E700BC2E2B /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		6AB52D841DFE768A9D888448 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7822AD1D24E1504600187502 /* UITextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewTests.swift; sourceTree = "<group>"; };
 		A233795522F59DBD0083F92F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A24C43F922F592E700BC2E2B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24C43FC22F592E700BC2E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */,
 				DC8A555D24B60A9A007BCEEC /* UICollectionViewTests.swift */,
+				7822AD1D24E1504600187502 /* UITextViewTests.swift */,
 				DC8A555724B5ED4B007BCEEC /* Info.plist */,
 			);
 			path = ExampleTests;
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7822AD1E24E1504600187502 /* UITextViewTests.swift in Sources */,
 				DC8A555E24B60A9A007BCEEC /* UICollectionViewTests.swift in Sources */,
 				DC8A555624B5ED4B007BCEEC /* UITableViewTests.swift in Sources */,
 			);
