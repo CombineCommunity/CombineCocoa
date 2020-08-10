@@ -11,7 +11,6 @@ import Combine
 @testable import CombineCocoa
 
 class UICollectionViewTests: XCTestCase {
-
     func test_didSelectItemAt() {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
