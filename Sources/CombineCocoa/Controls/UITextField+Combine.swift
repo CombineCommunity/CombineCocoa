@@ -26,8 +26,7 @@ public extension UITextField {
 
     /// A publisher that emits whenever the user taps the return button and ends the editing on the text field.
     var returnPublisher: AnyPublisher<Void, Never> {
-        Publishers.ControlEvent(control: self, events: .editingDidEndOnExit)
-                  .eraseToAnyPublisher()
+        controlEventPublisher(for: .editingDidEndOnExit)
     }
 }
 #endif
