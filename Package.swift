@@ -5,16 +5,11 @@ let package = Package(
     name: "CombineCocoa",
     platforms: [.iOS(.v10)],
     products: [
-        .library(
-            name: "CombineCocoa",
-            targets: ["CombineCocoa"]),
+        .library(name: "CombineCocoa", targets: ["CombineCocoa"]),
     ],
     dependencies: [],
     targets: [
-        .target(
-            name: "CombineCocoa",
-            dependencies: [],
-            path: "Sources"
-        )
+        .target(name: "CombineCocoa", dependencies: ["Runtime"]),
+        .target(name: "Runtime", dependencies: [])
     ]
 )
