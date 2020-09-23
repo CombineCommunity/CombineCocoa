@@ -58,11 +58,13 @@ extension Combine.Publishers.ControlProperty {
         weak private var control: Control?
         let keyPath: KeyPath<Control, Value>
         private var didEmitInitial = false
+        private let event: Control.Event
         
         init(subscriber: S, control: Control, event: Control.Event, keyPath: KeyPath<Control, Value>) {
             self.subscriber = subscriber
             self.control = control
             self.keyPath = keyPath
+            self.event = event
             control.addTarget(self, action: #selector(handleEvent), for: event)
         }
         
@@ -81,6 +83,7 @@ extension Combine.Publishers.ControlProperty {
         }
         
         func cancel() {
+            control?.removeTarget(self, action: #selector(handleEvent), for: event)
             subscriber = nil
         }
         
