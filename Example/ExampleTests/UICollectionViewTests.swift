@@ -11,23 +11,20 @@ import Combine
 @testable import CombineCocoa
 
 class UICollectionViewTests: XCTestCase {
+    var subscription: AnyCancellable!
+
     func test_didSelectItemAt() {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
         var resultIndexPath: IndexPath? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = collectionView.didSelectItemPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { resultIndexPath = $0 }
-            )
+        subscription = collectionView.didSelectItemPublisher
+            .sink(receiveValue: { resultIndexPath = $0 })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         collectionView.delegate!.collectionView!(collectionView, didSelectItemAt: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
-        XCTAssertEqual(completion, .finished)
         subscription.cancel()
     }
 
@@ -35,19 +32,14 @@ class UICollectionViewTests: XCTestCase {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
         var resultIndexPath: IndexPath? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = collectionView.didDeselectItemPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { resultIndexPath = $0 }
-            )
+        subscription = collectionView.didDeselectItemPublisher
+            .sink(receiveValue: { resultIndexPath = $0 })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         collectionView.delegate!.collectionView!(collectionView, didDeselectItemAt: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
-        XCTAssertEqual(completion, .finished)
         subscription.cancel()
     }
 
@@ -56,16 +48,12 @@ class UICollectionViewTests: XCTestCase {
 
         var resultIndexPath: IndexPath? = nil
         var resultCollectioViewCell: UICollectionViewCell? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = collectionView.willDisplayCellPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { cell, indexPath in
-                    resultCollectioViewCell = cell
-                    resultIndexPath = indexPath
-                }
-            )
+        subscription = collectionView.willDisplayCellPublisher
+            .sink(receiveValue: { cell, indexPath in
+                resultCollectioViewCell = cell
+                resultIndexPath = indexPath
+            })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenCollectionViewCell = UICollectionViewCell()
@@ -73,7 +61,6 @@ class UICollectionViewTests: XCTestCase {
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
         XCTAssertEqual(resultCollectioViewCell, givenCollectionViewCell)
-        XCTAssertEqual(completion, .finished)
         subscription.cancel()
     }
 
@@ -82,16 +69,12 @@ class UICollectionViewTests: XCTestCase {
 
         var resultIndexPath: IndexPath? = nil
         var resultCollectioViewCell: UICollectionViewCell? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = collectionView.didEndDisplayingCellPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { cell, indexPath in
-                    resultCollectioViewCell = cell
-                    resultIndexPath = indexPath
-            }
-        )
+        subscription = collectionView.didEndDisplayingCellPublisher
+            .sink(receiveValue: { cell, indexPath in
+                resultCollectioViewCell = cell
+                resultIndexPath = indexPath
+            })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenCollectionViewCell = UICollectionViewCell()
@@ -99,7 +82,6 @@ class UICollectionViewTests: XCTestCase {
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
         XCTAssertEqual(resultCollectioViewCell, givenCollectionViewCell)
-        XCTAssertEqual(completion, .finished)
         subscription.cancel()
     }
 }

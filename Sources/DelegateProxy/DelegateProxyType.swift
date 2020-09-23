@@ -16,6 +16,7 @@ public protocol DelegateProxyType {
     func setDelegate(to object: Object)
 }
 
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension DelegateProxyType where Self: DelegateProxy {
     static func createDelegateProxy(for object: Object) -> Self {
         objc_sync_enter(self)
