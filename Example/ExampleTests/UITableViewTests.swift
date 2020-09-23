@@ -11,45 +11,34 @@ import Combine
 @testable import CombineCocoa
 
 class UITableViewTests: XCTestCase {
+    var subscription: AnyCancellable!
 
     func test_didSelectRowAt() {
         let tableView = UITableView()
 
         var resultIndexPath: IndexPath? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = tableView.didSelectRowPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { resultIndexPath = $0 }
-            )
+        subscription = tableView.didSelectRowPublisher
+            .sink(receiveValue: { resultIndexPath = $0 })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         tableView.delegate!.tableView!(tableView, didSelectRowAt: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
-        XCTAssertEqual(completion, .finished)
-        subscription.cancel()
     }
 
     func test_didDeselectRowAt() {
         let tableView = UITableView()
 
         var resultIndexPath: IndexPath? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = tableView.didDeselectRowPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { resultIndexPath = $0 }
-            )
+        subscription = tableView.didDeselectRowPublisher
+            .sink(receiveValue: { resultIndexPath = $0 })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         tableView.delegate!.tableView!(tableView, didDeselectRowAt: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
-        XCTAssertEqual(completion, .finished)
-        subscription.cancel()
     }
 
     func test_willDisplayCell() {
@@ -57,16 +46,12 @@ class UITableViewTests: XCTestCase {
 
         var resultIndexPath: IndexPath? = nil
         var resultTableViewCell: UITableViewCell? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = tableView.willDisplayCellPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { cell, indexPath in
-                    resultTableViewCell = cell
-                    resultIndexPath = indexPath
-                }
-            )
+        subscription = tableView.willDisplayCellPublisher
+            .sink(receiveValue: { cell, indexPath in
+                resultTableViewCell = cell
+                resultIndexPath = indexPath
+            })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenTableViewCell = UITableViewCell()
@@ -74,8 +59,6 @@ class UITableViewTests: XCTestCase {
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
         XCTAssertEqual(resultTableViewCell, givenTableViewCell)
-        XCTAssertEqual(completion, .finished)
-        subscription.cancel()
     }
 
     func test_didEndDisplayingCell() {
@@ -83,16 +66,12 @@ class UITableViewTests: XCTestCase {
 
         var resultIndexPath: IndexPath? = nil
         var resultTableViewCell: UITableViewCell? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = tableView.didEndDisplayingCellPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { cell, indexPath in
-                    resultTableViewCell = cell
-                    resultIndexPath = indexPath
-                }
-            )
+        subscription = tableView.didEndDisplayingCellPublisher
+            .sink(receiveValue: { cell, indexPath in
+                resultTableViewCell = cell
+                resultIndexPath = indexPath
+            })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenTableViewCell = UITableViewCell()
@@ -100,27 +79,19 @@ class UITableViewTests: XCTestCase {
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
         XCTAssertEqual(resultTableViewCell, givenTableViewCell)
-        XCTAssertEqual(completion, .finished)
-        subscription.cancel()
     }
 
     func test_itemAccessoryButtonTapped() {
         let tableView = UITableView()
 
         var resultIndexPath: IndexPath? = nil
-        var completion: Subscribers.Completion<Never>?
 
-        let subscription = tableView.itemAccessoryButtonTappedPublisher
-            .sink(
-                receiveCompletion: { completion = $0 },
-                receiveValue: { resultIndexPath = $0 }
-            )
+        subscription = tableView.itemAccessoryButtonTappedPublisher
+            .sink(receiveValue: { resultIndexPath = $0 })
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         tableView.delegate!.tableView!(tableView, accessoryButtonTappedForRowWith: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
-        XCTAssertEqual(completion, .finished)
-        subscription.cancel()
     }
 }

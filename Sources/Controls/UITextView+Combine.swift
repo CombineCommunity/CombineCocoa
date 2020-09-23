@@ -6,9 +6,11 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import UIKit
 import Combine
 
+@available(iOS 13.0, *)
 public extension UITextView {
   /// A Combine publisher for the `UITextView's` value.
   ///
@@ -29,3 +31,4 @@ public extension UITextView {
 
   var textPublisher: AnyPublisher<String?, Never> { valuePublisher }
 }
+#endif

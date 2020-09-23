@@ -6,9 +6,11 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import UIKit
 import Combine
 
+@available(iOS 13.0, *)
 public extension NSTextStorage {
   /// Combine publisher for `NSTextStorageDelegate.textStorage(_:didProcessEditing:range:changeInLength:)`
   var didProcessEditingRangeChangeInLengthPublisher: AnyPublisher<(editedMask: NSTextStorage.EditActions, editedRange: NSRange, delta: Int), Never> {
@@ -30,8 +32,10 @@ public extension NSTextStorage {
   }
 }
 
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 private class NSTextStorageDelegateProxy: DelegateProxy, NSTextStorageDelegate, DelegateProxyType {
   func setDelegate(to object: NSTextStorage) {
     object.delegate = self
   }
 }
+#endif
