@@ -2,16 +2,15 @@
 //  ObjcDelegateProxy.m
 //  CombineCocoa
 //
-//  Created by Joan Disho on 25/09/2019.
+//  Created by Joan Disho & Shai Mishali on 25/09/2019.
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "include/ObjcDelegateProxy.h"
 #import <objc/runtime.h>
-#import <CombineCocoa/CombineCocoa.h>
-#import <CombineCocoa/CombineCocoa-Swift.h>
 
-static NSSet *selectors;
+static NSSet <NSValue *> *selectors;
 
 @implementation ObjcDelegateProxy
 
@@ -22,12 +21,23 @@ static NSSet *selectors;
 + (void)initialize
 {
     @synchronized (ObjcDelegateProxy.class) {
-        selectors = [self selectors:self encodedReturnType:[NSString stringWithFormat:@"%s", @encode(void)]];
+        selectors = [self selectorsOfClass:self
+                     withEncodedReturnType:[NSString stringWithFormat:@"%s", @encode(void)]];
     }
 }
 
-- (BOOL)respondsToSelector:(SEL)aSelector {
+- (BOOL)respondsToSelector:(SEL _Nonnull)aSelector {
     return [super respondsToSelector:aSelector] || [self canRespondToSelector:aSelector];
+}
+
+- (BOOL)canRespondToSelector:(SEL _Nonnull)selector {
+    for (id current in selectors) {
+        if (selector == (SEL) [current pointerValue]) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 - (void)interceptedSelector:(SEL _Nonnull)selector arguments:(NSArray * _Nonnull)arguments {}
@@ -123,6 +133,83 @@ NSArray * _Nonnull unpackInvocation(NSInvocation * _Nonnull invocation) {
 
     return arguments;
 }
+
++ (NSSet <NSValue *> *) selectorsOfClass: (Class _Nonnull __unsafe_unretained) class
+                   withEncodedReturnType: (NSString *) encodedReturnType {
+    UInt32 protocolsCount = 0;
+    Protocol * __unsafe_unretained _Nonnull * _Nullable protocolPointer = class_copyProtocolList(class, &protocolsCount);
+
+    NSMutableSet <NSValue *> *allSelectors = [[self selectorsOfProtocolPointer:protocolPointer
+                                                                         count:protocolsCount
+                                                          andEncodedReturnType:encodedReturnType] mutableCopy];
+
+    Class _Nonnull __unsafe_unretained superclass = class_getSuperclass(class);
+
+    if(superclass != nil) {
+        NSSet <NSValue *> *superclassSelectors = [self selectorsOfClass:superclass
+                                                  withEncodedReturnType:encodedReturnType];
+        [allSelectors unionSet:superclassSelectors];
+    }
+
+    free(protocolPointer);
+
+    return allSelectors;
+}
+
++ (NSSet <NSValue *> *) selectorsOfProtocol: (Protocol * __unsafe_unretained) protocol
+                       andEncodedReturnType: (NSString *) encodedReturnType {
+    UInt32 protocolMethodCount = 0;
+    struct objc_method_description * _Nullable methodDescriptions = protocol_copyMethodDescriptionList(protocol, false, true, &protocolMethodCount);
+
+    // Protocol pointers
+    UInt32 protocolsCount = 0;
+    Protocol * __unsafe_unretained _Nonnull * _Nullable protocols = protocol_copyProtocolList(protocol, &protocolsCount);
+
+    NSMutableSet <NSValue *> *allSelectors = [NSMutableSet new];
+
+    // Protocol methods
+    for (NSInteger idx = 0; idx < protocolMethodCount; idx++) {
+        struct objc_method_description description = methodDescriptions[idx];
+
+        if ([self encodedMethodReturnTypeForMethod:description] == encodedReturnType) {
+            [allSelectors addObject: [NSValue valueWithPointer:description.name]];
+        }
+    }
+
+    if (protocols != nil) {
+        [allSelectors unionSet: [self selectorsOfProtocolPointer:protocols
+                                                           count:protocolsCount
+                                            andEncodedReturnType:encodedReturnType]];
+    }
+
+    free(methodDescriptions);
+    free(protocols);
+
+    return allSelectors;
+}
+
++ (NSSet <NSValue *> *) selectorsOfProtocolPointer: (Protocol * __unsafe_unretained * _Nullable) pointer
+                                             count: (NSInteger) count
+                       andEncodedReturnType: (NSString *) encodedReturnType {
+    NSMutableSet <NSValue *> *allSelectors = [NSMutableSet new];
+
+    for (NSInteger i = 0; i < count; i++) {
+        Protocol * __unsafe_unretained _Nullable protocol = pointer[i];
+
+        if (protocol == nil) { continue; }
+        [allSelectors unionSet:[self selectorsOfProtocol:protocol
+                                    andEncodedReturnType:encodedReturnType]];
+    }
+
+    return allSelectors;
+}
+
++ (NSString *)encodedMethodReturnTypeForMethod: (struct objc_method_description) method {
+    return [[NSString alloc] initWithBytes:method.types
+                                    length:1
+                                  encoding:NSASCIIStringEncoding];
+}
+
 
 @end
 

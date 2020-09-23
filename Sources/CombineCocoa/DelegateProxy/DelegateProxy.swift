@@ -10,6 +10,10 @@
 import Foundation
 import Combine
 
+#if canImport(Runtime)
+import Runtime
+#endif
+
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public class DelegateProxy: ObjcDelegateProxy {
     private var dict: [Selector: ([Any]) -> Void] = [:]
