@@ -4,11 +4,14 @@
 //
 //  Created by Joan Disho on 19/01/20.
 //  Copyright © 2020 Combine Community. All rights reserved.
+//
 
+#if canImport(UIKit) && canImport(Combine)
 import Foundation
 import UIKit
 import Combine
 
+// swiftlint:disable force_cast
 @available(iOS 13.0, *)
 public extension UITableView {
     /// Combine wrapper for `tableView(_:willDisplay:forRowAt:)`
@@ -126,3 +129,5 @@ private class TableViewDelegateProxy: DelegateProxy, UITableViewDelegate, Delega
         object.delegate = self
     }
 }
+#endif
+// swiftlint:enable force_cast

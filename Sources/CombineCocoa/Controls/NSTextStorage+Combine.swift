@@ -19,10 +19,12 @@ public extension NSTextStorage {
     return delegateProxy
       .interceptSelectorPublisher(selector)
       .map { args -> (editedMask: NSTextStorage.EditActions, editedRange: NSRange, delta: Int) in
+          // swiftlint:disable force_cast
           let editedMask = NSTextStorage.EditActions(rawValue: args[1] as! UInt)
           let editedRange = (args[2] as! NSValue).rangeValue
           let delta = args[3] as! Int
           return (editedMask, editedRange, delta)
+          // swiftlint:enable force_cast
       }
       .eraseToAnyPublisher()
   }

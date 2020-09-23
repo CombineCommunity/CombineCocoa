@@ -70,8 +70,6 @@ Add the following dependency to your **Package.swift** file:
 
 ### Carthage
 
-Carthage support is offered as a prebuilt binary.
-
 Add the following to your **Cartfile**:
 
 ```
@@ -85,7 +83,7 @@ github "CombineCommunity/CombineCocoa"
 
 ## Acknowledgments
 
-* CombineCocoa is highly inspired by RxSwift's [RxCocoa](https://github.com/ReactivXx/RxSwift) in its essence, kudos to [Krunoslav Zaher](https://twitter.com/KrunoslavZaher) for all of his amazing work on this.
+* CombineCocoa is highly inspired by RxSwift's [RxCocoa](https://github.com/ReactivX/RxSwift) in its essence, kudos to [Krunoslav Zaher](https://twitter.com/KrunoslavZaher) for all of his amazing work on this.
 * Thanks to [Antoine van der Lee](https://twitter.com/twannl) for his tutorial on [Creating Custom Publishers](https://www.avanderlee.com/swift/custom-combine-publisher/). The idea to set up a control target inside the publisher was inspired by it.
 
 ## License
