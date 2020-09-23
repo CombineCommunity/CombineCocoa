@@ -28,9 +28,9 @@ public extension UIScrollView {
             .map { [weak self] contentOffset -> Bool in
                 guard let self = self else { return false }
                 let visibleHeight = self.frame.height - self.contentInset.top - self.contentInset.bottom
-                let y = contentOffset.y + self.contentInset.top
+                let yDelta = contentOffset.y + self.contentInset.top
                 let threshold = max(offset, self.contentSize.height - visibleHeight)
-                return y > threshold
+                return yDelta > threshold
             }
             .removeDuplicates()
             .filter { $0 }

@@ -2,13 +2,16 @@
 //  UICollectionView+Combine.swift
 //  CombineCocoa
 //
-//  Created by Joan Disho on 05.04.20.
+//  Created by Joan Disho on 05/04/20.
 //  Copyright © 2020 Combine Community. All rights reserved.
+//
 
+#if canImport(UIKit) && canImport(Combine)
 import Foundation
 import UIKit
 import Combine
 
+// swiftlint:disable force_cast
 @available(iOS 13.0, *)
 public extension UICollectionView {
    /// Combine wrapper for `collectionView(_:didSelectItemAt:)`
@@ -86,4 +89,5 @@ private class CollectionViewDelegateProxy: DelegateProxy, UICollectionViewDelega
         object.delegate = self
     }
 }
-
+#endif
+// swiftlint:enable force_cast

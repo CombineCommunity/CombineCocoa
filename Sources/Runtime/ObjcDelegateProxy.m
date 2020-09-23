@@ -136,7 +136,7 @@ NSArray * _Nonnull unpackInvocation(NSInvocation * _Nonnull invocation) {
 
 + (NSSet <NSValue *> *) selectorsOfClass: (Class _Nonnull __unsafe_unretained) class
                    withEncodedReturnType: (NSString *) encodedReturnType {
-    UInt32 protocolsCount = 0;
+    unsigned int protocolsCount = 0;
     Protocol * __unsafe_unretained _Nonnull * _Nullable protocolPointer = class_copyProtocolList(class, &protocolsCount);
 
     NSMutableSet <NSValue *> *allSelectors = [[self selectorsOfProtocolPointer:protocolPointer
@@ -158,11 +158,11 @@ NSArray * _Nonnull unpackInvocation(NSInvocation * _Nonnull invocation) {
 
 + (NSSet <NSValue *> *) selectorsOfProtocol: (Protocol * __unsafe_unretained) protocol
                        andEncodedReturnType: (NSString *) encodedReturnType {
-    UInt32 protocolMethodCount = 0;
+    unsigned int protocolMethodCount = 0;
     struct objc_method_description * _Nullable methodDescriptions = protocol_copyMethodDescriptionList(protocol, false, true, &protocolMethodCount);
 
     // Protocol pointers
-    UInt32 protocolsCount = 0;
+    unsigned int protocolsCount = 0;
     Protocol * __unsafe_unretained _Nonnull * _Nullable protocols = protocol_copyProtocolList(protocol, &protocolsCount);
 
     NSMutableSet <NSValue *> *allSelectors = [NSMutableSet new];

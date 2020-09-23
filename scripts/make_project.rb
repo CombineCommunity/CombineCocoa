@@ -49,6 +49,12 @@ system("/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString #{podspec_v
 
 # Apply SwiftLint and other configurations to targets
 project = Xcodeproj::Project.open(project_file)
+
+# Disable arm64 to solve lipo fat binary bug in Xcode 12
+project.build_configurations.each do |config|
+    config.build_settings['EXCLUDED_ARCHS'] = 'arm64'
+end
+
 project.targets.each do |target|
     if core_targets.include?(target.name)
         swiftlint = target.new_shell_script_build_phase('SwiftLint')

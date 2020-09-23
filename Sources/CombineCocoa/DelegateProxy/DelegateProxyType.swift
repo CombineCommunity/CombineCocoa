@@ -6,6 +6,7 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
+#if canImport(Combine)
 import Foundation
 
 private var associatedKey = "delegateProxy"
@@ -36,4 +37,4 @@ public extension DelegateProxyType where Self: DelegateProxy {
         return delegateProxy
     }
 }
-
+#endif

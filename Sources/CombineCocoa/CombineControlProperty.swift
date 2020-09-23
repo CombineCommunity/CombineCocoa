@@ -20,11 +20,11 @@ public extension Combine.Publishers {
     struct ControlProperty<Control: UIControl, Value>: Publisher {
         public typealias Output = Value
         public typealias Failure = Never
-        
+
         private let control: Control
         private let controlEvents: Control.Event
         private let keyPath: KeyPath<Control, Value>
-        
+
         /// Initialize a publisher that emits the value at the specified keypath
         /// whenever any of the provided Control Events trigger.
         ///
@@ -38,13 +38,13 @@ public extension Combine.Publishers {
             self.controlEvents = events
             self.keyPath = keyPath
         }
-        
+
         public func receive<S: Subscriber>(subscriber: S) where S.Failure == Failure, S.Input == Output {
             let subscription = Subscription(subscriber: subscriber,
                                             control: control,
                                             event: controlEvents,
                                             keyPath: keyPath)
-            
+
             subscriber.receive(subscription: subscription)
         }
     }
@@ -59,7 +59,7 @@ extension Combine.Publishers.ControlProperty {
         let keyPath: KeyPath<Control, Value>
         private var didEmitInitial = false
         private let event: Control.Event
-        
+
         init(subscriber: S, control: Control, event: Control.Event, keyPath: KeyPath<Control, Value>) {
             self.subscriber = subscriber
             self.control = control
@@ -67,7 +67,7 @@ extension Combine.Publishers.ControlProperty {
             self.event = event
             control.addTarget(self, action: #selector(handleEvent), for: event)
         }
-        
+
         func request(_ demand: Subscribers.Demand) {
             // Emit initial value upon first demand request
             if !didEmitInitial,
@@ -77,16 +77,16 @@ extension Combine.Publishers.ControlProperty {
                 _ = subscriber.receive(control[keyPath: keyPath])
                 didEmitInitial = true
             }
-            
+
             // We don't care about the demand at this point.
             // As far as we're concerned - UIControl events are endless until the control is deallocated.
         }
-        
+
         func cancel() {
             control?.removeTarget(self, action: #selector(handleEvent), for: event)
             subscriber = nil
         }
-        
+
         @objc private func handleEvent() {
             guard let control = control else { return }
             _ = subscriber?.receive(control[keyPath: keyPath])

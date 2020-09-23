@@ -27,8 +27,11 @@ file_header:
   required_pattern: |
                     \/\/
                     \/\/  SWIFTLINT_CURRENT_FILENAME
-                    \/\/  CombineExt
+                    \/\/  CombineCocoa
                     \/\/
                     \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2,4}\.
                     \/\/  Copyright © \d{4} Combine Community\. All rights reserved\.
                     \/\/
+  
+identifier_name:
+  max_length: 60

@@ -17,7 +17,7 @@ public extension UIDatePicker {
         Publishers.ControlProperty(control: self, events: .defaultValueEvents, keyPath: \.date)
                   .eraseToAnyPublisher()
     }
-    
+
     /// A publisher emitting countdown duration changes from this date picker.
     var countDownDurationPublisher: AnyPublisher<TimeInterval, Never> {
         Publishers.ControlProperty(control: self, events: .defaultValueEvents, keyPath: \.countDownDuration)
