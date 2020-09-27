@@ -65,7 +65,7 @@ pod 'CombineCocoa'
 Add the following dependency to your **Package.swift** file:
 
 ```swift
-.package(url: "https://github.com/CombineCommunity/CombineCocoa.git", from: "0.1.0")
+.package(url: "https://github.com/CombineCommunity/CombineCocoa.git", from: "0.2.0")
 ```
 
 ### Carthage
