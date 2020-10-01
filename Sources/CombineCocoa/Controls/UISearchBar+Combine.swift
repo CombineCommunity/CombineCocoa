@@ -14,29 +14,29 @@ import Combine
 @available(iOS 13.0, *)
 public extension UISearchBar {
     /// Combine wrapper for `UISearchBarDelegate.searchBar(_:textDidChange:)`
-    var textDidChangePublisher: AnyPublisher<(searchBar: UISearchBar, searchText: String), Never> {
+    var textDidChangePublisher: AnyPublisher<String, Never> {
         let selector = #selector(UISearchBarDelegate.searchBar(_:textDidChange:))
         return delegateProxy
             .interceptSelectorPublisher(selector)
-            .map { ($0[1] as! UISearchBar, $0[2] as! String) }
+          .map { $0[1] as! String }
             .eraseToAnyPublisher()
     }
 
     /// Combine wrapper for `UISearchBarDelegate.searchBarSearchButtonClicked(_:)`
-    var searchButtonClickedPublisher: AnyPublisher<UISearchBar, Never> {
+    var searchButtonClickedPublisher: AnyPublisher<Void, Never> {
         let selector = #selector(UISearchBarDelegate.searchBarSearchButtonClicked(_:))
         return delegateProxy
             .interceptSelectorPublisher(selector)
-            .map { $0[1] as! UISearchBar }
+            .map { _ in () }
             .eraseToAnyPublisher()
     }
 
     /// Combine wrapper for `UISearchBarDelegate.searchBarCancelButtonClicked(_:)`
-    var cancelButtonClickedPublisher: AnyPublisher<UISearchBar, Never> {
+    var cancelButtonClickedPublisher: AnyPublisher<Void, Never> {
         let selector = #selector(UISearchBarDelegate.searchBarCancelButtonClicked(_:))
         return delegateProxy
             .interceptSelectorPublisher(selector)
-            .map { $0[1] as! UISearchBar }
+            .map { _ in () }
             .eraseToAnyPublisher()
     }
 
