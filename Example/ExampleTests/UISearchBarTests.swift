@@ -1,8 +1,8 @@
 //
-//  UICollectionViewTests.swift
+//  UISearchBarTests.swift
 //  ExampleTests
 //
-//  Created by Joan Disho on 08.07.20.
+//  Created by Kevin Renskers on 01/10/2020.
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
@@ -25,6 +25,34 @@ class UISearchBarTests: XCTestCase {
         searchbar.delegate!.searchBar!(searchbar, textDidChange: givenSearchText)
 
         XCTAssertEqual(resultSearchText, givenSearchText)
+        subscription.cancel()
+    }
+
+    func test_searchButtonClicked() {
+        let searchbar = UISearchBar()
+
+        var clicked = false
+
+        subscription = searchbar.searchButtonClickedPublisher
+            .sink(receiveValue: { clicked = true })
+
+        searchbar.delegate!.searchBarSearchButtonClicked!(searchbar)
+
+        XCTAssertEqual(clicked, true)
+        subscription.cancel()
+    }
+
+    func test_cancelButtonClicked() {
+        let searchbar = UISearchBar()
+
+        var clicked = false
+
+        subscription = searchbar.cancelButtonClickedPublisher
+            .sink(receiveValue: { clicked = true })
+
+        searchbar.delegate!.searchBarCancelButtonClicked!(searchbar)
+
+        XCTAssertEqual(clicked, true)
         subscription.cancel()
     }
 }
