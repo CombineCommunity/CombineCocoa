@@ -1,5 +1,5 @@
 //
-//  UISearchBar+Combine
+//  UISearchBar+Combine.swift
 //  CombineCocoa
 //
 //  Created by Kevin Renskers on 01/10/2020.
