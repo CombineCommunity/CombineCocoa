@@ -15,7 +15,7 @@ import Runtime
 #endif
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-public class DelegateProxy: ObjcDelegateProxy {
+open class DelegateProxy: ObjcDelegateProxy {
     private var dict: [Selector: ([Any]) -> Void] = [:]
     private var subscribers = [AnySubscriber<[Any], Never>?]()
 
@@ -31,7 +31,7 @@ public class DelegateProxy: ObjcDelegateProxy {
         dict[selector] = handler
     }
 
-    func interceptSelectorPublisher(_ selector: Selector) -> AnyPublisher<[Any], Never> {
+    public func interceptSelectorPublisher(_ selector: Selector) -> AnyPublisher<[Any], Never> {
         DelegateProxyPublisher<[Any]> { subscriber in
             self.subscribers.append(subscriber)
             return self.intercept(selector) { args in
