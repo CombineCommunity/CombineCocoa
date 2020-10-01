@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AEC3D47252601FD007EE97C /* UISearchBar+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC3D46252601FD007EE97C /* UISearchBar+Combine.swift */; };
 		OBJ_100 /* ObjcDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* ObjcDelegateProxy.m */; };
 		OBJ_62 /* AnimatedAssignSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AnimatedAssignSubscriber.swift */; };
 		OBJ_63 /* CombineControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CombineControlEvent.swift */; };
@@ -32,67 +33,82 @@
 		OBJ_83 /* DelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* DelegateProxy.swift */; };
 		OBJ_84 /* DelegateProxyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* DelegateProxyPublisher.swift */; };
 		OBJ_85 /* DelegateProxyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* DelegateProxyType.swift */; };
-		OBJ_87 /* Runtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CombineCocoa::Runtime::Product /* Runtime.framework */; };
+		OBJ_87 /* Runtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "CombineCocoa::Runtime::Product" /* Runtime.framework */; };
 		OBJ_95 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0AEC3D42252601E3007EE97C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CombineCocoa::Runtime";
+			remoteInfo = Runtime;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		CombineCocoa::CombineCocoa::Product /* CombineCocoa.framework */ = {isa = PBXFileReference; path = CombineCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CombineCocoa::Runtime::Product /* Runtime.framework */ = {isa = PBXFileReference; path = Runtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_10 /* AnimatedAssignSubscriber.swift */ = {isa = PBXFileReference; path = AnimatedAssignSubscriber.swift; sourceTree = "<group>"; };
-		OBJ_11 /* CombineControlEvent.swift */ = {isa = PBXFileReference; path = CombineControlEvent.swift; sourceTree = "<group>"; };
-		OBJ_12 /* CombineControlProperty.swift */ = {isa = PBXFileReference; path = CombineControlProperty.swift; sourceTree = "<group>"; };
-		OBJ_13 /* CombineControlTarget.swift */ = {isa = PBXFileReference; path = CombineControlTarget.swift; sourceTree = "<group>"; };
-		OBJ_15 /* NSTextStorage+Combine.swift */ = {isa = PBXFileReference; path = "NSTextStorage+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_16 /* UIBarButtonItem+Combine.swift */ = {isa = PBXFileReference; path = "UIBarButtonItem+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_17 /* UIButton+Combine.swift */ = {isa = PBXFileReference; path = "UIButton+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_18 /* UICollectionView+Combine.swift */ = {isa = PBXFileReference; path = "UICollectionView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_19 /* UIControl+Combine.swift */ = {isa = PBXFileReference; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_20 /* UIDatePicker+Combine.swift */ = {isa = PBXFileReference; path = "UIDatePicker+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_21 /* UIGestureRecognizer+Combine.swift */ = {isa = PBXFileReference; path = "UIGestureRecognizer+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_22 /* UIPageControl+Combine.swift */ = {isa = PBXFileReference; path = "UIPageControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_23 /* UIRefreshControl+Combine.swift */ = {isa = PBXFileReference; path = "UIRefreshControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_24 /* UIScrollView+Combine.swift */ = {isa = PBXFileReference; path = "UIScrollView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_25 /* UISegmentedControl+Combine.swift */ = {isa = PBXFileReference; path = "UISegmentedControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_26 /* UISlider+Combine.swift */ = {isa = PBXFileReference; path = "UISlider+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_27 /* UIStepper+Combine.swift */ = {isa = PBXFileReference; path = "UIStepper+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_28 /* UISwitch+Combine.swift */ = {isa = PBXFileReference; path = "UISwitch+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_29 /* UITableView+Combine.swift */ = {isa = PBXFileReference; path = "UITableView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_30 /* UITextField+Combine.swift */ = {isa = PBXFileReference; path = "UITextField+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_31 /* UITextView+Combine.swift */ = {isa = PBXFileReference; path = "UITextView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_33 /* DelegateProxy.swift */ = {isa = PBXFileReference; path = DelegateProxy.swift; sourceTree = "<group>"; };
-		OBJ_34 /* DelegateProxyPublisher.swift */ = {isa = PBXFileReference; path = DelegateProxyPublisher.swift; sourceTree = "<group>"; };
-		OBJ_35 /* DelegateProxyType.swift */ = {isa = PBXFileReference; path = DelegateProxyType.swift; sourceTree = "<group>"; };
-		OBJ_37 /* ObjcDelegateProxy.m */ = {isa = PBXFileReference; path = ObjcDelegateProxy.m; sourceTree = "<group>"; };
-		OBJ_39 /* ObjcDelegateProxy.h */ = {isa = PBXFileReference; path = ObjcDelegateProxy.h; sourceTree = "<group>"; };
-		OBJ_40 /* module.modulemap */ = {isa = PBXFileReference; name = module.modulemap; path = /Users/freak4pc/Work/OSS/CombineCocoa/CombineCocoa.xcodeproj/GeneratedModuleMap/Runtime/module.modulemap; sourceTree = "<group>"; };
-		OBJ_45 /* Example */ = {isa = PBXFileReference; path = Example; sourceTree = SOURCE_ROOT; };
-		OBJ_46 /* Resources */ = {isa = PBXFileReference; path = Resources; sourceTree = SOURCE_ROOT; };
-		OBJ_47 /* Carthage */ = {isa = PBXFileReference; path = Carthage; sourceTree = SOURCE_ROOT; };
-		OBJ_48 /* scripts */ = {isa = PBXFileReference; path = scripts; sourceTree = SOURCE_ROOT; };
-		OBJ_49 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
-		OBJ_50 /* codecov.yml */ = {isa = PBXFileReference; path = codecov.yml; sourceTree = "<group>"; };
-		OBJ_51 /* LICENSE */ = {isa = PBXFileReference; path = LICENSE; sourceTree = "<group>"; };
-		OBJ_52 /* Makefile */ = {isa = PBXFileReference; path = Makefile; sourceTree = "<group>"; };
-		OBJ_53 /* README.md */ = {isa = PBXFileReference; path = README.md; sourceTree = "<group>"; };
-		OBJ_54 /* Gemfile */ = {isa = PBXFileReference; path = Gemfile; sourceTree = "<group>"; };
-		OBJ_55 /* Gemfile.lock */ = {isa = PBXFileReference; path = Gemfile.lock; sourceTree = "<group>"; };
-		OBJ_56 /* CombineCocoa.podspec */ = {isa = PBXFileReference; path = CombineCocoa.podspec; sourceTree = "<group>"; };
+		0AEC3D46252601FD007EE97C /* UISearchBar+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Combine.swift"; sourceTree = "<group>"; };
+		"CombineCocoa::CombineCocoa::Product" /* CombineCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CombineCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"CombineCocoa::Runtime::Product" /* Runtime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Runtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* AnimatedAssignSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedAssignSubscriber.swift; sourceTree = "<group>"; };
+		OBJ_11 /* CombineControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineControlEvent.swift; sourceTree = "<group>"; };
+		OBJ_12 /* CombineControlProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineControlProperty.swift; sourceTree = "<group>"; };
+		OBJ_13 /* CombineControlTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineControlTarget.swift; sourceTree = "<group>"; };
+		OBJ_15 /* NSTextStorage+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_16 /* UIBarButtonItem+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_17 /* UIButton+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_18 /* UICollectionView+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_19 /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_20 /* UIDatePicker+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_21 /* UIGestureRecognizer+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_22 /* UIPageControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_23 /* UIRefreshControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_24 /* UIScrollView+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_25 /* UISegmentedControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_26 /* UISlider+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISlider+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_27 /* UIStepper+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStepper+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_28 /* UISwitch+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwitch+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_29 /* UITableView+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_30 /* UITextField+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_31 /* UITextView+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Combine.swift"; sourceTree = "<group>"; };
+		OBJ_33 /* DelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateProxy.swift; sourceTree = "<group>"; };
+		OBJ_34 /* DelegateProxyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateProxyPublisher.swift; sourceTree = "<group>"; };
+		OBJ_35 /* DelegateProxyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateProxyType.swift; sourceTree = "<group>"; };
+		OBJ_37 /* ObjcDelegateProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjcDelegateProxy.m; sourceTree = "<group>"; };
+		OBJ_39 /* ObjcDelegateProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcDelegateProxy.h; sourceTree = "<group>"; };
+		OBJ_40 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/freak4pc/Work/OSS/CombineCocoa/CombineCocoa.xcodeproj/GeneratedModuleMap/Runtime/module.modulemap; sourceTree = "<group>"; };
+		OBJ_45 /* Example */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Example; sourceTree = SOURCE_ROOT; };
+		OBJ_46 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
+		OBJ_47 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = text; path = Carthage; sourceTree = SOURCE_ROOT; };
+		OBJ_48 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = SOURCE_ROOT; };
+		OBJ_49 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
+		OBJ_50 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codecov.yml; sourceTree = "<group>"; };
+		OBJ_51 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_52 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		OBJ_53 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_54 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
+		OBJ_55 /* Gemfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile.lock; sourceTree = "<group>"; };
+		OBJ_56 /* CombineCocoa.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CombineCocoa.podspec; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* CombineCocoa.h */ = {isa = PBXFileReference; path = CombineCocoa.h; sourceTree = "<group>"; };
+		OBJ_9 /* CombineCocoa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CombineCocoa.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		OBJ_101 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
 			files = (
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		OBJ_86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
 			files = (
 				OBJ_87 /* Runtime.framework in Frameworks */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -117,8 +133,8 @@
 				OBJ_29 /* UITableView+Combine.swift */,
 				OBJ_30 /* UITextField+Combine.swift */,
 				OBJ_31 /* UITextView+Combine.swift */,
+				0AEC3D46252601FD007EE97C /* UISearchBar+Combine.swift */,
 			);
-			name = Controls;
 			path = Controls;
 			sourceTree = "<group>";
 		};
@@ -129,7 +145,6 @@
 				OBJ_34 /* DelegateProxyPublisher.swift */,
 				OBJ_35 /* DelegateProxyType.swift */,
 			);
-			name = DelegateProxy;
 			path = DelegateProxy;
 			sourceTree = "<group>";
 		};
@@ -149,7 +164,6 @@
 				OBJ_39 /* ObjcDelegateProxy.h */,
 				OBJ_40 /* module.modulemap */,
 			);
-			name = include;
 			path = include;
 			sourceTree = "<group>";
 		};
@@ -158,20 +172,18 @@
 			children = (
 			);
 			name = Tests;
-			path = "";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CombineCocoa::CombineCocoa::Product /* CombineCocoa.framework */,
-				CombineCocoa::Runtime::Product /* Runtime.framework */,
+				"CombineCocoa::CombineCocoa::Product" /* CombineCocoa.framework */,
+				"CombineCocoa::Runtime::Product" /* Runtime.framework */,
 			);
 			name = Products;
-			path = "";
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 = {
+		OBJ_5 /*  */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -191,7 +203,7 @@
 				OBJ_55 /* Gemfile.lock */,
 				OBJ_56 /* CombineCocoa.podspec */,
 			);
-			path = "";
+			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -201,7 +213,6 @@
 				OBJ_36 /* Runtime */,
 			);
 			name = Sources;
-			path = "";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_8 /* CombineCocoa */ = {
@@ -222,7 +233,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CombineCocoa::CombineCocoa /* CombineCocoa */ = {
+		"CombineCocoa::CombineCocoa" /* CombineCocoa */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_58 /* Build configuration list for PBXNativeTarget "CombineCocoa" */;
 			buildPhases = (
@@ -237,10 +248,10 @@
 			);
 			name = CombineCocoa;
 			productName = CombineCocoa;
-			productReference = CombineCocoa::CombineCocoa::Product /* CombineCocoa.framework */;
+			productReference = "CombineCocoa::CombineCocoa::Product" /* CombineCocoa.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CombineCocoa::Runtime /* Runtime */ = {
+		"CombineCocoa::Runtime" /* Runtime */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_96 /* Build configuration list for PBXNativeTarget "Runtime" */;
 			buildPhases = (
@@ -253,10 +264,10 @@
 			);
 			name = Runtime;
 			productName = Runtime;
-			productReference = CombineCocoa::Runtime::Product /* Runtime.framework */;
+			productReference = "CombineCocoa::Runtime::Product" /* Runtime.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CombineCocoa::SwiftPMPackageDescription /* CombineCocoaPackageDescription */ = {
+		"CombineCocoa::SwiftPMPackageDescription" /* CombineCocoaPackageDescription */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_91 /* Build configuration list for PBXNativeTarget "CombineCocoaPackageDescription" */;
 			buildPhases = (
@@ -287,13 +298,14 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5;
+			mainGroup = OBJ_5 /*  */;
 			productRefGroup = OBJ_42 /* Products */;
-			projectDirPath = .;
+			projectDirPath = "";
+			projectRoot = "";
 			targets = (
-				CombineCocoa::CombineCocoa /* CombineCocoa */,
-				CombineCocoa::SwiftPMPackageDescription /* CombineCocoaPackageDescription */,
-				CombineCocoa::Runtime /* Runtime */,
+				"CombineCocoa::CombineCocoa" /* CombineCocoa */,
+				"CombineCocoa::SwiftPMPackageDescription" /* CombineCocoaPackageDescription */,
+				"CombineCocoa::Runtime" /* Runtime */,
 			);
 		};
 /* End PBXProject section */
@@ -340,6 +352,7 @@
 /* Begin PBXSourcesBuildPhase section */
 		OBJ_61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
 			files = (
 				OBJ_62 /* AnimatedAssignSubscriber.swift in Sources */,
 				OBJ_63 /* CombineControlEvent.swift in Sources */,
@@ -350,6 +363,7 @@
 				OBJ_68 /* UIButton+Combine.swift in Sources */,
 				OBJ_69 /* UICollectionView+Combine.swift in Sources */,
 				OBJ_70 /* UIControl+Combine.swift in Sources */,
+				0AEC3D47252601FD007EE97C /* UISearchBar+Combine.swift in Sources */,
 				OBJ_71 /* UIDatePicker+Combine.swift in Sources */,
 				OBJ_72 /* UIGestureRecognizer+Combine.swift in Sources */,
 				OBJ_73 /* UIPageControl+Combine.swift in Sources */,
@@ -366,25 +380,31 @@
 				OBJ_84 /* DelegateProxyPublisher.swift in Sources */,
 				OBJ_85 /* DelegateProxyType.swift in Sources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		OBJ_94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
 			files = (
 				OBJ_95 /* Package.swift in Sources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		OBJ_99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
 			files = (
 				OBJ_100 /* ObjcDelegateProxy.m in Sources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		OBJ_88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CombineCocoa::Runtime /* Runtime */;
+			target = "CombineCocoa::Runtime" /* Runtime */;
+			targetProxy = 0AEC3D42252601E3007EE97C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
