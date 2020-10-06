@@ -18,7 +18,7 @@ public extension UISearchBar {
         let selector = #selector(UISearchBarDelegate.searchBar(_:textDidChange:))
         return delegateProxy
             .interceptSelectorPublisher(selector)
-          .map { $0[1] as! String }
+            .map { $0[1] as! String }
             .eraseToAnyPublisher()
     }
 
