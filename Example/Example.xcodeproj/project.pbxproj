@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AEC3D4E25260DC7007EE97C /* UISearchBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC3D4D25260DC7007EE97C /* UISearchBarTests.swift */; };
 		3D5D919445BB2B0DA0F0A455 /* Pods_Example_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE798B0656978A899BDE50BF /* Pods_Example_ExampleTests.framework */; };
 		499340808F6A4BFA9D08AB34 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7789E43DCE40382369F72B2 /* Pods_Example.framework */; };
 		7822AD1E24E1504600187502 /* UITextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822AD1D24E1504600187502 /* UITextViewTests.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AEC3D4D25260DC7007EE97C /* UISearchBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchBarTests.swift; sourceTree = "<group>"; };
 		7822AD1D24E1504600187502 /* UITextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewTests.swift; sourceTree = "<group>"; };
 		A233795522F59DBD0083F92F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A24C43F922F592E700BC2E2B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 				DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */,
 				DC8A555D24B60A9A007BCEEC /* UICollectionViewTests.swift */,
 				7822AD1D24E1504600187502 /* UITextViewTests.swift */,
+				0AEC3D4D25260DC7007EE97C /* UISearchBarTests.swift */,
 				DC8A555724B5ED4B007BCEEC /* Info.plist */,
 			);
 			path = ExampleTests;
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7822AD1E24E1504600187502 /* UITextViewTests.swift in Sources */,
+				0AEC3D4E25260DC7007EE97C /* UISearchBarTests.swift in Sources */,
 				DC8A555E24B60A9A007BCEEC /* UICollectionViewTests.swift in Sources */,
 				DC8A555624B5ED4B007BCEEC /* UITableViewTests.swift in Sources */,
 			);
