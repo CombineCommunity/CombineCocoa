@@ -1,5 +1,5 @@
 PODS:
-  - CombineCocoa (0.2.0)
+  - CombineCocoa (0.2.1)
 
 DEPENDENCIES:
   - CombineCocoa (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CombineCocoa: 92b2579a9e4a364f8ba94be7fc68335bd3d73d92
+  CombineCocoa: cefdd4d502c9c23c1871264287be87a34abce4e7
 
 PODFILE CHECKSUM: 19898029b2f3640d6c998827b076660d4767a5fd
 
