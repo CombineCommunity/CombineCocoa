@@ -10,18 +10,23 @@
 #import "include/ObjcDelegateProxy.h"
 #import <objc/runtime.h>
 
-static NSSet <NSValue *> *selectors;
+#define OBJECT_VALUE(object) [NSValue valueWithNonretainedObject:(object)]
+
+static NSMutableDictionary<NSValue *, NSSet<NSValue *> *> *allSelectors;
 
 @implementation ObjcDelegateProxy
 
 - (NSSet *)selectors {
-    return selectors;
+    return allSelectors[OBJECT_VALUE(self.class)];
 }
 
 + (void)initialize
 {
     @synchronized (ObjcDelegateProxy.class) {
-        selectors = [self selectorsOfClass:self
+        if (!allSelectors) {
+            allSelectors = [NSMutableDictionary new];
+        }
+        allSelectors[OBJECT_VALUE(self)] = [self selectorsOfClass:self
                      withEncodedReturnType:[NSString stringWithFormat:@"%s", @encode(void)]];
     }
 }
@@ -31,7 +36,7 @@ static NSSet <NSValue *> *selectors;
 }
 
 - (BOOL)canRespondToSelector:(SEL _Nonnull)selector {
-    for (id current in selectors) {
+    for (id current in allSelectors[OBJECT_VALUE(self.class)]) {
         if (selector == (SEL) [current pointerValue]) {
             return true;
         }
