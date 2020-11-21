@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "CombineCocoa"
-    s.version          = "0.2.1"
+    s.version          = "0.2.2"
     s.summary          = "CombineCocoa provided basic publisher bridges for UIControls in UIKit"
     s.description      = <<-DESC
     Combine publisher bridges for Cocoa Controls (UIControl) in UIKit
