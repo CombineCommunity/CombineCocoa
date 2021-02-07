@@ -16,5 +16,10 @@ public extension UIButton {
     var tapPublisher: AnyPublisher<Void, Never> {
         controlEventPublisher(for: .touchUpInside)
     }
+
+    var isEnabledPublisher: AnyPublisher<Bool, Never> {
+        Publishers.ControlProperty(control: self, events: .defaultValueEvents, keyPath: \.isEnabled)
+                  .eraseToAnyPublisher()
+    }
 }
 #endif
