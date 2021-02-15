@@ -1,5 +1,4 @@
 module Runtime {
     umbrella header "ObjcDelegateProxy.h"
-    link "Runtime"
     export *
 }
