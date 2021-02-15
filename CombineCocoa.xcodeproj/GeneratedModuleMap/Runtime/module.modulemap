@@ -1,4 +1,0 @@
-module Runtime {
-    umbrella "/Users/freak4pc/Work/OSS/CombineCocoa/Sources/Runtime/include"
-    export *
-}

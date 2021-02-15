@@ -1,637 +1,903 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		OBJ_102 /* ObjcDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* ObjcDelegateProxy.m */; };
-		OBJ_63 /* AnimatedAssignSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AnimatedAssignSubscriber.swift */; };
-		OBJ_64 /* CombineControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CombineControlEvent.swift */; };
-		OBJ_65 /* CombineControlProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* CombineControlProperty.swift */; };
-		OBJ_66 /* CombineControlTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* CombineControlTarget.swift */; };
-		OBJ_67 /* NSTextStorage+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* NSTextStorage+Combine.swift */; };
-		OBJ_68 /* UIBarButtonItem+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* UIBarButtonItem+Combine.swift */; };
-		OBJ_69 /* UIButton+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* UIButton+Combine.swift */; };
-		OBJ_70 /* UICollectionView+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* UICollectionView+Combine.swift */; };
-		OBJ_71 /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* UIControl+Combine.swift */; };
-		OBJ_72 /* UIDatePicker+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* UIDatePicker+Combine.swift */; };
-		OBJ_73 /* UIGestureRecognizer+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* UIGestureRecognizer+Combine.swift */; };
-		OBJ_74 /* UIPageControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* UIPageControl+Combine.swift */; };
-		OBJ_75 /* UIRefreshControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* UIRefreshControl+Combine.swift */; };
-		OBJ_76 /* UIScrollView+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* UIScrollView+Combine.swift */; };
-		OBJ_77 /* UISearchBar+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* UISearchBar+Combine.swift */; };
-		OBJ_78 /* UISegmentedControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* UISegmentedControl+Combine.swift */; };
-		OBJ_79 /* UISlider+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* UISlider+Combine.swift */; };
-		OBJ_80 /* UIStepper+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* UIStepper+Combine.swift */; };
-		OBJ_81 /* UISwitch+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* UISwitch+Combine.swift */; };
-		OBJ_82 /* UITableView+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* UITableView+Combine.swift */; };
-		OBJ_83 /* UITextField+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* UITextField+Combine.swift */; };
-		OBJ_84 /* UITextView+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* UITextView+Combine.swift */; };
-		OBJ_85 /* DelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* DelegateProxy.swift */; };
-		OBJ_86 /* DelegateProxyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* DelegateProxyPublisher.swift */; };
-		OBJ_87 /* DelegateProxyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* DelegateProxyType.swift */; };
-		OBJ_89 /* Runtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CombineCocoa::Runtime::Product /* Runtime.framework */; };
-		OBJ_97 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		CombineCocoa::CombineCocoa::Product /* CombineCocoa.framework */ = {isa = PBXFileReference; path = CombineCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CombineCocoa::Runtime::Product /* Runtime.framework */ = {isa = PBXFileReference; path = Runtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_10 /* AnimatedAssignSubscriber.swift */ = {isa = PBXFileReference; path = AnimatedAssignSubscriber.swift; sourceTree = "<group>"; };
-		OBJ_11 /* CombineControlEvent.swift */ = {isa = PBXFileReference; path = CombineControlEvent.swift; sourceTree = "<group>"; };
-		OBJ_12 /* CombineControlProperty.swift */ = {isa = PBXFileReference; path = CombineControlProperty.swift; sourceTree = "<group>"; };
-		OBJ_13 /* CombineControlTarget.swift */ = {isa = PBXFileReference; path = CombineControlTarget.swift; sourceTree = "<group>"; };
-		OBJ_15 /* NSTextStorage+Combine.swift */ = {isa = PBXFileReference; path = "NSTextStorage+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_16 /* UIBarButtonItem+Combine.swift */ = {isa = PBXFileReference; path = "UIBarButtonItem+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_17 /* UIButton+Combine.swift */ = {isa = PBXFileReference; path = "UIButton+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_18 /* UICollectionView+Combine.swift */ = {isa = PBXFileReference; path = "UICollectionView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_19 /* UIControl+Combine.swift */ = {isa = PBXFileReference; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_20 /* UIDatePicker+Combine.swift */ = {isa = PBXFileReference; path = "UIDatePicker+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_21 /* UIGestureRecognizer+Combine.swift */ = {isa = PBXFileReference; path = "UIGestureRecognizer+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_22 /* UIPageControl+Combine.swift */ = {isa = PBXFileReference; path = "UIPageControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_23 /* UIRefreshControl+Combine.swift */ = {isa = PBXFileReference; path = "UIRefreshControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_24 /* UIScrollView+Combine.swift */ = {isa = PBXFileReference; path = "UIScrollView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_25 /* UISearchBar+Combine.swift */ = {isa = PBXFileReference; path = "UISearchBar+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_26 /* UISegmentedControl+Combine.swift */ = {isa = PBXFileReference; path = "UISegmentedControl+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_27 /* UISlider+Combine.swift */ = {isa = PBXFileReference; path = "UISlider+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_28 /* UIStepper+Combine.swift */ = {isa = PBXFileReference; path = "UIStepper+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_29 /* UISwitch+Combine.swift */ = {isa = PBXFileReference; path = "UISwitch+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_30 /* UITableView+Combine.swift */ = {isa = PBXFileReference; path = "UITableView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_31 /* UITextField+Combine.swift */ = {isa = PBXFileReference; path = "UITextField+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_32 /* UITextView+Combine.swift */ = {isa = PBXFileReference; path = "UITextView+Combine.swift"; sourceTree = "<group>"; };
-		OBJ_34 /* DelegateProxy.swift */ = {isa = PBXFileReference; path = DelegateProxy.swift; sourceTree = "<group>"; };
-		OBJ_35 /* DelegateProxyPublisher.swift */ = {isa = PBXFileReference; path = DelegateProxyPublisher.swift; sourceTree = "<group>"; };
-		OBJ_36 /* DelegateProxyType.swift */ = {isa = PBXFileReference; path = DelegateProxyType.swift; sourceTree = "<group>"; };
-		OBJ_38 /* ObjcDelegateProxy.m */ = {isa = PBXFileReference; path = ObjcDelegateProxy.m; sourceTree = "<group>"; };
-		OBJ_40 /* ObjcDelegateProxy.h */ = {isa = PBXFileReference; path = ObjcDelegateProxy.h; sourceTree = "<group>"; };
-		OBJ_41 /* module.modulemap */ = {isa = PBXFileReference; name = module.modulemap; path = /Users/freak4pc/Work/OSS/CombineCocoa/CombineCocoa.xcodeproj/GeneratedModuleMap/Runtime/module.modulemap; sourceTree = "<group>"; };
-		OBJ_46 /* Example */ = {isa = PBXFileReference; path = Example; sourceTree = SOURCE_ROOT; };
-		OBJ_47 /* Resources */ = {isa = PBXFileReference; path = Resources; sourceTree = SOURCE_ROOT; };
-		OBJ_48 /* Carthage */ = {isa = PBXFileReference; path = Carthage; sourceTree = SOURCE_ROOT; };
-		OBJ_49 /* scripts */ = {isa = PBXFileReference; path = scripts; sourceTree = SOURCE_ROOT; };
-		OBJ_50 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
-		OBJ_51 /* codecov.yml */ = {isa = PBXFileReference; path = codecov.yml; sourceTree = "<group>"; };
-		OBJ_52 /* LICENSE */ = {isa = PBXFileReference; path = LICENSE; sourceTree = "<group>"; };
-		OBJ_53 /* Makefile */ = {isa = PBXFileReference; path = Makefile; sourceTree = "<group>"; };
-		OBJ_54 /* README.md */ = {isa = PBXFileReference; path = README.md; sourceTree = "<group>"; };
-		OBJ_55 /* Gemfile */ = {isa = PBXFileReference; path = Gemfile; sourceTree = "<group>"; };
-		OBJ_56 /* Gemfile.lock */ = {isa = PBXFileReference; path = Gemfile.lock; sourceTree = "<group>"; };
-		OBJ_57 /* CombineCocoa.podspec */ = {isa = PBXFileReference; path = CombineCocoa.podspec; sourceTree = "<group>"; };
-		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* CombineCocoa.h */ = {isa = PBXFileReference; path = CombineCocoa.h; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		OBJ_103 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
-			);
-		};
-		OBJ_88 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
-				OBJ_89 /* Runtime.framework in Frameworks */,
-			);
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		OBJ_14 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_15 /* NSTextStorage+Combine.swift */,
-				OBJ_16 /* UIBarButtonItem+Combine.swift */,
-				OBJ_17 /* UIButton+Combine.swift */,
-				OBJ_18 /* UICollectionView+Combine.swift */,
-				OBJ_19 /* UIControl+Combine.swift */,
-				OBJ_20 /* UIDatePicker+Combine.swift */,
-				OBJ_21 /* UIGestureRecognizer+Combine.swift */,
-				OBJ_22 /* UIPageControl+Combine.swift */,
-				OBJ_23 /* UIRefreshControl+Combine.swift */,
-				OBJ_24 /* UIScrollView+Combine.swift */,
-				OBJ_25 /* UISearchBar+Combine.swift */,
-				OBJ_26 /* UISegmentedControl+Combine.swift */,
-				OBJ_27 /* UISlider+Combine.swift */,
-				OBJ_28 /* UIStepper+Combine.swift */,
-				OBJ_29 /* UISwitch+Combine.swift */,
-				OBJ_30 /* UITableView+Combine.swift */,
-				OBJ_31 /* UITextField+Combine.swift */,
-				OBJ_32 /* UITextView+Combine.swift */,
-			);
-			name = Controls;
-			path = Controls;
-			sourceTree = "<group>";
-		};
-		OBJ_33 /* DelegateProxy */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_34 /* DelegateProxy.swift */,
-				OBJ_35 /* DelegateProxyPublisher.swift */,
-				OBJ_36 /* DelegateProxyType.swift */,
-			);
-			name = DelegateProxy;
-			path = DelegateProxy;
-			sourceTree = "<group>";
-		};
-		OBJ_37 /* Runtime */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_38 /* ObjcDelegateProxy.m */,
-				OBJ_39 /* include */,
-			);
-			name = Runtime;
-			path = Sources/Runtime;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_39 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_40 /* ObjcDelegateProxy.h */,
-				OBJ_41 /* module.modulemap */,
-			);
-			name = include;
-			path = include;
-			sourceTree = "<group>";
-		};
-		OBJ_42 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Tests;
-			path = "";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_43 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CombineCocoa::CombineCocoa::Product /* CombineCocoa.framework */,
-				CombineCocoa::Runtime::Product /* Runtime.framework */,
-			);
-			name = Products;
-			path = "";
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		OBJ_5 = {
-			isa = PBXGroup;
-			children = (
-				OBJ_6 /* Package.swift */,
-				OBJ_7 /* Sources */,
-				OBJ_42 /* Tests */,
-				OBJ_43 /* Products */,
-				OBJ_46 /* Example */,
-				OBJ_47 /* Resources */,
-				OBJ_48 /* Carthage */,
-				OBJ_49 /* scripts */,
-				OBJ_50 /* CODE_OF_CONDUCT.md */,
-				OBJ_51 /* codecov.yml */,
-				OBJ_52 /* LICENSE */,
-				OBJ_53 /* Makefile */,
-				OBJ_54 /* README.md */,
-				OBJ_55 /* Gemfile */,
-				OBJ_56 /* Gemfile.lock */,
-				OBJ_57 /* CombineCocoa.podspec */,
-			);
-			path = "";
-			sourceTree = "<group>";
-		};
-		OBJ_7 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_8 /* CombineCocoa */,
-				OBJ_37 /* Runtime */,
-			);
-			name = Sources;
-			path = "";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_8 /* CombineCocoa */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_9 /* CombineCocoa.h */,
-				OBJ_10 /* AnimatedAssignSubscriber.swift */,
-				OBJ_11 /* CombineControlEvent.swift */,
-				OBJ_12 /* CombineControlProperty.swift */,
-				OBJ_13 /* CombineControlTarget.swift */,
-				OBJ_14 /* Controls */,
-				OBJ_33 /* DelegateProxy */,
-			);
-			name = CombineCocoa;
-			path = Sources/CombineCocoa;
-			sourceTree = SOURCE_ROOT;
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		CombineCocoa::CombineCocoa /* CombineCocoa */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_59 /* Build configuration list for PBXNativeTarget "CombineCocoa" */;
-			buildPhases = (
-				1E69F1C81718D2CD1B4AEAFC /* SwiftLint */,
-				OBJ_62 /* Sources */,
-				OBJ_88 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_90 /* PBXTargetDependency */,
-			);
-			name = CombineCocoa;
-			productName = CombineCocoa;
-			productReference = CombineCocoa::CombineCocoa::Product /* CombineCocoa.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CombineCocoa::Runtime /* Runtime */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_98 /* Build configuration list for PBXNativeTarget "Runtime" */;
-			buildPhases = (
-				OBJ_101 /* Sources */,
-				OBJ_103 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Runtime;
-			productName = Runtime;
-			productReference = CombineCocoa::Runtime::Product /* Runtime.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CombineCocoa::SwiftPMPackageDescription /* CombineCocoaPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_93 /* Build configuration list for PBXNativeTarget "CombineCocoaPackageDescription" */;
-			buildPhases = (
-				7AFF6F3D243FC1649C6208E5 /* SwiftLint */,
-				OBJ_96 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CombineCocoaPackageDescription;
-			productName = CombineCocoaPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		OBJ_1 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftMigration = 9999;
-				LastUpgradeCheck = 9999;
-			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "CombineCocoa" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = en;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = OBJ_5;
-			productRefGroup = OBJ_43 /* Products */;
-			projectDirPath = .;
-			targets = (
-				CombineCocoa::CombineCocoa /* CombineCocoa */,
-				CombineCocoa::SwiftPMPackageDescription /* CombineCocoaPackageDescription */,
-				CombineCocoa::Runtime /* Runtime */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1E69F1C81718D2CD1B4AEAFC /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi       \n";
-		};
-		7AFF6F3D243FC1649C6208E5 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi       \n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		OBJ_101 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-				OBJ_102 /* ObjcDelegateProxy.m in Sources */,
-			);
-		};
-		OBJ_62 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-				OBJ_63 /* AnimatedAssignSubscriber.swift in Sources */,
-				OBJ_64 /* CombineControlEvent.swift in Sources */,
-				OBJ_65 /* CombineControlProperty.swift in Sources */,
-				OBJ_66 /* CombineControlTarget.swift in Sources */,
-				OBJ_67 /* NSTextStorage+Combine.swift in Sources */,
-				OBJ_68 /* UIBarButtonItem+Combine.swift in Sources */,
-				OBJ_69 /* UIButton+Combine.swift in Sources */,
-				OBJ_70 /* UICollectionView+Combine.swift in Sources */,
-				OBJ_71 /* UIControl+Combine.swift in Sources */,
-				OBJ_72 /* UIDatePicker+Combine.swift in Sources */,
-				OBJ_73 /* UIGestureRecognizer+Combine.swift in Sources */,
-				OBJ_74 /* UIPageControl+Combine.swift in Sources */,
-				OBJ_75 /* UIRefreshControl+Combine.swift in Sources */,
-				OBJ_76 /* UIScrollView+Combine.swift in Sources */,
-				OBJ_77 /* UISearchBar+Combine.swift in Sources */,
-				OBJ_78 /* UISegmentedControl+Combine.swift in Sources */,
-				OBJ_79 /* UISlider+Combine.swift in Sources */,
-				OBJ_80 /* UIStepper+Combine.swift in Sources */,
-				OBJ_81 /* UISwitch+Combine.swift in Sources */,
-				OBJ_82 /* UITableView+Combine.swift in Sources */,
-				OBJ_83 /* UITextField+Combine.swift in Sources */,
-				OBJ_84 /* UITextView+Combine.swift in Sources */,
-				OBJ_85 /* DelegateProxy.swift in Sources */,
-				OBJ_86 /* DelegateProxyPublisher.swift in Sources */,
-				OBJ_87 /* DelegateProxyType.swift in Sources */,
-			);
-		};
-		OBJ_96 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-				OBJ_97 /* Package.swift in Sources */,
-			);
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		OBJ_90 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CombineCocoa::Runtime /* Runtime */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		OBJ_100 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = NO;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Sources/Runtime/include",
-				);
-				INFOPLIST_FILE = CombineCocoa.xcodeproj/Runtime_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited) -suppress-warnings";
-				PRODUCT_BUNDLE_IDENTIFIER = Runtime;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				TARGET_NAME = Runtime;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		OBJ_3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = YES;
-				EXCLUDED_ARCHS = arm64;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"SWIFT_PACKAGE=1",
-					"DEBUG=1",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				USE_HEADERMAP = NO;
-			};
-			name = Debug;
-		};
-		OBJ_4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXCLUDED_ARCHS = arm64;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"SWIFT_PACKAGE=1",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				USE_HEADERMAP = NO;
-			};
-			name = Release;
-		};
-		OBJ_60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Sources/Runtime/include",
-					"$(SRCROOT)/CombineCocoa.xcodeproj/GeneratedModuleMap/Runtime",
-				);
-				INFOPLIST_FILE = CombineCocoa.xcodeproj/CombineCocoa_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/CombineCocoa.xcodeproj/GeneratedModuleMap/Runtime/module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = CombineCocoa;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = CombineCocoa;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		OBJ_61 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Sources/Runtime/include",
-					"$(SRCROOT)/CombineCocoa.xcodeproj/GeneratedModuleMap/Runtime",
-				);
-				INFOPLIST_FILE = CombineCocoa.xcodeproj/CombineCocoa_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/CombineCocoa.xcodeproj/GeneratedModuleMap/Runtime/module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = CombineCocoa;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = CombineCocoa;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		OBJ_94 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		OBJ_95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		OBJ_99 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = NO;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Sources/Runtime/include",
-				);
-				INFOPLIST_FILE = CombineCocoa.xcodeproj/Runtime_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited) -suppress-warnings";
-				PRODUCT_BUNDLE_IDENTIFIER = Runtime;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				TARGET_NAME = Runtime;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		OBJ_2 /* Build configuration list for PBXProject "CombineCocoa" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_3 /* Debug */,
-				OBJ_4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_59 /* Build configuration list for PBXNativeTarget "CombineCocoa" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_60 /* Debug */,
-				OBJ_61 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_93 /* Build configuration list for PBXNativeTarget "CombineCocoaPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_94 /* Debug */,
-				OBJ_95 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_98 /* Build configuration list for PBXNativeTarget "Runtime" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_99 /* Debug */,
-				OBJ_100 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = OBJ_1 /* Project object */;
+   archiveVersion = "1";
+   objectVersion = "46";
+   objects = {
+      "CombineCocoa::CombineCocoa" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_58";
+         buildPhases = (
+            "OBJ_61",
+            "OBJ_87"
+         );
+         dependencies = (
+            "OBJ_89"
+         );
+         name = "CombineCocoa";
+         productName = "CombineCocoa";
+         productReference = "CombineCocoa::CombineCocoa::Product";
+         productType = "com.apple.product-type.framework";
+      };
+      "CombineCocoa::CombineCocoa::Product" = {
+         isa = "PBXFileReference";
+         path = "CombineCocoa.framework";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "CombineCocoa::Runtime" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_97";
+         buildPhases = (
+            "OBJ_100",
+            "OBJ_102"
+         );
+         dependencies = (
+         );
+         name = "Runtime";
+         productName = "Runtime";
+         productReference = "CombineCocoa::Runtime::Product";
+         productType = "com.apple.product-type.framework";
+      };
+      "CombineCocoa::Runtime::Product" = {
+         isa = "PBXFileReference";
+         path = "Runtime.framework";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "CombineCocoa::SwiftPMPackageDescription" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_92";
+         buildPhases = (
+            "OBJ_95"
+         );
+         dependencies = (
+         );
+         name = "CombineCocoaPackageDescription";
+         productName = "CombineCocoaPackageDescription";
+         productType = "com.apple.product-type.framework";
+      };
+      "OBJ_1" = {
+         isa = "PBXProject";
+         attributes = {
+            LastSwiftMigration = "9999";
+            LastUpgradeCheck = "9999";
+         };
+         buildConfigurationList = "OBJ_2";
+         compatibilityVersion = "Xcode 3.2";
+         developmentRegion = "en";
+         hasScannedForEncodings = "0";
+         knownRegions = (
+            "en"
+         );
+         mainGroup = "OBJ_5";
+         productRefGroup = "OBJ_43";
+         projectDirPath = ".";
+         targets = (
+            "CombineCocoa::CombineCocoa",
+            "CombineCocoa::SwiftPMPackageDescription",
+            "CombineCocoa::Runtime"
+         );
+      };
+      "OBJ_10" = {
+         isa = "PBXFileReference";
+         path = "AnimatedAssignSubscriber.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_100" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_101"
+         );
+      };
+      "OBJ_101" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_38";
+      };
+      "OBJ_102" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+         );
+      };
+      "OBJ_11" = {
+         isa = "PBXFileReference";
+         path = "CombineControlEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_12" = {
+         isa = "PBXFileReference";
+         path = "CombineControlProperty.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_13" = {
+         isa = "PBXFileReference";
+         path = "CombineControlTarget.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_14" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_15",
+            "OBJ_16",
+            "OBJ_17",
+            "OBJ_18",
+            "OBJ_19",
+            "OBJ_20",
+            "OBJ_21",
+            "OBJ_22",
+            "OBJ_23",
+            "OBJ_24",
+            "OBJ_25",
+            "OBJ_26",
+            "OBJ_27",
+            "OBJ_28",
+            "OBJ_29",
+            "OBJ_30",
+            "OBJ_31",
+            "OBJ_32"
+         );
+         name = "Controls";
+         path = "Controls";
+         sourceTree = "<group>";
+      };
+      "OBJ_15" = {
+         isa = "PBXFileReference";
+         path = "NSTextStorage+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_16" = {
+         isa = "PBXFileReference";
+         path = "UIBarButtonItem+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_17" = {
+         isa = "PBXFileReference";
+         path = "UIButton+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_18" = {
+         isa = "PBXFileReference";
+         path = "UICollectionView+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_19" = {
+         isa = "PBXFileReference";
+         path = "UIControl+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_2" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_3",
+            "OBJ_4"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_20" = {
+         isa = "PBXFileReference";
+         path = "UIDatePicker+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_21" = {
+         isa = "PBXFileReference";
+         path = "UIGestureRecognizer+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_22" = {
+         isa = "PBXFileReference";
+         path = "UIPageControl+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_23" = {
+         isa = "PBXFileReference";
+         path = "UIRefreshControl+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_24" = {
+         isa = "PBXFileReference";
+         path = "UIScrollView+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_25" = {
+         isa = "PBXFileReference";
+         path = "UISearchBar+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_26" = {
+         isa = "PBXFileReference";
+         path = "UISegmentedControl+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_27" = {
+         isa = "PBXFileReference";
+         path = "UISlider+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_28" = {
+         isa = "PBXFileReference";
+         path = "UIStepper+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_29" = {
+         isa = "PBXFileReference";
+         path = "UISwitch+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_3" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "NO";
+            DEBUG_INFORMATION_FORMAT = "dwarf";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            ENABLE_NS_ASSERTIONS = "YES";
+            GCC_OPTIMIZATION_LEVEL = "0";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1",
+               "DEBUG=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            ONLY_ACTIVE_ARCH = "YES";
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE",
+               "DEBUG"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Debug";
+      };
+      "OBJ_30" = {
+         isa = "PBXFileReference";
+         path = "UITableView+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_31" = {
+         isa = "PBXFileReference";
+         path = "UITextField+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_32" = {
+         isa = "PBXFileReference";
+         path = "UITextView+Combine.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_33" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_34",
+            "OBJ_35",
+            "OBJ_36"
+         );
+         name = "DelegateProxy";
+         path = "DelegateProxy";
+         sourceTree = "<group>";
+      };
+      "OBJ_34" = {
+         isa = "PBXFileReference";
+         path = "DelegateProxy.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_35" = {
+         isa = "PBXFileReference";
+         path = "DelegateProxyPublisher.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_36" = {
+         isa = "PBXFileReference";
+         path = "DelegateProxyType.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_37" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_38",
+            "OBJ_39"
+         );
+         name = "Runtime";
+         path = "Sources/Runtime";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_38" = {
+         isa = "PBXFileReference";
+         path = "ObjcDelegateProxy.m";
+         sourceTree = "<group>";
+      };
+      "OBJ_39" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_40",
+            "OBJ_41"
+         );
+         name = "include";
+         path = "include";
+         sourceTree = "<group>";
+      };
+      "OBJ_4" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "YES";
+            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            GCC_OPTIMIZATION_LEVEL = "s";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Release";
+      };
+      "OBJ_40" = {
+         isa = "PBXFileReference";
+         path = "ObjcDelegateProxy.h";
+         sourceTree = "<group>";
+      };
+      "OBJ_41" = {
+         isa = "PBXFileReference";
+         name = "module.modulemap";
+         path = "/Users/hsncr/Desktop/workspace/CombineCocoa/Sources/Runtime/include/module.modulemap";
+         sourceTree = "<group>";
+      };
+      "OBJ_42" = {
+         isa = "PBXGroup";
+         children = (
+         );
+         name = "Tests";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_43" = {
+         isa = "PBXGroup";
+         children = (
+            "CombineCocoa::Runtime::Product",
+            "CombineCocoa::CombineCocoa::Product"
+         );
+         name = "Products";
+         path = "";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "OBJ_46" = {
+         isa = "PBXFileReference";
+         path = "Example";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_47" = {
+         isa = "PBXFileReference";
+         path = "Resources";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_48" = {
+         isa = "PBXFileReference";
+         path = "scripts";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_49" = {
+         isa = "PBXFileReference";
+         path = "CODE_OF_CONDUCT.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_5" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_6",
+            "OBJ_7",
+            "OBJ_42",
+            "OBJ_43",
+            "OBJ_46",
+            "OBJ_47",
+            "OBJ_48",
+            "OBJ_49",
+            "OBJ_50",
+            "OBJ_51",
+            "OBJ_52",
+            "OBJ_53",
+            "OBJ_54",
+            "OBJ_55",
+            "OBJ_56"
+         );
+         path = "";
+         sourceTree = "<group>";
+      };
+      "OBJ_50" = {
+         isa = "PBXFileReference";
+         path = "codecov.yml";
+         sourceTree = "<group>";
+      };
+      "OBJ_51" = {
+         isa = "PBXFileReference";
+         path = "LICENSE";
+         sourceTree = "<group>";
+      };
+      "OBJ_52" = {
+         isa = "PBXFileReference";
+         path = "Makefile";
+         sourceTree = "<group>";
+      };
+      "OBJ_53" = {
+         isa = "PBXFileReference";
+         path = "README.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_54" = {
+         isa = "PBXFileReference";
+         path = "Gemfile";
+         sourceTree = "<group>";
+      };
+      "OBJ_55" = {
+         isa = "PBXFileReference";
+         path = "Gemfile.lock";
+         sourceTree = "<group>";
+      };
+      "OBJ_56" = {
+         isa = "PBXFileReference";
+         path = "CombineCocoa.podspec";
+         sourceTree = "<group>";
+      };
+      "OBJ_58" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_59",
+            "OBJ_60"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_59" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/Runtime/include"
+            );
+            INFOPLIST_FILE = "CombineCocoa.xcodeproj/CombineCocoa_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "10.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-Xcc",
+               "-fmodule-map-file=$(SRCROOT)/Sources/Runtime/include/module.modulemap"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "CombineCocoa";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "CombineCocoa";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_6" = {
+         isa = "PBXFileReference";
+         explicitFileType = "sourcecode.swift";
+         path = "Package.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_60" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/Runtime/include"
+            );
+            INFOPLIST_FILE = "CombineCocoa.xcodeproj/CombineCocoa_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "10.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-Xcc",
+               "-fmodule-map-file=$(SRCROOT)/Sources/Runtime/include/module.modulemap"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "CombineCocoa";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "CombineCocoa";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Release";
+      };
+      "OBJ_61" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_62",
+            "OBJ_63",
+            "OBJ_64",
+            "OBJ_65",
+            "OBJ_66",
+            "OBJ_67",
+            "OBJ_68",
+            "OBJ_69",
+            "OBJ_70",
+            "OBJ_71",
+            "OBJ_72",
+            "OBJ_73",
+            "OBJ_74",
+            "OBJ_75",
+            "OBJ_76",
+            "OBJ_77",
+            "OBJ_78",
+            "OBJ_79",
+            "OBJ_80",
+            "OBJ_81",
+            "OBJ_82",
+            "OBJ_83",
+            "OBJ_84",
+            "OBJ_85",
+            "OBJ_86"
+         );
+      };
+      "OBJ_62" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_10";
+      };
+      "OBJ_63" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_11";
+      };
+      "OBJ_64" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_12";
+      };
+      "OBJ_65" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_13";
+      };
+      "OBJ_66" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_15";
+      };
+      "OBJ_67" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_16";
+      };
+      "OBJ_68" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_17";
+      };
+      "OBJ_69" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_18";
+      };
+      "OBJ_7" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_8",
+            "OBJ_37"
+         );
+         name = "Sources";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_70" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_19";
+      };
+      "OBJ_71" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_20";
+      };
+      "OBJ_72" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_21";
+      };
+      "OBJ_73" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_22";
+      };
+      "OBJ_74" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_23";
+      };
+      "OBJ_75" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_24";
+      };
+      "OBJ_76" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_25";
+      };
+      "OBJ_77" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_26";
+      };
+      "OBJ_78" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_27";
+      };
+      "OBJ_79" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_28";
+      };
+      "OBJ_8" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_9",
+            "OBJ_10",
+            "OBJ_11",
+            "OBJ_12",
+            "OBJ_13",
+            "OBJ_14",
+            "OBJ_33"
+         );
+         name = "CombineCocoa";
+         path = "Sources/CombineCocoa";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_80" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_29";
+      };
+      "OBJ_81" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_30";
+      };
+      "OBJ_82" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_31";
+      };
+      "OBJ_83" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_32";
+      };
+      "OBJ_84" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_34";
+      };
+      "OBJ_85" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_35";
+      };
+      "OBJ_86" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_36";
+      };
+      "OBJ_87" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+            "OBJ_88"
+         );
+      };
+      "OBJ_88" = {
+         isa = "PBXBuildFile";
+         fileRef = "CombineCocoa::Runtime::Product";
+      };
+      "OBJ_89" = {
+         isa = "PBXTargetDependency";
+         target = "CombineCocoa::Runtime";
+      };
+      "OBJ_9" = {
+         isa = "PBXFileReference";
+         path = "CombineCocoa.h";
+         sourceTree = "<group>";
+      };
+      "OBJ_92" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_93",
+            "OBJ_94"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_93" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "5",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+               "-package-description-version",
+               "5.1.0"
+            );
+            SWIFT_VERSION = "5.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_94" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "5",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+               "-package-description-version",
+               "5.1.0"
+            );
+            SWIFT_VERSION = "5.0";
+         };
+         name = "Release";
+      };
+      "OBJ_95" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_96"
+         );
+      };
+      "OBJ_96" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_6";
+      };
+      "OBJ_97" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_98",
+            "OBJ_99"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_98" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            DEFINES_MODULE = "NO";
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/Runtime/include"
+            );
+            INFOPLIST_FILE = "CombineCocoa.xcodeproj/Runtime_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "10.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "Runtime";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            TARGET_NAME = "Runtime";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_99" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            DEFINES_MODULE = "NO";
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/Runtime/include"
+            );
+            INFOPLIST_FILE = "CombineCocoa.xcodeproj/Runtime_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "10.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "Runtime";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            TARGET_NAME = "Runtime";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Release";
+      };
+   };
+   rootObject = "OBJ_1";
 }
