@@ -62,7 +62,7 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tm0-m6-nJj">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="tm0-m6-nJj">
                                         <rect key="frame" x="0.0" y="158" width="382" height="216"/>
                                     </datePicker>
                                 </subviews>
