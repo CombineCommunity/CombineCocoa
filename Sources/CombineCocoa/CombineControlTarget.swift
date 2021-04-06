@@ -64,6 +64,9 @@ private extension Combine.Publishers.ControlTarget {
         private let removeTargetAction: (Control?, AnyObject, Selector) -> Void
         private let action = #selector(handleAction)
 
+        // keep track of subscibers demand
+        var currentDemand = Subscribers.Demand.none
+        
         init(subscriber: S,
              control: Control,
              addTargetAction: @escaping (Control, AnyObject, Selector) -> Void,
@@ -76,8 +79,8 @@ private extension Combine.Publishers.ControlTarget {
         }
 
         func request(_ demand: Subscribers.Demand) {
-            // We don't care about the demand at this point.
-            // As far as we're concerned - The control's target events are endless until it is deallocated.
+            // add new demand of subscriber to previously requested demand
+            currentDemand += demand
         }
 
         func cancel() {
@@ -86,7 +89,14 @@ private extension Combine.Publishers.ControlTarget {
         }
 
         @objc private func handleAction() {
-            _ = subscriber?.receive()
+            // only sending value when subscriber has a demand
+            // this implentation does not buffer values
+            if currentDemand > 0 {
+                let newDemand = subscriber?.receive() ?? .none
+                //fullfilled demand with one value -> reduce current demand by one
+                // adding subscribers new demand to current demand
+                currentDemand = currentDemand + newDemand - 1
+            }
         }
     }
 }

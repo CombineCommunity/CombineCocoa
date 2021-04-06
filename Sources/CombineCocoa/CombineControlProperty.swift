@@ -59,6 +59,9 @@ extension Combine.Publishers.ControlProperty {
         let keyPath: KeyPath<Control, Value>
         private var didEmitInitial = false
         private let event: Control.Event
+        
+        // keep track of subscibers demand
+        var currentDemand = Subscribers.Demand.none
 
         init(subscriber: S, control: Control, event: Control.Event, keyPath: KeyPath<Control, Value>) {
             self.subscriber = subscriber
@@ -78,8 +81,8 @@ extension Combine.Publishers.ControlProperty {
                 didEmitInitial = true
             }
 
-            // We don't care about the demand at this point.
-            // As far as we're concerned - UIControl events are endless until the control is deallocated.
+            // add new demand of subscriber to previously requested demand
+            currentDemand += demand
         }
 
         func cancel() {
@@ -89,7 +92,14 @@ extension Combine.Publishers.ControlProperty {
 
         @objc private func handleEvent() {
             guard let control = control else { return }
-            _ = subscriber?.receive(control[keyPath: keyPath])
+            // only sending value when subscriber has a demand
+            // this implentation does not buffer values
+            if currentDemand > 0 {
+                let newDemand = subscriber?.receive(control[keyPath: keyPath]) ?? .none
+                //fullfilled demand with one value -> reduce current demand by one
+                // adding subscribers new demand to current demand
+                currentDemand = currentDemand + newDemand - 1
+            }
         }
     }
 }

@@ -51,6 +51,9 @@ extension Combine.Publishers.ControlEvent {
         private var subscriber: S?
         weak private var control: Control?
 
+        // keep track of subscibers demand
+        var currentDemand = Subscribers.Demand.none
+        
         init(subscriber: S, control: Control, event: Control.Event) {
             self.subscriber = subscriber
             self.control = control
@@ -58,8 +61,8 @@ extension Combine.Publishers.ControlEvent {
         }
 
         func request(_ demand: Subscribers.Demand) {
-            // We don't care about the demand at this point.
-            // As far as we're concerned - UIControl events are endless until the control is deallocated.
+            // add new demand of subscriber to previously requested demand
+            currentDemand += demand
         }
 
         func cancel() {
@@ -67,7 +70,14 @@ extension Combine.Publishers.ControlEvent {
         }
 
         @objc private func handleEvent() {
-            _ = subscriber?.receive()
+            // only sending value when subscriber has a demand
+            // this implentation does not buffer values
+            if currentDemand > 0 {
+                let newDemand = subscriber?.receive() ?? .none
+                //fullfilled demand with one value -> reduce current demand by one
+                // adding subscribers new demand to current demand
+                currentDemand = currentDemand + newDemand - 1
+            }
         }
     }
 }
