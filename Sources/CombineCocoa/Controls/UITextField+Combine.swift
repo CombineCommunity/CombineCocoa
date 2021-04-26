@@ -30,7 +30,7 @@ public extension UITextField {
     }
 
     /// A publisher that emits whenever the user taps the text fields and begin the editing.
-    var didBeginPublisher: AnyPublisher<Void, Never> {
+    var didBeginEditingPublisher: AnyPublisher<Void, Never> {
         controlEventPublisher(for: .editingDidBegin)
     }
 }
