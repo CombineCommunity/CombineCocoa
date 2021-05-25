@@ -11,21 +11,25 @@ import Combine
 @testable import CombineCocoa
 
 class UICollectionViewTests: XCTestCase {
-    var subscription: AnyCancellable!
+    var subscriptions = Set<AnyCancellable>()
+
+    override func tearDown() {
+        subscriptions = .init()
+    }
 
     func test_didSelectItemAt() {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
         var resultIndexPath: IndexPath? = nil
 
-        subscription = collectionView.didSelectItemPublisher
+        collectionView.didSelectItemPublisher
             .sink(receiveValue: { resultIndexPath = $0 })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         collectionView.delegate!.collectionView!(collectionView, didSelectItemAt: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
-        subscription.cancel()
     }
 
     func test_didDeselectItemAt() {
@@ -33,14 +37,14 @@ class UICollectionViewTests: XCTestCase {
 
         var resultIndexPath: IndexPath? = nil
 
-        subscription = collectionView.didDeselectItemPublisher
+        collectionView.didDeselectItemPublisher
             .sink(receiveValue: { resultIndexPath = $0 })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         collectionView.delegate!.collectionView!(collectionView, didDeselectItemAt: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
-        subscription.cancel()
     }
 
     func test_willDisplayCell() {
@@ -49,11 +53,12 @@ class UICollectionViewTests: XCTestCase {
         var resultIndexPath: IndexPath? = nil
         var resultCollectioViewCell: UICollectionViewCell? = nil
 
-        subscription = collectionView.willDisplayCellPublisher
+        collectionView.willDisplayCellPublisher
             .sink(receiveValue: { cell, indexPath in
                 resultCollectioViewCell = cell
                 resultIndexPath = indexPath
             })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenCollectionViewCell = UICollectionViewCell()
@@ -61,7 +66,6 @@ class UICollectionViewTests: XCTestCase {
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
         XCTAssertEqual(resultCollectioViewCell, givenCollectionViewCell)
-        subscription.cancel()
     }
 
     func test_didEndDisplayingCell() {
@@ -70,11 +74,12 @@ class UICollectionViewTests: XCTestCase {
         var resultIndexPath: IndexPath? = nil
         var resultCollectioViewCell: UICollectionViewCell? = nil
 
-        subscription = collectionView.didEndDisplayingCellPublisher
+        collectionView.didEndDisplayingCellPublisher
             .sink(receiveValue: { cell, indexPath in
                 resultCollectioViewCell = cell
                 resultIndexPath = indexPath
             })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenCollectionViewCell = UICollectionViewCell()
@@ -82,6 +87,26 @@ class UICollectionViewTests: XCTestCase {
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
         XCTAssertEqual(resultCollectioViewCell, givenCollectionViewCell)
-        subscription.cancel()
+    }
+    
+    func test_didSelectItemAt_for_multiple_subscribers() {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+        var firstResultIndexPaths = [IndexPath]()
+        var secondResultIndexPaths = [IndexPath]()
+
+        collectionView.didSelectItemPublisher
+            .sink(receiveValue: { firstResultIndexPaths.append($0) })
+            .store(in: &subscriptions)
+
+        collectionView.didSelectItemPublisher
+            .sink(receiveValue: { secondResultIndexPaths.append($0) })
+            .store(in: &subscriptions)
+
+        let givenIndexPath = IndexPath(row: 1, section: 0)
+        collectionView.delegate!.collectionView!(collectionView, didSelectItemAt: givenIndexPath)
+
+        XCTAssertEqual(firstResultIndexPaths, [givenIndexPath])
+        XCTAssertEqual(firstResultIndexPaths, secondResultIndexPaths)
     }
 }

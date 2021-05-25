@@ -11,15 +11,20 @@ import Combine
 @testable import CombineCocoa
 
 class UITableViewTests: XCTestCase {
-    var subscription: AnyCancellable!
-
+    var subscriptions = Set<AnyCancellable>()
+    
+    override func tearDown() {
+        subscriptions = .init()
+    }
+    
     func test_didSelectRowAt() {
         let tableView = UITableView()
 
         var resultIndexPath: IndexPath? = nil
 
-        subscription = tableView.didSelectRowPublisher
+        tableView.didSelectRowPublisher
             .sink(receiveValue: { resultIndexPath = $0 })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         tableView.delegate!.tableView!(tableView, didSelectRowAt: givenIndexPath)
@@ -32,8 +37,9 @@ class UITableViewTests: XCTestCase {
 
         var resultIndexPath: IndexPath? = nil
 
-        subscription = tableView.didDeselectRowPublisher
+        tableView.didDeselectRowPublisher
             .sink(receiveValue: { resultIndexPath = $0 })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         tableView.delegate!.tableView!(tableView, didDeselectRowAt: givenIndexPath)
@@ -47,11 +53,12 @@ class UITableViewTests: XCTestCase {
         var resultIndexPath: IndexPath? = nil
         var resultTableViewCell: UITableViewCell? = nil
 
-        subscription = tableView.willDisplayCellPublisher
+        tableView.willDisplayCellPublisher
             .sink(receiveValue: { cell, indexPath in
                 resultTableViewCell = cell
                 resultIndexPath = indexPath
             })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenTableViewCell = UITableViewCell()
@@ -67,11 +74,12 @@ class UITableViewTests: XCTestCase {
         var resultIndexPath: IndexPath? = nil
         var resultTableViewCell: UITableViewCell? = nil
 
-        subscription = tableView.didEndDisplayingCellPublisher
+        tableView.didEndDisplayingCellPublisher
             .sink(receiveValue: { cell, indexPath in
                 resultTableViewCell = cell
                 resultIndexPath = indexPath
             })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         let givenTableViewCell = UITableViewCell()
@@ -86,12 +94,34 @@ class UITableViewTests: XCTestCase {
 
         var resultIndexPath: IndexPath? = nil
 
-        subscription = tableView.itemAccessoryButtonTappedPublisher
+        tableView.itemAccessoryButtonTappedPublisher
             .sink(receiveValue: { resultIndexPath = $0 })
+            .store(in: &subscriptions)
 
         let givenIndexPath = IndexPath(row: 1, section: 0)
         tableView.delegate!.tableView!(tableView, accessoryButtonTappedForRowWith: givenIndexPath)
 
         XCTAssertEqual(resultIndexPath, givenIndexPath)
+    }
+    
+    func test_didSelectRowAt_for_multiple_subscribers() {
+        let tableView = UITableView()
+
+        var firstResultIndexPaths = [IndexPath]()
+        var secondResultIndexPaths = [IndexPath]()
+
+        tableView.didSelectRowPublisher
+            .sink(receiveValue: { firstResultIndexPaths.append($0) })
+            .store(in: &subscriptions)
+
+        tableView.didSelectRowPublisher
+            .sink(receiveValue: { secondResultIndexPaths.append($0) })
+            .store(in: &subscriptions)
+
+        let givenIndexPath = IndexPath(row: 1, section: 0)
+        tableView.delegate!.tableView!(tableView, didSelectRowAt: givenIndexPath)
+
+        XCTAssertEqual(firstResultIndexPaths, [givenIndexPath])
+        XCTAssertEqual(firstResultIndexPaths, secondResultIndexPaths)
     }
 }

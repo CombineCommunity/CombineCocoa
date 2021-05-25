@@ -16,7 +16,7 @@ import Runtime
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 open class DelegateProxy: ObjcDelegateProxy {
-    private var dict: [Selector: ([Any]) -> Void] = [:]
+    private var dict: [Selector: [([Any]) -> Void]] = [:]
     private var subscribers = [AnySubscriber<[Any], Never>?]()
 
     public required override init() {
@@ -24,11 +24,17 @@ open class DelegateProxy: ObjcDelegateProxy {
     }
 
     public override func interceptedSelector(_ selector: Selector, arguments: [Any]) {
-        dict[selector]?(arguments)
+        dict[selector]?.forEach { handler in
+            handler(arguments)
+        }
     }
 
     public func intercept(_ selector: Selector, _ handler: @escaping ([Any]) -> Void) {
-        dict[selector] = handler
+        if dict[selector] != nil {
+            dict[selector]?.append(handler)
+        } else {
+            dict[selector] = [handler]
+        }
     }
 
     public func interceptSelectorPublisher(_ selector: Selector) -> AnyPublisher<[Any], Never> {
