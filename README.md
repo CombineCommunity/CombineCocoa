@@ -34,7 +34,7 @@ segmented.selectedSegmentIndexPublisher // AnyPublisher<Int, Never>
 slider.valuePublisher // AnyPublisher<Float, Never>
 button.tapPublisher // AnyPublisher<Void, Never>
 barButtonItem.tapPublisher // AnyPublisher<Void, Never>
-swtch.isOnPublisher // AnyPublisher<Bool, Never>
+switch.isOnPublisher // AnyPublisher<Bool, Never>
 stepper.valuePublisher // AnyPublisher<Double, Never>
 datePicker.datePublisher // AnyPublisher<Date, Never>
 refreshControl.isRefreshingPublisher // AnyPublisher<Bool, Never>
