@@ -9,7 +9,7 @@
 #if canImport(Combine)
 import Combine
 import Foundation
-import UIKit.UIControl
+import UIKit
 
 // MARK: - Publisher
 @available(iOS 13.0, *)
