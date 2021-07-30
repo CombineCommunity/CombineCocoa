@@ -83,7 +83,7 @@ github "CombineCommunity/CombineCocoa"
 
 ## Acknowledgments
 
-* CombineCocoa is highly inspired by RxSwift's [RxCocoa](https://github.com/ReactivX/RxSwift) in its essence, kudos to [Krunoslav Zaher](https://twitter.com/KrunoslavZaher) for all of his amazing work on this.
+* CombineCocoa is highly inspired by RxSwift's [RxCocoa](https://github.com/ReactiveX/RxSwift) in its essence, kudos to [Krunoslav Zaher](https://twitter.com/KrunoslavZaher) for all of his amazing work on this.
 * Thanks to [Antoine van der Lee](https://twitter.com/twannl) for his tutorial on [Creating Custom Publishers](https://www.avanderlee.com/swift/custom-combine-publisher/). The idea to set up a control target inside the publisher was inspired by it.
 
 ## License
