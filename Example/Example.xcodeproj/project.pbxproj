@@ -18,6 +18,7 @@
 		A24C440122F592E700BC2E2B /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24C440022F592E700BC2E2B /* ControlsViewController.swift */; };
 		A24C440622F592E800BC2E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24C440522F592E800BC2E2B /* Assets.xcassets */; };
 		A24C440922F592E800BC2E2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24C440722F592E800BC2E2B /* LaunchScreen.storyboard */; };
+		B9BC1EAD26BAE72B00AE95E5 /* UIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC1EAC26BAE72B00AE95E5 /* UIScrollViewTests.swift */; };
 		DC8A555624B5ED4B007BCEEC /* UITableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */; };
 		DC8A555E24B60A9A007BCEEC /* UICollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A555D24B60A9A007BCEEC /* UICollectionViewTests.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		A3A5BF6E4631484B5F0C14C7 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AD949152515161F740DAF80C /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		B84F6B1029BF235509B7F677 /* Pods-Example-ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-ExampleTests.release.xcconfig"; path = "Target Support Files/Pods-Example-ExampleTests/Pods-Example-ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		B9BC1EAC26BAE72B00AE95E5 /* UIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewTests.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		BE798B0656978A899BDE50BF /* Pods_Example_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A555324B5ED4B007BCEEC /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewTests.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				DC8A555524B5ED4B007BCEEC /* UITableViewTests.swift */,
 				DC8A555D24B60A9A007BCEEC /* UICollectionViewTests.swift */,
+				B9BC1EAC26BAE72B00AE95E5 /* UIScrollViewTests.swift */,
 				7822AD1D24E1504600187502 /* UITextViewTests.swift */,
 				0AEC3D4D25260DC7007EE97C /* UISearchBarTests.swift */,
 				3F50DED225D6B4B700AC53A7 /* UIPageControlTests.swift */,
@@ -346,6 +349,7 @@
 				7822AD1E24E1504600187502 /* UITextViewTests.swift in Sources */,
 				0AEC3D4E25260DC7007EE97C /* UISearchBarTests.swift in Sources */,
 				DC8A555E24B60A9A007BCEEC /* UICollectionViewTests.swift in Sources */,
+				B9BC1EAD26BAE72B00AE95E5 /* UIScrollViewTests.swift in Sources */,
 				3F50DED325D6B4B700AC53A7 /* UIPageControlTests.swift in Sources */,
 				DC8A555624B5ED4B007BCEEC /* UITableViewTests.swift in Sources */,
 			);
