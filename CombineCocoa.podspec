@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "CombineCocoa"
-    s.version          = "0.3.0"
+    s.version          = "0.3.1"
     s.summary          = "CombineCocoa provided basic publisher bridges for UIControls in UIKit"
     s.description      = <<-DESC
     Combine publisher bridges for Cocoa Controls (UIControl) in UIKit
@@ -11,10 +11,11 @@ Pod::Spec.new do |s|
     s.source           = { :git => "https://github.com/freak4pc/CombineCocoa.git", :tag => s.version.to_s }
   
     s.requires_arc     = true
-  
-    s.ios.deployment_target     = '10.0'
+
+    s.ios.deployment_target     = '13.0'
+    s.osx.deployment_target     = '10.15'
   
     s.source_files = 'Sources/**/*.{swift,h,m}'
-    s.frameworks   = ['Combine', 'Foundation']
+    s.frameworks   = ['Combine', 'Foundation', 'UIKit']
     s.swift_version = '5.0'
   end
