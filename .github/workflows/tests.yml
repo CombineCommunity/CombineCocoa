@@ -42,4 +42,4 @@ jobs:
         - name: Make project
           run: make project
         - name: Carthage build
-          run: carthage build --no-skip-current --platform iOS --configuration Release --project-directory ./
+          run: carthage build --no-skip-current --platform iOS --configuration Release --project-directory ./ --use-xcframeworks
