@@ -6,7 +6,7 @@
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
-#if canImport(UIKit) && canImport(Combine)
+#if canImport(UIKit) && !(os(iOS) && (arch(i386) || arch(arm)))
 import Foundation
 import UIKit
 import Combine
