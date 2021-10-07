@@ -16,8 +16,6 @@ jobs:
             destination: "name=iPhone 11"
     steps:
       - uses: actions/checkout@v2
-      - name: Select Xcode 12
-        run: sudo xcode-select -s /Applications/Xcode_12.app
       - name: Make project
         run: make project
       - name: Install Pods
@@ -37,8 +35,6 @@ jobs:
       runs-on: macOS-latest
       steps:
         - uses: actions/checkout@v2
-        - name: Select Xcode 12
-          run: sudo xcode-select -s /Applications/Xcode_12.app
         - name: Make project
           run: make project
         - name: Carthage build
