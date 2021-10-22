@@ -120,7 +120,7 @@ public extension UIScrollView {
     var willBeginZoomingPublisher: AnyPublisher<UIView?, Never> {
         let selector = #selector(UIScrollViewDelegate.scrollViewWillBeginZooming(_:with:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { $0[1] as! UIView? }
+            .map { $0[1] as? UIView }
             .eraseToAnyPublisher()
     }
 
@@ -128,7 +128,7 @@ public extension UIScrollView {
     var didEndZooming: AnyPublisher<(view: UIView?, scale: CGFloat), Never> {
         let selector = #selector(UIScrollViewDelegate.scrollViewDidEndZooming(_:with:atScale:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { ($0[1] as! UIView?, $0[2] as! CGFloat) }
+            .map { ($0[1] as? UIView, $0[2] as! CGFloat) }
             .eraseToAnyPublisher()
     }
 
