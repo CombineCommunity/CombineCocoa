@@ -109,4 +109,25 @@ class UICollectionViewTests: XCTestCase {
         XCTAssertEqual(firstResultIndexPaths, [givenIndexPath])
         XCTAssertEqual(firstResultIndexPaths, secondResultIndexPaths)
     }
+
+    func test_didScrollAndDidSelectItemAt() {
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: UICollectionViewFlowLayout())
+
+        var didScroll = false
+        collectionView.didScrollPublisher
+            .sink(receiveValue: { didScroll = true })
+            .store(in: &subscriptions)
+
+        var didSelect = false
+        collectionView.didSelectItemPublisher
+            .sink(receiveValue: { _ in didSelect = true })
+            .store(in: &subscriptions)
+
+        collectionView.delegate!.scrollViewDidScroll!(collectionView)
+        collectionView.delegate!.collectionView?(collectionView, didSelectItemAt: .init(row: 0, section: 1))
+
+        XCTAssertEqual(didScroll, true)
+        XCTAssertEqual(didSelect, true)
+    }
 }
