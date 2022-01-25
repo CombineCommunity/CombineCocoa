@@ -118,8 +118,8 @@ public extension UITableView {
             .eraseToAnyPublisher()
     }
 
-    private var delegateProxy: TableViewDelegateProxy {
-        .createDelegateProxy(for: self)
+    override var delegateProxy: DelegateProxy {
+        TableViewDelegateProxy.createDelegateProxy(for: self)
     }
 }
 
