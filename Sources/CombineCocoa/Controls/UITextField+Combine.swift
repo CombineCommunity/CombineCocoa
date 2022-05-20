@@ -33,5 +33,20 @@ public extension UITextField {
     var didBeginEditingPublisher: AnyPublisher<Void, Never> {
         controlEventPublisher(for: .editingDidBegin)
     }
+
+    /// A publisher emitting on end the editing.
+    var didEndEditingPublisher: AnyPublisher<Void, Never> {
+        controlEventPublisher(for: .editingDidEnd)
+    }
+
+    /// A publisher emits on first responder changes
+    var isFirstResponderPublisher: AnyPublisher<Bool, Never> {
+      Just<Void>(())
+        .merge(with: didBeginEditingPublisher, didEndEditingPublisher)
+        .map { [weak self] in
+          self?.isFirstResponder ?? false
+        }
+        .eraseToAnyPublisher()
+    }
 }
 #endif
