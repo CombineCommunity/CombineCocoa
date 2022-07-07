@@ -23,6 +23,7 @@ public extension UITextView {
       textView?.textStorage
         .didProcessEditingRangeChangeInLengthPublisher
         .map { _ in textView?.text }
+        .receive(on: DispatchQueue.main)
         .prepend(textView?.text)
         .eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher()
     }
