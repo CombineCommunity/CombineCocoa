@@ -157,6 +157,8 @@ public extension UICollectionView {
     func useInnerDelegate() {
         innerDelegateWrap = .init()
         innerDelegateWrap?.proxy = CollectionViewDelegateProxy.createDelegateProxy(for: self)
+        innerDelegateWrap?.proxy?.wrap = innerDelegateWrap
+        innerDelegateWrap?.collectionView = self
     }
     
     func removeInnerDelegate() {
@@ -169,49 +171,56 @@ public extension UICollectionView {
         set { objc_setAssociatedObject(self, &UICollectionView.innerDelegateWrapKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
     
+    var flowLayout: UICollectionViewFlowLayout? {
+        collectionViewLayout as? UICollectionViewFlowLayout
+    }
+    
 }
 
 @available(iOS 13.0, *)
 fileprivate class CollectionViewDelegateWrap {
 
     weak var proxy: CollectionViewDelegateProxy?
+    weak var collectionView: UICollectionView?
     
 }
 
 @available(iOS 13.0, *)
 private class CollectionViewDelegateProxy: DelegateProxy, UICollectionViewDelegateFlowLayout, DelegateProxyType {
+    weak var wrap: CollectionViewDelegateWrap?
+    
     func setDelegate(to object: UICollectionView) {
         object.delegate = self
     }
     
-    var cellSizeCallback: (_ indexPath: IndexPath) -> CGSize = { _ in CGSize(width: 0.1, height: 0.1) }
+    var cellSizeCallback: ((_ indexPath: IndexPath) -> CGSize)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        cellSizeCallback(indexPath)
+        cellSizeCallback?(indexPath) ?? wrap?.collectionView?.flowLayout?.itemSize ?? CGSize(width: 0.1, height: 0.1)
     }
 
-    var insetCallback: (_ section: Int) -> UIEdgeInsets = { _ in .zero }
+    var insetCallback: ((_ section: Int) -> UIEdgeInsets)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        insetCallback(section)
+        insetCallback?(section) ?? wrap?.collectionView?.flowLayout?.sectionInset ?? .zero
     }
 
-    var minimumLineSpacingCallback: (_ section: Int) -> CGFloat = { _ in 0 }
+    var minimumLineSpacingCallback: ((_ section: Int) -> CGFloat)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        minimumLineSpacingCallback(section)
+        minimumLineSpacingCallback?(section) ?? wrap?.collectionView?.flowLayout?.minimumLineSpacing ?? 0
     }
 
-    var minimumInteritemSpacingCallback: (_ section: Int) -> CGFloat = { _ in 0 }
+    var minimumInteritemSpacingCallback: ((_ section: Int) -> CGFloat)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        minimumInteritemSpacingCallback(section)
+        minimumInteritemSpacingCallback?(section) ?? wrap?.collectionView?.flowLayout?.minimumInteritemSpacing ?? 0
     }
 
-    var headerSizeCallback: (_ section: Int) -> CGSize = { _ in CGSize(width: 0.1, height: 0.1) }
+    var headerSizeCallback: ((_ section: Int) -> CGSize)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        headerSizeCallback(section)
+        headerSizeCallback?(section) ?? wrap?.collectionView?.flowLayout?.headerReferenceSize ?? .zero
     }
 
-    var footerSizeCallback: (_ section: Int) -> CGSize = { _ in CGSize(width: 0.1, height: 0.1) }
+    var footerSizeCallback: ((_ section: Int) -> CGSize)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        footerSizeCallback(section)
+        footerSizeCallback?(section) ?? wrap?.collectionView?.flowLayout?.footerReferenceSize ?? .zero
     }
 }
 #endif
