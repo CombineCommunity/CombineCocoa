@@ -175,6 +175,10 @@ public extension UICollectionView {
         collectionViewLayout as? UICollectionViewFlowLayout
     }
     
+    override public var delegateProxy: DelegateProxy? {
+        innerDelegateWrap?.proxy
+    }
+    
 }
 
 @available(iOS 13.0, *)
