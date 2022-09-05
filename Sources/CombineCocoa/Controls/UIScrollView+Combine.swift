@@ -1,148 +1,198 @@
 //
-//  UIScrollView+Combine.swift
+//  UITableView+Combine.swift
 //  CombineCocoa
 //
-//  Created by Joan Disho on 09/08/2019.
+//  Created by Joan Disho on 19/01/20.
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
 
-#if !(os(iOS) && (arch(i386) || arch(arm)))
+#if canImport(UIKit) && !(os(iOS) && (arch(i386) || arch(arm)))
+import Foundation
 import UIKit
 import Combine
 
 // swiftlint:disable force_cast
 @available(iOS 13.0, *)
-public extension UIScrollView {
-    /// A publisher emitting content offset changes from this UIScrollView.
-    var contentOffsetPublisher: AnyPublisher<CGPoint, Never> {
-        publisher(for: \.contentOffset)
-            .eraseToAnyPublisher()
-    }
-
-    /// A publisher emitting if the bottom of the UIScrollView is reached.
-    ///
-    /// - parameter offset: A threshold indicating how close to the bottom of the UIScrollView this publisher should emit.
-    ///                     Defaults to 0
-    /// - returns: A publisher that emits when the bottom of the UIScrollView is reached within the provided threshold.
-    func reachedBottomPublisher(offset: CGFloat = 0) -> AnyPublisher<Void, Never> {
-        contentOffsetPublisher
-            .map { [weak self] contentOffset -> Bool in
-                guard let self = self else { return false }
-                let visibleHeight = self.frame.height - self.contentInset.top - self.contentInset.bottom
-                let yDelta = contentOffset.y + self.contentInset.top
-                let threshold = max(offset, self.contentSize.height - visibleHeight)
-                return yDelta > threshold
-            }
-            .removeDuplicates()
-            .filter { $0 }
-            .map { _ in () }
-            .eraseToAnyPublisher()
-    }
-
-    /// Combine wrapper for `scrollViewDidScroll(_:)`
-    var didScrollPublisher: AnyPublisher<Void, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewDidScroll(_:))
+public extension UITableView {
+    /// Combine wrapper for `tableView(_:willDisplay:forRowAt:)`
+    var willDisplayCellPublisher: AnyPublisher<(cell: UITableViewCell, indexPath: IndexPath), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(cell: UITableViewCell, indexPath: IndexPath), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:willDisplay:forRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { _ in () }
+            .map { ($0[1] as! UITableViewCell, $0[2] as! IndexPath) }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewWillBeginDecelerating(_:)`
-    var willBeginDeceleratingPublisher: AnyPublisher<Void, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewWillBeginDecelerating(_:))
+    /// Combine wrapper for `tableView(_:willDisplayHeaderView:forSection:)`
+    var willDisplayHeaderViewPublisher: AnyPublisher<(headerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(headerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:willDisplayHeaderView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { _ in () }
+            .map { ($0[1] as! UIView, $0[2] as! Int) }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewDidEndDecelerating(_:)`
-    var didEndDeceleratingPublisher: AnyPublisher<Void, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewDidEndDecelerating(_:))
+    /// Combine wrapper for `tableView(_:willDisplayFooterView:forSection:)`
+    var willDisplayFooterViewPublisher: AnyPublisher<(footerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(footerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:willDisplayFooterView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { _ in () }
+            .map { ($0[1] as! UIView, $0[2] as! Int) }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewWillBeginDragging(_:)`
-    var willBeginDraggingPublisher: AnyPublisher<Void, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewWillBeginDragging(_:))
+    /// Combine wrapper for `tableView(_:didEndDisplaying:forRowAt:)`
+    var didEndDisplayingCellPublisher: AnyPublisher<(cell: UITableViewCell, indexPath: IndexPath), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(cell: UITableViewCell, indexPath: IndexPath), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didEndDisplaying:forRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { _ in () }
+            .map { ($0[1] as! UITableViewCell, $0[2] as! IndexPath) }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)`
-    var willEndDraggingPublisher: AnyPublisher<(velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>), Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewWillEndDragging(_:withVelocity:targetContentOffset:))
+    /// Combine wrapper for `tableView(_:didEndDisplayingHeaderView:forSection:)`
+    var didEndDisplayingHeaderViewPublisher: AnyPublisher<(headerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(headerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didEndDisplayingHeaderView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { values in
-                let targetContentOffsetValue = values[2] as! NSValue
-                let rawPointer = targetContentOffsetValue.pointerValue!
-
-                return (values[1] as! CGPoint, rawPointer.bindMemory(to: CGPoint.self, capacity: MemoryLayout<CGPoint>.size))
-            }
+            .map { ($0[1] as! UIView, $0[2] as! Int) }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewDidEndDragging(_:willDecelerate:)`
-    var didEndDraggingPublisher: AnyPublisher<Bool, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewDidEndDragging(_:willDecelerate:))
+    /// Combine wrapper for `tableView(_:didEndDisplayingFooterView:forSection:)`
+    var didEndDisplayingFooterView: AnyPublisher<(headerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(headerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didEndDisplayingFooterView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { $0[1] as! Bool }
+            .map { ($0[1] as! UIView, $0[2] as! Int) }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewDidZoom(_:)`
-    var didZoomPublisher: AnyPublisher<Void, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewDidZoom(_:))
+    /// Combine wrapper for `tableView(_:accessoryButtonTappedForRowWith:)`
+    var itemAccessoryButtonTappedPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:accessoryButtonTappedForRowWith:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { _ in () }
+            .map { $0[1] as! IndexPath }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewDidScrollToTop(_:)`
-    var didScrollToTopPublisher: AnyPublisher<Void, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewDidScrollToTop(_:))
+    /// Combine wrapper for `tableView(_:didHighlightRowAt:)`
+    var didHighlightRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didHighlightRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { _ in () }
+            .map { $0[1] as! IndexPath }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewDidEndScrollingAnimation(_:)`
-    var didEndScrollingAnimationPublisher: AnyPublisher<Void, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewDidEndScrollingAnimation(_:))
+    /// Combine wrapper for `tableView(_:didUnHighlightRowAt:)`
+    var didUnhighlightRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didUnhighlightRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { _ in () }
+            .map { $0[1] as! IndexPath }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewWillBeginZooming(_:with:)`
-    var willBeginZoomingPublisher: AnyPublisher<UIView?, Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewWillBeginZooming(_:with:))
+    /// Combine wrapper for `tableView(_:didSelectRowAt:)`
+    var didSelectRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didSelectRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { $0[1] as! UIView? }
+            .map { $0[1] as! IndexPath }
             .eraseToAnyPublisher()
     }
 
-    /// Combine wrapper for `scrollViewDidEndZooming(_:with:atScale:)`
-    var didEndZooming: AnyPublisher<(view: UIView?, scale: CGFloat), Never> {
-        let selector = #selector(UIScrollViewDelegate.scrollViewDidEndZooming(_:with:atScale:))
+    /// Combine wrapper for `tableView(_:didDeselectRowAt:)`
+    var didDeselectRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didDeselectRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
-            .map { ($0[1] as! UIView?, $0[2] as! CGFloat) }
+            .map { $0[1] as! IndexPath }
             .eraseToAnyPublisher()
     }
 
-    @objc var delegateProxy: DelegateProxy {
-        ScrollViewDelegateProxy.createDelegateProxy(for: self)
+    /// Combine wrapper for `tableView(_:willBeginEditingRowAt:)`
+    var willBeginEditingRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:willBeginEditingRowAt:))
+        return delegateProxy.interceptSelectorPublisher(selector)
+            .map { $0[1] as! IndexPath }
+            .eraseToAnyPublisher()
+    }
+
+    /// Combine wrapper for `tableView(_:didEndEditingRowAt:)`
+    var didEndEditingRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
+        let selector = #selector(UITableViewDelegate.tableView(_:didEndEditingRowAt:))
+        return delegateProxy.interceptSelectorPublisher(selector)
+            .map { $0[1] as! IndexPath }
+            .eraseToAnyPublisher()
+    }
+
+    override public var delegateProxy: DelegateProxy? {
+        TableViewDelegateProxy.createDelegateProxy(for: self)
     }
 }
 
 @available(iOS 13.0, *)
-private class ScrollViewDelegateProxy: DelegateProxy, UIScrollViewDelegate, DelegateProxyType {
-    func setDelegate(to object: UIScrollView) {
+private class TableViewDelegateProxy: DelegateProxy, UITableViewDelegate, DelegateProxyType {
+    func setDelegate(to object: UITableView) {
         object.delegate = self
     }
 }
 #endif
 // swiftlint:enable force_cast
-
