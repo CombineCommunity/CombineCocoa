@@ -204,17 +204,20 @@ private class CollectionViewDelegateProxy: DelegateProxy, UICollectionViewDelega
 
     var insetCallback: ((_ section: Int) -> UIEdgeInsets)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        insetCallback?(section) ?? wrap?.collectionView?.flowLayout?.sectionInset ?? .zero
+        let result = insetCallback?(section) ?? wrap?.collectionView?.flowLayout?.sectionInset ?? .zero
+        return result
     }
 
     var minimumLineSpacingCallback: ((_ section: Int) -> CGFloat)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        minimumLineSpacingCallback?(section) ?? wrap?.collectionView?.flowLayout?.minimumLineSpacing ?? 0
+        let result = minimumLineSpacingCallback?(section) ?? wrap?.collectionView?.flowLayout?.minimumLineSpacing ?? 0
+        return max(result - 0.5, 0)
     }
 
     var minimumInteritemSpacingCallback: ((_ section: Int) -> CGFloat)?
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        minimumInteritemSpacingCallback?(section) ?? wrap?.collectionView?.flowLayout?.minimumInteritemSpacing ?? 0
+        let result = minimumInteritemSpacingCallback?(section) ?? wrap?.collectionView?.flowLayout?.minimumInteritemSpacing ?? 0
+        return max(result - 0.5, 0)
     }
 
     var headerSizeCallback: ((_ section: Int) -> CGSize)?
