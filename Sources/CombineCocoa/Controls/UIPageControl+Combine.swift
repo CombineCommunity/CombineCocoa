@@ -10,7 +10,7 @@
 import Combine
 import UIKit
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension UIPageControl {
     /// A publisher emitting current page changes for this page control.
     var currentPagePublisher: AnyPublisher<Int, Never> {

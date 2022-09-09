@@ -10,7 +10,7 @@
 import Combine
 import UIKit
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension UIButton {
     /// A publisher emitting tap events from this button.
     var tapPublisher: AnyPublisher<Void, Never> {

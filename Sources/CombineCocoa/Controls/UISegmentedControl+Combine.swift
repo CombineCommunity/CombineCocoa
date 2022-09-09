@@ -10,7 +10,7 @@
 import Combine
 import UIKit
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension UISegmentedControl {
     /// A publisher emitting selected segment index changes for this segmented control.
     var selectedSegmentIndexPublisher: AnyPublisher<Int, Never> {

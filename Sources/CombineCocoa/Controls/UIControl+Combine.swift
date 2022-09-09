@@ -10,7 +10,7 @@
 import Combine
 import UIKit
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension UIControl {
     /// A publisher emitting events from this control.
     func controlEventPublisher(for events: UIControl.Event) -> AnyPublisher<Void, Never> {

@@ -10,7 +10,7 @@
 import Combine
 import UIKit
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension UITextField {
     /// A publisher emitting any text changes to a this text field.
     var textPublisher: AnyPublisher<String?, Never> {
