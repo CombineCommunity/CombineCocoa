@@ -13,7 +13,7 @@ import UIKit
 @available(iOS 13.0, *)
 public extension UIButton {
     /// A publisher emitting tap events from this button.
-    var tapPublisher: AnyPublisher<Void, Never> {
+    var clickPublisher: AnyPublisher<Void, Never> {
         controlEventPublisher(for: .touchUpInside)
     }
 }
