@@ -1,5 +1,5 @@
 PODS:
-  - CombineCocoa (0.4.0)
+  - CombineCocoa (0.4.1)
 
 DEPENDENCIES:
   - CombineCocoa (from `../`)
