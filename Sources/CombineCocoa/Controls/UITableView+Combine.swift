@@ -16,6 +16,11 @@ import Combine
 public extension UITableView {
     /// Combine wrapper for `tableView(_:willDisplay:forRowAt:)`
     var willDisplayCellPublisher: AnyPublisher<(cell: UITableViewCell, indexPath: IndexPath), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(cell: UITableViewCell, indexPath: IndexPath), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:willDisplay:forRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { ($0[1] as! UITableViewCell, $0[2] as! IndexPath) }
@@ -24,6 +29,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:willDisplayHeaderView:forSection:)`
     var willDisplayHeaderViewPublisher: AnyPublisher<(headerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(headerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:willDisplayHeaderView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { ($0[1] as! UIView, $0[2] as! Int) }
@@ -32,6 +42,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:willDisplayFooterView:forSection:)`
     var willDisplayFooterViewPublisher: AnyPublisher<(footerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(footerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:willDisplayFooterView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { ($0[1] as! UIView, $0[2] as! Int) }
@@ -40,6 +55,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didEndDisplaying:forRowAt:)`
     var didEndDisplayingCellPublisher: AnyPublisher<(cell: UITableViewCell, indexPath: IndexPath), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(cell: UITableViewCell, indexPath: IndexPath), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didEndDisplaying:forRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { ($0[1] as! UITableViewCell, $0[2] as! IndexPath) }
@@ -48,6 +68,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didEndDisplayingHeaderView:forSection:)`
     var didEndDisplayingHeaderViewPublisher: AnyPublisher<(headerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(headerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didEndDisplayingHeaderView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { ($0[1] as! UIView, $0[2] as! Int) }
@@ -56,6 +81,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didEndDisplayingFooterView:forSection:)`
     var didEndDisplayingFooterView: AnyPublisher<(headerView: UIView, section: Int), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(headerView: UIView, section: Int), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didEndDisplayingFooterView:forSection:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { ($0[1] as! UIView, $0[2] as! Int) }
@@ -64,6 +94,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:accessoryButtonTappedForRowWith:)`
     var itemAccessoryButtonTappedPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:accessoryButtonTappedForRowWith:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! IndexPath }
@@ -72,6 +107,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didHighlightRowAt:)`
     var didHighlightRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didHighlightRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! IndexPath }
@@ -80,6 +120,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didUnHighlightRowAt:)`
     var didUnhighlightRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didUnhighlightRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! IndexPath }
@@ -88,6 +133,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didSelectRowAt:)`
     var didSelectRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didSelectRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! IndexPath }
@@ -96,6 +146,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didDeselectRowAt:)`
     var didDeselectRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didDeselectRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! IndexPath }
@@ -104,6 +159,11 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:willBeginEditingRowAt:)`
     var willBeginEditingRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:willBeginEditingRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! IndexPath }
@@ -112,13 +172,18 @@ public extension UITableView {
 
     /// Combine wrapper for `tableView(_:didEndEditingRowAt:)`
     var didEndEditingRowPublisher: AnyPublisher<IndexPath, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<IndexPath, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UITableViewDelegate.tableView(_:didEndEditingRowAt:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! IndexPath }
             .eraseToAnyPublisher()
     }
 
-    override var delegateProxy: DelegateProxy {
+    override public var delegateProxy: DelegateProxy? {
         TableViewDelegateProxy.createDelegateProxy(for: self)
     }
 }

@@ -5,7 +5,6 @@
 //  Created by Joan Disho on 09/08/2019.
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
-
 #if !(os(iOS) && (arch(i386) || arch(arm)))
 import UIKit
 import Combine
@@ -41,6 +40,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewDidScroll(_:)`
     var didScrollPublisher: AnyPublisher<Void, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Void, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewDidScroll(_:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { _ in () }
@@ -49,6 +53,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewWillBeginDecelerating(_:)`
     var willBeginDeceleratingPublisher: AnyPublisher<Void, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Void, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewWillBeginDecelerating(_:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { _ in () }
@@ -57,6 +66,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewDidEndDecelerating(_:)`
     var didEndDeceleratingPublisher: AnyPublisher<Void, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Void, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewDidEndDecelerating(_:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { _ in () }
@@ -65,6 +79,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewWillBeginDragging(_:)`
     var willBeginDraggingPublisher: AnyPublisher<Void, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Void, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewWillBeginDragging(_:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { _ in () }
@@ -73,6 +92,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)`
     var willEndDraggingPublisher: AnyPublisher<(velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewWillEndDragging(_:withVelocity:targetContentOffset:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { values in
@@ -86,6 +110,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewDidEndDragging(_:willDecelerate:)`
     var didEndDraggingPublisher: AnyPublisher<Bool, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Bool, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewDidEndDragging(_:willDecelerate:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! Bool }
@@ -94,6 +123,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewDidZoom(_:)`
     var didZoomPublisher: AnyPublisher<Void, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Void, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewDidZoom(_:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { _ in () }
@@ -102,6 +136,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewDidScrollToTop(_:)`
     var didScrollToTopPublisher: AnyPublisher<Void, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Void, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewDidScrollToTop(_:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { _ in () }
@@ -110,6 +149,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewDidEndScrollingAnimation(_:)`
     var didEndScrollingAnimationPublisher: AnyPublisher<Void, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<Void, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewDidEndScrollingAnimation(_:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { _ in () }
@@ -118,6 +162,11 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewWillBeginZooming(_:with:)`
     var willBeginZoomingPublisher: AnyPublisher<UIView?, Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<UIView?, Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewWillBeginZooming(_:with:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { $0[1] as! UIView? }
@@ -126,13 +175,18 @@ public extension UIScrollView {
 
     /// Combine wrapper for `scrollViewDidEndZooming(_:with:atScale:)`
     var didEndZooming: AnyPublisher<(view: UIView?, scale: CGFloat), Never> {
+        guard let delegateProxy = delegateProxy else {
+            return Empty<(view: UIView?, scale: CGFloat), Never>(completeImmediately: false)
+                .eraseToAnyPublisher()
+        }
+        
         let selector = #selector(UIScrollViewDelegate.scrollViewDidEndZooming(_:with:atScale:))
         return delegateProxy.interceptSelectorPublisher(selector)
             .map { ($0[1] as! UIView?, $0[2] as! CGFloat) }
             .eraseToAnyPublisher()
     }
 
-    @objc var delegateProxy: DelegateProxy {
+    @objc var delegateProxy: DelegateProxy? {
         ScrollViewDelegateProxy.createDelegateProxy(for: self)
     }
 }
