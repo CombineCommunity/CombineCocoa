@@ -193,4 +193,32 @@ class UIScrollViewTests: XCTestCase {
         XCTAssertEqual(resultView, givenView)
         XCTAssertEqual(resultScale, givenScale)
     }
+
+    func test_setDelegate() {
+        let scrollView = UIScrollView()
+        let delegate = StubScrollViewDelegate()
+
+        var didScroll = false
+
+        scrollView.didScrollPublisher
+            .sink(receiveValue: { didScroll = true })
+            .store(in: &subscriptions)
+        
+        scrollView.setDelegate(delegate)
+            .store(in: &subscriptions)
+
+        scrollView.delegate!.scrollViewDidScroll!(scrollView)
+        let viewForZooming = scrollView.delegate!.viewForZooming!(in: scrollView)
+
+        XCTAssertEqual(didScroll, true)
+        XCTAssertEqual(viewForZooming, StubScrollViewDelegate.view)
+    }
+}
+
+private class StubScrollViewDelegate: NSObject, UIScrollViewDelegate {
+    static let view = UIView()
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        Self.view
+    }
 }

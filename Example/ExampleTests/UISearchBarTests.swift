@@ -55,4 +55,34 @@ class UISearchBarTests: XCTestCase {
         XCTAssertEqual(clicked, true)
         subscription.cancel()
     }
+
+    func test_setDelegate() {
+        var subscriptions = Set<AnyCancellable>()
+        let searchbar = UISearchBar()
+        let delegate = StubSearchBarDelegate()
+
+        var resultSearchText = ""
+
+        searchbar.textDidChangePublisher
+            .sink(receiveValue: { resultSearchText = $0 })
+            .store(in: &subscriptions)
+        
+        searchbar.setDelegate(delegate)
+            .store(in: &subscriptions)
+
+        let givenSearchText = "Hello world"
+        searchbar.delegate!.searchBar!(searchbar, textDidChange: givenSearchText)
+        let shouldBeginEditing = searchbar.delegate!.searchBarShouldBeginEditing!(searchbar)
+
+        XCTAssertEqual(resultSearchText, givenSearchText)
+        XCTAssertEqual(shouldBeginEditing, StubSearchBarDelegate.shouldBeginEditing)
+    }
+}
+
+private class StubSearchBarDelegate: NSObject, UISearchBarDelegate {
+    static let shouldBeginEditing = true
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        Self.shouldBeginEditing
+    }
 }
