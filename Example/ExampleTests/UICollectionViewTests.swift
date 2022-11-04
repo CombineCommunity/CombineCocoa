@@ -130,4 +130,33 @@ class UICollectionViewTests: XCTestCase {
         XCTAssertEqual(didScroll, true)
         XCTAssertEqual(didSelect, true)
     }
+
+    func test_setDelegate() {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let delegate = StubCollectionViewDelegate()
+
+        var resultIndexPath: IndexPath? = nil
+
+        collectionView.didSelectItemPublisher
+            .sink(receiveValue: { resultIndexPath = $0 })
+            .store(in: &subscriptions)
+        
+        collectionView.setDelegate(delegate)
+            .store(in: &subscriptions)
+
+        let givenIndexPath = IndexPath(row: 1, section: 0)
+        collectionView.delegate!.collectionView!(collectionView, didSelectItemAt: givenIndexPath)
+        let offset = collectionView.delegate!.collectionView!(collectionView, targetContentOffsetForProposedContentOffset: CGPoint(x: 0, y: 0))
+
+        XCTAssertEqual(resultIndexPath, givenIndexPath)
+        XCTAssertEqual(offset, StubCollectionViewDelegate.offset)
+    }
+}
+
+private class StubCollectionViewDelegate: NSObject, UICollectionViewDelegate {
+    static let offset = CGPoint(x: 1, y: 2)
+    
+    func collectionView( _ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint ) -> CGPoint {
+        Self.offset
+    }
 }

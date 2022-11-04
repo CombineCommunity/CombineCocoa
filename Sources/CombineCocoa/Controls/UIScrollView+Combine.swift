@@ -135,14 +135,19 @@ public extension UIScrollView {
     @objc var delegateProxy: DelegateProxy {
         ScrollViewDelegateProxy.createDelegateProxy(for: self)
     }
+
+    func setDelegate(_ delegate: UIScrollViewDelegate) -> Cancellable {
+        ScrollViewDelegateProxy.installForwardDelegate(delegate, for: self)
+    }
 }
 
 @available(iOS 13.0, *)
 private class ScrollViewDelegateProxy: DelegateProxy, UIScrollViewDelegate, DelegateProxyType {
+    typealias Delegate = UIScrollViewDelegate
+
     func setDelegate(to object: UIScrollView) {
         object.delegate = self
     }
 }
 #endif
 // swiftlint:enable force_cast
-

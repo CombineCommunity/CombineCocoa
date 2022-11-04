@@ -121,10 +121,16 @@ public extension UITableView {
     override var delegateProxy: DelegateProxy {
         TableViewDelegateProxy.createDelegateProxy(for: self)
     }
+
+    func setDelegate(_ delegate: UITableViewDelegate) -> Cancellable {
+        TableViewDelegateProxy.installForwardDelegate(delegate, for: self)
+    }
 }
 
 @available(iOS 13.0, *)
 private class TableViewDelegateProxy: DelegateProxy, UITableViewDelegate, DelegateProxyType {
+    typealias Delegate = UITableViewDelegate
+
     func setDelegate(to object: UITableView) {
         object.delegate = self
     }

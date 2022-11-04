@@ -14,6 +14,11 @@
 
 static NSMutableDictionary<NSValue *, NSSet<NSValue *> *> *allSelectors;
 
+@interface ObjcDelegateProxy () {
+    id __weak forwardToDelegate;
+}
+@end
+
 @implementation ObjcDelegateProxy
 
 - (NSSet *)selectors {
@@ -41,16 +46,28 @@ static NSMutableDictionary<NSValue *, NSSet<NSValue *> *> *allSelectors;
             return true;
         }
     }
+    
+    if (forwardToDelegate && [forwardToDelegate respondsToSelector:selector]) {
+        return true;
+    }
 
     return false;
 }
 
 - (void)interceptedSelector:(SEL _Nonnull)selector arguments:(NSArray * _Nonnull)arguments {}
 
+-(void)_setForwardToDelegate:(id __nullable)forwardToDelegate {
+    self->forwardToDelegate = forwardToDelegate;
+}
+
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     NSArray * _Nonnull arguments = unpackInvocation(anInvocation);
     [self interceptedSelector:anInvocation.selector arguments:arguments];
+    
+    if (forwardToDelegate && [forwardToDelegate respondsToSelector:anInvocation.selector]) {
+        [anInvocation invokeWithTarget:forwardToDelegate];
+    }
 }
 
 NSArray * _Nonnull unpackInvocation(NSInvocation * _Nonnull invocation) {

@@ -124,4 +124,35 @@ class UITableViewTests: XCTestCase {
         XCTAssertEqual(firstResultIndexPaths, [givenIndexPath])
         XCTAssertEqual(firstResultIndexPaths, secondResultIndexPaths)
     }
+
+    func test_setDelegate() {
+        let tableView = UITableView()
+        let delegate = StubTableViewDelegate()
+
+        var resultIndexPath: IndexPath? = nil
+
+        tableView.didSelectRowPublisher
+            .sink(receiveValue: { resultIndexPath = $0 })
+            .store(in: &subscriptions)
+        
+        tableView.setDelegate(delegate)
+            .store(in: &subscriptions)
+
+        let givenIndexPath = IndexPath(row: 1, section: 0)
+        tableView.delegate!.tableView!(tableView, didSelectRowAt: givenIndexPath)
+        let selector = #selector(UITableViewDelegate.tableView(_:heightForRowAt:))
+        let height = tableView.delegate!.tableView!(tableView, heightForRowAt: givenIndexPath)
+
+        XCTAssertTrue(tableView.delegate!.responds(to: selector))
+        XCTAssertEqual(resultIndexPath, givenIndexPath)
+        XCTAssertEqual(height, StubTableViewDelegate.height)
+    }
+}
+
+private class StubTableViewDelegate: NSObject, UITableViewDelegate {
+    static let height = 10.0
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        Self.height
+    }
 }
