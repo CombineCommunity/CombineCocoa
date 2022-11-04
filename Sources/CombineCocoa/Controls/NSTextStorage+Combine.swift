@@ -32,10 +32,6 @@ public extension NSTextStorage {
   private var delegateProxy: NSTextStorageDelegateProxy {
       .createDelegateProxy(for: self)
   }
-
-  func setDelegate(_ delegate: NSTextStorageDelegate) -> Cancellable {
-      NSTextStorageDelegateProxy.installForwardDelegate(delegate, for: self)
-  }
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
