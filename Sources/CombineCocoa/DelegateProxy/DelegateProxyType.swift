@@ -35,16 +35,10 @@ public extension DelegateProxyType where Self: DelegateProxy {
     /// - parameter object: Object that has `delegate` property.
     /// - returns: Cancellable object that can be used to clear forward delegate.
     static func installForwardDelegate(_ forwardDelegate: Delegate, for object: Object) -> Cancellable {
-        weak var weakForwardDelegate: AnyObject? = forwardDelegate as AnyObject
-
         let delegateProxy = proxy(for: object)
         delegateProxy.setForwardToDelegate(forwardDelegate)
 
         return AnyCancellable {
-            let delegate: AnyObject? = weakForwardDelegate
-
-            assert(delegate == nil || delegateProxy.forwardToDelegate() === delegate, "Delegate was changed from time it was first set. Current \(String(describing: delegateProxy.forwardToDelegate())), and it should have been \(delegateProxy)")
-
             delegateProxy.setForwardToDelegate(nil)
         }
     }
@@ -70,10 +64,6 @@ public extension DelegateProxyType where Self: DelegateProxy {
     /// - parameter delegate: Reference of delegate that receives all messages through `self`.
     func setForwardToDelegate(_ delegate: Delegate?) {
         self._setForwardToDelegate(delegate)
-    }
-
-    private func forwardToDelegate() -> AnyObject? {
-        self._forwardToDelegate.map { $0 as AnyObject }
     }
 }
 #endif

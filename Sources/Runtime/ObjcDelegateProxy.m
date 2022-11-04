@@ -52,10 +52,6 @@ static NSMutableDictionary<NSValue *, NSSet<NSValue *> *> *allSelectors;
 
 - (void)interceptedSelector:(SEL _Nonnull)selector arguments:(NSArray * _Nonnull)arguments {}
 
-- (id)_forwardToDelegate {
-    return self->forwardToDelegate;
-}
-
 -(void)_setForwardToDelegate:(id __nullable)forwardToDelegate {
     self->forwardToDelegate = forwardToDelegate;
 }
