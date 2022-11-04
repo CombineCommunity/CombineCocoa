@@ -43,10 +43,16 @@ public extension UISearchBar {
     private var delegateProxy: UISearchBarDelegateProxy {
         .createDelegateProxy(for: self)
     }
+
+    func setDelegate(_ delegate: UISearchBarDelegate) -> Cancellable {
+        UISearchBarDelegateProxy.installForwardDelegate(delegate, for: self)
+    }
 }
 
 @available(iOS 13.0, *)
 private class UISearchBarDelegateProxy: DelegateProxy, UISearchBarDelegate, DelegateProxyType {
+    typealias Delegate = UISearchBarDelegate
+
     func setDelegate(to object: UISearchBar) {
         object.delegate = self
     }

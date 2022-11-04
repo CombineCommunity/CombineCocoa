@@ -81,10 +81,16 @@ public extension UICollectionView {
     override var delegateProxy: DelegateProxy {
         CollectionViewDelegateProxy.createDelegateProxy(for: self)
     }
+
+    func setDelegate(_ delegate: UICollectionViewDelegate) -> Cancellable {
+        CollectionViewDelegateProxy.installForwardDelegate(delegate, for: self)
+    }
 }
 
 @available(iOS 13.0, *)
 private class CollectionViewDelegateProxy: DelegateProxy, UICollectionViewDelegate, DelegateProxyType {
+    typealias Delegate = UICollectionViewDelegate
+
     func setDelegate(to object: UICollectionView) {
         object.delegate = self
     }
