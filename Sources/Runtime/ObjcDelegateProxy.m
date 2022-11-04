@@ -46,6 +46,10 @@ static NSMutableDictionary<NSValue *, NSSet<NSValue *> *> *allSelectors;
             return true;
         }
     }
+    
+    if (forwardToDelegate) {
+        return [forwardToDelegate respondsToSelector:selector];
+    }
 
     return false;
 }
