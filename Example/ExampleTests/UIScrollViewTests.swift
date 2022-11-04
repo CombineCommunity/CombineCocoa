@@ -88,9 +88,9 @@ class UIScrollViewTests: XCTestCase {
             .store(in: &subscriptions)
 
         let givenVelocity: CGPoint = .init(x: 42, y: 42)
-        let givenTargetContentOffset: UnsafeMutablePointer<CGPoint> = UnsafeMutablePointer<CGPoint> .allocate(capacity: 1)
+        let givenTargetContentOffset: UnsafeMutablePointer<CGPoint> = UnsafeMutablePointer<CGPoint>.allocate(capacity: 1)
 
-        defer { givenTargetContentOffset.deallocate(capacity: 1) }
+        defer { givenTargetContentOffset.deallocate() }
 
         scrollView.delegate!.scrollViewWillEndDragging!(scrollView, withVelocity: givenVelocity, targetContentOffset: givenTargetContentOffset)
 
