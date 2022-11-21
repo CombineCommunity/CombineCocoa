@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ib-BL-pNq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ib-BL-pNq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -53,7 +55,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="P4e-Ie-0W8">
                                         <rect key="frame" x="0.0" y="119" width="382" height="31"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utR-GO-fQs" userLabel="Tap this button">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utR-GO-fQs" userLabel="Tap this button">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
                                                 <state key="normal" title="Tap this button"/>
                                             </button>
@@ -68,24 +70,39 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Events:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CVe-Hd-do1" userLabel="Debug Text View">
-                                <rect key="frame" x="16" y="514" width="382" height="348"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="16" y="514" width="382" height="288"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0l-ab-jMZ">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="uzX-ud-E4R"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="first tab" image="1.circle" catalog="system" badgeValue="1" id="NqF-BG-elX"/>
+                                    <tabBarItem title="second tab" image="2.circle" catalog="system" badgeValue="2" id="Dwd-8P-Jhm"/>
+                                    <tabBarItem title="third tab" image="3.circle" catalog="system" badgeValue="3" id="jZo-uA-PmX"/>
+                                </items>
+                            </tabBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="PSG-wD-zhs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="k0l-ab-jMZ" firstAttribute="top" secondItem="CVe-Hd-do1" secondAttribute="bottom" constant="10" id="382-hP-BZc"/>
                             <constraint firstItem="PSG-wD-zhs" firstAttribute="trailing" secondItem="7by-4H-6wI" secondAttribute="trailing" constant="16" id="63g-lD-KyA"/>
                             <constraint firstItem="7by-4H-6wI" firstAttribute="top" secondItem="PSG-wD-zhs" secondAttribute="top" id="FQB-eU-nn2"/>
-                            <constraint firstItem="CVe-Hd-do1" firstAttribute="bottom" secondItem="PSG-wD-zhs" secondAttribute="bottom" id="Gib-yb-1r0"/>
                             <constraint firstItem="7by-4H-6wI" firstAttribute="leading" secondItem="PSG-wD-zhs" secondAttribute="leading" constant="16" id="ITW-9U-GzR"/>
                             <constraint firstItem="CVe-Hd-do1" firstAttribute="trailing" secondItem="tm0-m6-nJj" secondAttribute="trailing" id="QfS-va-pHA"/>
+                            <constraint firstItem="k0l-ab-jMZ" firstAttribute="leading" secondItem="PSG-wD-zhs" secondAttribute="leading" id="bcD-CH-ZCE"/>
                             <constraint firstItem="CVe-Hd-do1" firstAttribute="leading" secondItem="tm0-m6-nJj" secondAttribute="leading" id="iOA-eM-f8x"/>
+                            <constraint firstAttribute="trailing" secondItem="k0l-ab-jMZ" secondAttribute="trailing" id="lab-i5-lIe"/>
                             <constraint firstItem="CVe-Hd-do1" firstAttribute="top" secondItem="7by-4H-6wI" secondAttribute="bottom" id="tTk-F5-1v3"/>
+                            <constraint firstItem="k0l-ab-jMZ" firstAttribute="bottom" secondItem="PSG-wD-zhs" secondAttribute="bottom" id="vZX-sa-7c8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PSG-wD-zhs"/>
                     </view>
                     <navigationItem key="navigationItem" title="CombineCocoa" largeTitleDisplayMode="always" id="Gpl-hh-ZcW">
                         <barButtonItem key="rightBarButtonItem" title="Tap Me!" id="bua-r4-BCr"/>
@@ -98,6 +115,7 @@
                         <outlet property="segmented" destination="Fjj-bk-JKz" id="Tv8-hI-TDa"/>
                         <outlet property="slider" destination="Cbi-R7-6Un" id="0ch-Ae-cSx"/>
                         <outlet property="switch" destination="C3j-RG-2yZ" id="d7g-oY-SUh"/>
+                        <outlet property="tabBar" destination="k0l-ab-jMZ" id="ARX-w8-w4U"/>
                         <outlet property="textField" destination="A4E-5S-bfr" id="KlI-N5-d6X"/>
                     </connections>
                 </viewController>
@@ -106,4 +124,15 @@
             <point key="canvasLocation" x="192.75362318840581" y="-4.0178571428571423"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1.circle" catalog="system" width="128" height="121"/>
+        <image name="2.circle" catalog="system" width="128" height="121"/>
+        <image name="3.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
