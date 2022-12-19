@@ -18,7 +18,7 @@ public extension UITextView {
   ///         autocorrect changes are reflected as well.
   ///
   /// - seealso: https://git.io/JJM5Q
-  var valuePublisher: AnyPublisher<String?, Never> {
+  var textValuePublisher: AnyPublisher<String?, Never> {
     Deferred { [weak textView = self] in
       textView?.textStorage
         .didProcessEditingRangeChangeInLengthPublisher
@@ -28,7 +28,20 @@ public extension UITextView {
     }
     .eraseToAnyPublisher()
   }
-
-  var textPublisher: AnyPublisher<String?, Never> { valuePublisher }
+  
+  var attributedTextValuePublisher: AnyPublisher<NSAttributedString?, Never> {
+    Deferred { [weak textView = self] in
+      textView?.textStorage
+        .didProcessEditingRangeChangeInLengthPublisher
+        .map { _ in textView?.attributedText }
+        .prepend(textView?.attributedText)
+        .eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher()
+    }
+    .eraseToAnyPublisher()
+  }
+  
+  var attributedTextPublisher: AnyPublisher<NSAttributedString?, Never> { attributedTextValuePublisher }
+  
+  var textPublisher: AnyPublisher<String?, Never> { textValuePublisher }
 }
 #endif
