@@ -77,9 +77,28 @@ public extension UICollectionView {
             .map { ($0[1] as! UICollectionReusableView, $0[2] as! String, $0[3] as! IndexPath) }
             .eraseToAnyPublisher()
     }
+    
+    /// Combine wrapper for `tableView(_:prefetchRowsAt:)`
+    var prefetchItemsAtPublisher: AnyPublisher<[IndexPath], Never> {
+        return (prefetchingDelegateProxy as! CollectionViewDataSourcePrefetchingProxy)
+            .prefetchItemsSubject
+            .eraseToAnyPublisher()
+    }
+    
+    /// Combine wrapper for `tableView(_:cancelPrefetchingForRowsAt:)`
+    var cancelPrefetchingForItemsAtPublisher: AnyPublisher<[IndexPath], Never> {
+        let selector = #selector(UICollectionViewDataSourcePrefetching.collectionView(_:cancelPrefetchingForItemsAt:))
+        return prefetchingDelegateProxy.interceptSelectorPublisher(selector)
+            .map { ($0[1]) as! [IndexPath] }
+            .eraseToAnyPublisher()
+    }
 
     override var delegateProxy: DelegateProxy {
         CollectionViewDelegateProxy.createDelegateProxy(for: self)
+    }
+    
+    var prefetchingDelegateProxy: DelegateProxy {
+        CollectionViewDataSourcePrefetchingProxy.createDelegateProxy(for: self)
     }
 }
 
@@ -87,6 +106,19 @@ public extension UICollectionView {
 private class CollectionViewDelegateProxy: DelegateProxy, UICollectionViewDelegate, DelegateProxyType {
     func setDelegate(to object: UICollectionView) {
         object.delegate = self
+    }
+}
+
+@available(iOS 13.0, *)
+internal class CollectionViewDataSourcePrefetchingProxy: DelegateProxy, UICollectionViewDataSourcePrefetching, DelegateProxyType {
+    internal let prefetchItemsSubject = PassthroughSubject<[IndexPath], Never>()
+    
+    func setDelegate(to object: UICollectionView) {
+        object.prefetchDataSource = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        prefetchItemsSubject.send(indexPaths)
     }
 }
 #endif
