@@ -117,9 +117,28 @@ public extension UITableView {
             .map { $0[1] as! IndexPath }
             .eraseToAnyPublisher()
     }
+    
+    /// Combine wrapper for `tableView(_:prefetchRowsAt:)`
+    var prefetchItemsAtPublisher: AnyPublisher<[IndexPath], Never> {
+        return (prefetchingDelegateProxy as! TableViewDataSourcePrefetchingProxy)
+            .prefetchItemsSubject
+            .eraseToAnyPublisher()
+    }
+    
+    /// Combine wrapper for `tableView(_:cancelPrefetchingForRowsAt:)`
+    var cancelPrefetchingForItemsAtPublisher: AnyPublisher<[IndexPath], Never> {
+        let selector = #selector(UITableViewDataSourcePrefetching.tableView(_:cancelPrefetchingForRowsAt:))
+        return prefetchingDelegateProxy.interceptSelectorPublisher(selector)
+            .map { ($0[1]) as! [IndexPath] }
+            .eraseToAnyPublisher()
+    }
 
     override var delegateProxy: DelegateProxy {
         TableViewDelegateProxy.createDelegateProxy(for: self)
+    }
+    
+    var prefetchingDelegateProxy: DelegateProxy {
+        TableViewDataSourcePrefetchingProxy.createDelegateProxy(for: self)
     }
 }
 
@@ -127,6 +146,19 @@ public extension UITableView {
 private class TableViewDelegateProxy: DelegateProxy, UITableViewDelegate, DelegateProxyType {
     func setDelegate(to object: UITableView) {
         object.delegate = self
+    }
+}
+
+@available(iOS 13.0, *)
+internal class TableViewDataSourcePrefetchingProxy: DelegateProxy, UITableViewDataSourcePrefetching, DelegateProxyType {
+    internal let prefetchItemsSubject = PassthroughSubject<[IndexPath], Never>()
+    
+    func setDelegate(to object: UITableView) {
+        object.prefetchDataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        prefetchItemsSubject.send(indexPaths)
     }
 }
 #endif
