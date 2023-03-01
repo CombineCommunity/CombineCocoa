@@ -57,6 +57,16 @@ public extension UITextView {
       .eraseToAnyPublisher()
   }
 
+  /// A publisher emits on selected range changes
+  var selectedRangePublisher: AnyPublisher<NSRange, Never> {
+    let selector = #selector(UITextViewDelegate.textViewDidChangeSelection(_:))
+    return delegateProxy.interceptSelectorPublisher(selector)
+        .compactMap { [weak self] _ in
+          self?.selectedRange
+        }
+        .eraseToAnyPublisher()
+  }
+
   @objc override var delegateProxy: DelegateProxy {
       TextViewDelegateProxy.createDelegateProxy(for: self)
   }
