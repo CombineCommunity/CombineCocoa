@@ -30,5 +30,52 @@ public extension UITextView {
   }
 
   var textPublisher: AnyPublisher<String?, Never> { valuePublisher }
+
+  /// Combine wrapper for `textViewDidBeginEditing(_:)`
+  var didBeginEditingPublisher: AnyPublisher<Void, Never> {
+    let selector = #selector(UITextViewDelegate.textViewDidBeginEditing(_:))
+    return delegateProxy.interceptSelectorPublisher(selector)
+        .map { _ in () }
+        .eraseToAnyPublisher()
+  }
+
+  /// Combine wrapper for `textViewDidEndEditing(_:)`
+  var didEndEditingPublisher: AnyPublisher<Void, Never> {
+    let selector = #selector(UITextViewDelegate.textViewDidEndEditing(_:))
+    return delegateProxy.interceptSelectorPublisher(selector)
+        .map { _ in () }
+        .eraseToAnyPublisher()
+  }
+
+  /// A publisher emits on first responder changes
+  var isFirstResponderPublisher: AnyPublisher<Bool, Never> {
+    Just<Void>(())
+      .merge(with: didBeginEditingPublisher, didEndEditingPublisher)
+      .map { [weak self] in
+        self?.isFirstResponder ?? false
+      }
+      .eraseToAnyPublisher()
+  }
+
+  /// A publisher emits on selected range changes
+  var selectedRangePublisher: AnyPublisher<NSRange, Never> {
+    let selector = #selector(UITextViewDelegate.textViewDidChangeSelection(_:))
+    return delegateProxy.interceptSelectorPublisher(selector)
+        .compactMap { [weak self] _ in
+          self?.selectedRange
+        }
+        .eraseToAnyPublisher()
+  }
+
+  @objc override var delegateProxy: DelegateProxy {
+      TextViewDelegateProxy.createDelegateProxy(for: self)
+  }
+}
+
+@available(iOS 13.0, *)
+private class TextViewDelegateProxy: DelegateProxy, UITextViewDelegate, DelegateProxyType {
+    func setDelegate(to object: UITextView) {
+        object.delegate = self
+    }
 }
 #endif
