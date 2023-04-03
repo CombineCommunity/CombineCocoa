@@ -21,6 +21,15 @@ public extension UISearchBar {
             .map { $0[1] as! String }
             .eraseToAnyPublisher()
     }
+    
+    /// Combine wrapper for `UISearchBarDelegate.searchBarTextDidBeginEditing(_:)`
+    var textDidBeginEditingPublisher: AnyPublisher<Void, Never> {
+        let selector = #selector(UISearchBarDelegate.searchBarTextDidBeginEditing(_:))
+        return delegateProxy
+            .interceptSelectorPublisher(selector)
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
 
     /// Combine wrapper for `UISearchBarDelegate.searchBarSearchButtonClicked(_:)`
     var searchButtonClickedPublisher: AnyPublisher<Void, Never> {
