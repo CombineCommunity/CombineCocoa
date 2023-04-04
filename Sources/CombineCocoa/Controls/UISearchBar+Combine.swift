@@ -22,6 +22,24 @@ public extension UISearchBar {
             .eraseToAnyPublisher()
     }
 
+    /// Combine wrapper for `UISearchBarDelegate.searchBarTextDidBeginEditing(_:)`
+    var textDidBeginEditingPublisher: AnyPublisher<Void, Never> {
+        let selector = #selector(UISearchBarDelegate.searchBarTextDidBeginEditing(_:))
+        return delegateProxy
+            .interceptSelectorPublisher(selector)
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
+   
+    /// Combine wrapper for `UISearchBarDelegate.searchBarTextDidEndEditing(_:)`
+    var textDidEndEditingPublisher: AnyPublisher<Void, Never> {
+        let selector = #selector(UISearchBarDelegate.searchBarTextDidEndEditing(_:))
+        return delegateProxy
+            .interceptSelectorPublisher(selector)
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
+
     /// Combine wrapper for `UISearchBarDelegate.searchBarSearchButtonClicked(_:)`
     var searchButtonClickedPublisher: AnyPublisher<Void, Never> {
         let selector = #selector(UISearchBarDelegate.searchBarSearchButtonClicked(_:))
