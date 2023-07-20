@@ -10,6 +10,7 @@
 import Foundation
 import Combine
 
+@available(macOS 10.15, *)
 @available(iOS 13.0, *)
 internal class DelegateProxyPublisher<Output>: Publisher {
     typealias Failure = Never
@@ -26,6 +27,7 @@ internal class DelegateProxyPublisher<Output>: Publisher {
     }
 }
 
+@available(macOS 10.15, *)
 @available(iOS 13.0, *)
 private extension DelegateProxyPublisher {
     class Subscription<S>: Combine.Subscription where S: Subscriber, Failure == S.Failure, Output == S.Input {

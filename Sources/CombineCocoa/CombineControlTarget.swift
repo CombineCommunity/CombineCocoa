@@ -11,6 +11,7 @@ import Combine
 import Foundation
 
 // MARK: - Publisher
+@available(macOS 10.15, *)
 @available(iOS 13.0, *)
 public extension Combine.Publishers {
     /// A publisher which wraps objects that use the Target & Action mechanism,
@@ -55,6 +56,7 @@ public extension Combine.Publishers {
 }
 
 // MARK: - Subscription
+@available(macOS 10.15, *)
 @available(iOS 13.0, *)
 private extension Combine.Publishers.ControlTarget {
     private final class Subscription<S: Subscriber, Control: AnyObject>: Combine.Subscription where S.Input == Void {
