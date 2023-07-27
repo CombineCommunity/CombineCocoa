@@ -9,7 +9,18 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        .target(name: "CombineCocoa", dependencies: ["Runtime"]),
-        .target(name: "Runtime", dependencies: [])
+        .target(
+			name: "CombineCocoa",
+			dependencies: [
+				"CombineCocoaInterception",
+				"CombineCocoaRuntime"
+			]),
+		.target(
+			name: "CombineCocoaInterception",
+			dependencies: [
+				.target(name: "CombineCocoaRuntime")
+			]
+		),
+        .target(name: "CombineCocoaRuntime")
     ]
 )

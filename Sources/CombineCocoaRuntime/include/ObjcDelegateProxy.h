@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ObjcRuntimeAliases.h>
 
 @interface ObjcDelegateProxy: NSObject
 
