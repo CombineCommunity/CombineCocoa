@@ -8,8 +8,8 @@
 
 import Foundation
 
-#if canImport(CombineCocoaRuntime)
-  import CombineCocoaRuntime
+#if canImport(Runtime)
+  import Runtime
 #endif
 
 internal struct AssociationKey<Value> {

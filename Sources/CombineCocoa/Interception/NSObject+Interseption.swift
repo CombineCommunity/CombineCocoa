@@ -10,8 +10,8 @@
 import Combine
 import Foundation
 
-#if canImport(CombineCocoaRuntime)
-  import CombineCocoaRuntime
+#if canImport(Runtime)
+  import Runtime
 #endif
 
 /// Whether the runtime subclass has already been prepared for method

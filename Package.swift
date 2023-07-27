@@ -1,23 +1,15 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.1
 import PackageDescription
 
 let package = Package(
-  name: "CombineCocoa",
-  products: [
-    .library(
-      name: "CombineCocoa",
-      type: .static,
-      targets: ["CombineCocoa"]
-    )
-  ],
-  dependencies: [],
-  targets: [
-    .target(
-      name: "CombineCocoa",
-      dependencies: [
-        .target(name: "CombineCocoaRuntime")
-      ]
-    ),
-    .target(name: "CombineCocoaRuntime"),
-  ]
+    name: "CombineCocoa",
+    platforms: [.iOS(.v10)],
+    products: [
+        .library(name: "CombineCocoa", targets: ["CombineCocoa"]),
+    ],
+    dependencies: [],
+    targets: [
+        .target(name: "CombineCocoa", dependencies: ["Runtime"]),
+        .target(name: "Runtime", dependencies: [])
+    ]
 )
