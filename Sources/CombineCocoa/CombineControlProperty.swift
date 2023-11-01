@@ -65,7 +65,7 @@ extension Combine.Publishers.ControlProperty {
             self.control = control
             self.keyPath = keyPath
             self.event = event
-            control.addTarget(self, action: #selector(handleEvent), for: event)
+            control.addTarget(self, action: #selector(processControlEvent), for: event)
         }
 
         func request(_ demand: Subscribers.Demand) {
@@ -83,11 +83,11 @@ extension Combine.Publishers.ControlProperty {
         }
 
         func cancel() {
-            control?.removeTarget(self, action: #selector(handleEvent), for: event)
+            control?.removeTarget(self, action: #selector(processControlEvent), for: event)
             subscriber = nil
         }
 
-        @objc private func handleEvent() {
+        @objc private func processControlEvent() {
             guard let control = control else { return }
             _ = subscriber?.receive(control[keyPath: keyPath])
         }
