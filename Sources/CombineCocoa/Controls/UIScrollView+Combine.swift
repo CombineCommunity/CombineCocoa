@@ -11,7 +11,7 @@ import UIKit
 import Combine
 
 // swiftlint:disable force_cast
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension UIScrollView {
     /// A publisher emitting content offset changes from this UIScrollView.
     var contentOffsetPublisher: AnyPublisher<CGPoint, Never> {
@@ -137,7 +137,7 @@ public extension UIScrollView {
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 private class ScrollViewDelegateProxy: DelegateProxy, UIScrollViewDelegate, DelegateProxyType {
     func setDelegate(to object: UIScrollView) {
         object.delegate = self

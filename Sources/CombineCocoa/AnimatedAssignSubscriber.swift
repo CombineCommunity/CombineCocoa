@@ -29,7 +29,7 @@ public enum AssignTransition {
     case animation(duration: TimeInterval, options: UIView.AnimationOptions, animations: () -> Void, completion: ((Bool) -> Void)?)
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension Publisher where Self.Failure == Never {
     /// Behaves identically to `Publisher.assign(to:on:)` except that it allows the user to
     /// "wrap" emitting output in an animation transition.

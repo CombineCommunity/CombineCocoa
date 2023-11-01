@@ -12,7 +12,7 @@ import UIKit
 import Combine
 
 // swiftlint:disable force_cast
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension UICollectionView {
    /// Combine wrapper for `collectionView(_:didSelectItemAt:)`
     var didSelectItemPublisher: AnyPublisher<IndexPath, Never> {
@@ -83,7 +83,7 @@ public extension UICollectionView {
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 private class CollectionViewDelegateProxy: DelegateProxy, UICollectionViewDelegate, DelegateProxyType {
     func setDelegate(to object: UICollectionView) {
         object.delegate = self

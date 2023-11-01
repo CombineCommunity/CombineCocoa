@@ -12,7 +12,7 @@ import Foundation
 import UIKit.UIControl
 
 // MARK: - Publisher
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public extension Combine.Publishers {
     /// A Control Property is a publisher that emits the value at the provided keypath
     /// whenever the specific control events are triggered. It also emits the keypath's
@@ -51,7 +51,7 @@ public extension Combine.Publishers {
 }
 
 // MARK: - Subscription
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 extension Combine.Publishers.ControlProperty {
     private final class Subscription<S: Subscriber, Control: UIControl, Value>: Combine.Subscription where S.Input == Value {
         private var subscriber: S?
