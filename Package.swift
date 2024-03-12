@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "CombineCocoa",
-    platforms: [.iOS(.v10)],
+    platforms: [.iOS(.v10), .visionOS(.v1)],
     products: [
         .library(name: "CombineCocoa", targets: ["CombineCocoa"]),
     ],
